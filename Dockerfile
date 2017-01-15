@@ -21,6 +21,8 @@ ENV DEBCONF_NOWARNINGS yes
 RUN apt-get -qq update && \
     # latex toolchain 
     apt-get -qq -y install texlive texlive-xetex && \
+    # fonts
+    apt-get --qq -y install fonts-lato && \
     # build tools
     apt-get -qq -y install wget tar xz-utils && \
     apt-get clean && \

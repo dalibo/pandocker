@@ -5,6 +5,7 @@ Changelog
 17.03-dev
 -------------------------------------------------------------------------------
 
+* Add Lato font
 * Switch to latest pandoc version
 * FIX wkhtmltopdf path
 
