@@ -5,8 +5,9 @@ Changelog
 17.03-dev
 -------------------------------------------------------------------------------
 
+* Add some Pandoc filters
 * Add Lato font
-* Switch to latest pandoc version
+* Switch to latest Pandoc version
 * FIX wkhtmltopdf path
 
 
