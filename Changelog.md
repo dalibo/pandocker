@@ -6,6 +6,7 @@ Changelog
 -------------------------------------------------------------------------------
 
 * Switch to latest pandoc version
+* FIX wkhtmltopdf path
 
 
 16.12 : Init [ad4923b213b8929303a7d3bc4af58930ca4d1e27]
