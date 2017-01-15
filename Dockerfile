@@ -1,3 +1,5 @@
+# A simple Pandoc machine for pandoc with filters, fonts and the latex bazaar
+#
 # Based on :
 #    https://github.com/jagregory/pandoc-docker/blob/master/Dockerfile
 #    https://github.com/geometalab/docker-pandoc/blob/develop/Dockerfile
@@ -24,13 +26,23 @@ RUN apt-get -qq update && \
     # fonts
     apt-get -qq -y install fonts-lato && \
     # build tools
-    apt-get -qq -y install wget tar xz-utils && \
+    apt-get -qq -y install wget tar xz-utils python-setuptools && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install pandoc 
 RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBIAN_REVISION}-amd64.deb && \
     dpkg --install pandoc.deb
+
+#
+# Pandoc filters
+#
+RUN easy_install pip && \
+    pip install pandocfilters \
+		panflute \
+                pandoc-latex-environment \
+                pandoc-latex-barcode
+
 
 # Install wkhtmltopdf
 RUN wget -O wkhtmltox.tar.xz http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && \
