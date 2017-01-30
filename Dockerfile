@@ -26,7 +26,10 @@ RUN apt-get -qq update && \
     # fonts
     apt-get -qq -y install fonts-lato && \
     # build tools
-    apt-get -qq -y install wget tar xz-utils python-setuptools && \
+    apt-get -qq -y install git wget tar xz-utils python-setuptools && \
+    # required by pandoc-latex-tip
+    apt-get -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
+    # clean up
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -41,7 +44,11 @@ RUN easy_install pip && \
     pip install pandocfilters \
 		panflute \
                 pandoc-latex-environment \
-                pandoc-latex-barcode
+                pandoc-latex-barcode \ 
+		icon_font_to_png 
+ 
+# https://github.com/chdemko/pandoc-latex-tip/issues/1
+RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
 
 
 # Install wkhtmltopdf
