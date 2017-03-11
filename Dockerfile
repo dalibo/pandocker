@@ -12,7 +12,7 @@ MAINTAINER damien clochard <daamien@gmail.com>
 ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
 
 # Pandoc Version
-ENV PANDOC_VERSION 1.19.1
+ENV PANDOC_VERSION 1.19.2
 ENV DEBIAN_REVISION ${PANDOC_VERSION}-1
 
 # Set the env variables to non-interactive
