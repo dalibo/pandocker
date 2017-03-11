@@ -2,19 +2,25 @@
 
 A simple docker for pandoc with filters, fonts, and the latex bazaar
 
-# Build
+## Build
+
+```
+make
+```
+
+or 
 
 ```
 docker build .
 ```
 
-or just :
+or just fetch the pre-compiled image :
 
 ```
 docker pull daamien/pandocker
 ```
 
-# How To
+## How To
 
 Add this to your `~/.bashrc` :
 
@@ -23,11 +29,11 @@ alias pandoc="docker run -v `pwd`:/pandoc daamien/pandocker $@"
 ```
 
 
-# Branches 
+## Branches 
 
 You can use different versions of this machine using the following tags:
 
   * `latest`  : this is the default  (based on `master` branch)
   * `jessie`  : based on debian 8
-  * `jtretch` : based on debian 9
+  * `stretch` : based on debian 9
   * `devel`   : based on the upcoming ubuntu distro
