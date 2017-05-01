@@ -43,6 +43,7 @@ RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBI
 RUN easy_install pip && \
     pip install pandocfilters \
 		panflute \
+		pandoc-latex-admonition \
                 pandoc-latex-environment \
                 pandoc-latex-barcode \ 
 		icon_font_to_png 
