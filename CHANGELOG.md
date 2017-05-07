@@ -12,6 +12,9 @@ __Stack__
 __Changes__
 
   * New Filter : pandoc-latex-admonition
+  * Install Python3 for panflute
+  * Additional Python module : pypdf2
+
 
 
 17.03 : [0626d14f3fc4a2ae9855aa71d082498063fbe40b]
