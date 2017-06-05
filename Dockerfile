@@ -32,7 +32,7 @@ RUN apt-get -qq update && \
     # required by panflute
     apt-get -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
     # required for PDF meta analysis
-    apt-get --qq -y poppler-utils && \		
+    apt-get -qq -y install poppler-utils && \		
     # clean up
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
