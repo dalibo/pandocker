@@ -25,7 +25,7 @@ docker pull daamien/pandocker
 Add this to your `~/.bashrc` :
 
 ```
-alias pandoc="docker run -v `pwd`:/pandoc daamien/pandocker $@"
+alias pandoc="docker run --rm -v `pwd`:/pandoc daamien/pandocker $@"
 ```
 
 
