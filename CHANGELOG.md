@@ -8,12 +8,15 @@ __Stack__
                                                                                 
   * Debian 8 Jessie                                                             
   * Pandoc 1.19.2
+  * wkhtmltopdf : 0.12.4
 
 __Changes__
 
   * New Filter : pandoc-latex-admonition
   * Install Python3 for panflute
   * Additional Python module : pypdf2
+  * gna.org is down : change source for wkhtmltopdf
+  * Add poppler-utils for PDF meta analysis
 
 
 
