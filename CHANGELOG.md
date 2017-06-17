@@ -17,7 +17,7 @@ __Changes__
   * Additional Python module : pypdf2
   * gna.org is down : change source for wkhtmltopdf
   * Add poppler-utils for PDF meta analysis
-
+  * Change source URL for wkhtmltopdf
 
 
 17.03 : [0626d14f3fc4a2ae9855aa71d082498063fbe40b]
