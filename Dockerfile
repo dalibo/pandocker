@@ -21,6 +21,8 @@ ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
 RUN apt-get -qq update && \
+    # for deployment
+    apt-get -qq -y install rsync openssh-client && \	
     # latex toolchain 
     apt-get -qq -y install texlive texlive-xetex && \
     # fonts

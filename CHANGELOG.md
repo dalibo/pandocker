@@ -18,7 +18,7 @@ __Changes__
   * gna.org is down : change source for wkhtmltopdf
   * Add poppler-utils for PDF meta analysis
   * Change source URL for wkhtmltopdf
-
+  * Add rsync and ssh-agent
 
 17.03 : [0626d14f3fc4a2ae9855aa71d082498063fbe40b]
 -------------------------------------------------------------------------------
