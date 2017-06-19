@@ -6,7 +6,7 @@
 #    https://github.com/vpetersson/docker-pandoc/blob/master/Dockerfile
 
 FROM debian:latest
-MAINTAINER damien clochard <daamien@gmail.com>
+MAINTAINER damien clochard <damien.clochard@dalibo.com>
 
 # Check for latest version here : 
 ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
