@@ -28,7 +28,7 @@ RUN apt-get -qq update && \
     # fonts
     apt-get -qq -y install fonts-lato && \
     # build tools
-    apt-get -qq -y install git wget tar xz-utils python-setuptools && \
+    apt-get -qq -y install parallel git wget tar xz-utils python-setuptools && \
     # required by pandoc-latex-tip
     apt-get -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
     # required by panflute
