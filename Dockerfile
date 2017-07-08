@@ -5,7 +5,7 @@
 #    https://github.com/geometalab/docker-pandoc/blob/develop/Dockerfile
 #    https://github.com/vpetersson/docker-pandoc/blob/master/Dockerfile
 
-FROM debian:latest
+FROM debian:jessie
 MAINTAINER damien clochard <damien.clochard@dalibo.com>
 
 # Check for latest version here : 
