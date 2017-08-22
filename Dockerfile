@@ -50,7 +50,8 @@ RUN easy_install pip && \
     pip install pandocfilters \
 		pandoc-latex-admonition \
                 pandoc-latex-environment \
-                pandoc-latex-barcode \ 
+                pandoc-latex-barcode \
+		pandoc-latex-levelup \ 
 		icon_font_to_png 
  
 # https://github.com/chdemko/pandoc-latex-tip/issues/1
