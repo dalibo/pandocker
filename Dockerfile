@@ -38,6 +38,8 @@ RUN apt-get -qq update && \
     apt-get -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
     # required for PDF meta analysis
     apt-get -qq -y install poppler-utils && \		
+    # wkhtmltopdf
+    apt-get -qq -y install wkhtmltopdf && \
     # clean up
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -59,13 +61,13 @@ RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBI
 #
 RUN easy_install pip && \
     pip install pandocfilters \
-		pandoc-latex-admonition \
+		        pandoc-latex-admonition \
                 pandoc-latex-environment \
                 pandoc-latex-barcode \
-		pandoc-latex-levelup \
-		pandoc-dalibo-guidelines \ 
-		icon_font_to_png \
-		pypdf2  
+                pandoc-latex-levelup \
+                pandoc-dalibo-guidelines \ 
+                icon_font_to_png \
+                pypdf2  
  
 # https://github.com/chdemko/pandoc-latex-tip/issues/1
 RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
@@ -77,14 +79,12 @@ RUN pip3 install panflute
 #RUN pip install pypdf2  
 
 # Install wkhtmltopdf
-ENV WKHTMLTOX https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-RUN wget -O wkhtmltox.tar.xz ${WKHTMLTOX} && \
-    tar -xf wkhtmltox.tar.xz
-ENV PATH ${PATH}:/wkhtmltox/bin
+# ENV WKHTMLTOX https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+# RUN wget -O wkhtmltox.tar.xz ${WKHTMLTOX} && \
+#     tar -xf wkhtmltox.tar.xz
+# ENV PATH ${PATH}:/wkhtmltox/bin
 
 # Entrypoint
 RUN mkdir /pandoc
 WORKDIR /pandoc
 ENTRYPOINT ["pandoc"]
-
-
