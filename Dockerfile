@@ -20,6 +20,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
+#
+# Debian 
+#
 RUN apt-get -qq update && \
     # for deployment
     apt-get -qq -y install rsync openssh-client && \	
@@ -39,7 +42,15 @@ RUN apt-get -qq update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install pandoc 
+#
+# SSH pre-config / useful for Gitlab CI
+#
+RUN mkdir -p ~/.ssh && \
+    echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+#
+# Install pandoc from github / debian package is too old 
+#
 RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBIAN_REVISION}-amd64.deb && \
     dpkg --install pandoc.deb
 
