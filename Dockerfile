@@ -62,8 +62,10 @@ RUN easy_install pip && \
 		pandoc-latex-admonition \
                 pandoc-latex-environment \
                 pandoc-latex-barcode \
-		pandoc-latex-levelup \ 
-		icon_font_to_png 
+		pandoc-latex-levelup \
+		pandoc-dalibo-guidelines \ 
+		icon_font_to_png \
+		pypdf2  
  
 # https://github.com/chdemko/pandoc-latex-tip/issues/1
 RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
@@ -72,7 +74,7 @@ RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
 RUN pip3 install panflute
 
 # Additional Python modules
-RUN pip install pypdf2  
+#RUN pip install pypdf2  
 
 # Install wkhtmltopdf
 ENV WKHTMLTOX https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
