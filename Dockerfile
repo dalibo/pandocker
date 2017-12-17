@@ -8,10 +8,8 @@
 FROM debian:stretch-slim
 MAINTAINER damien clochard <damien.clochard@dalibo.com>
 
-# Check for latest version here : 
-ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
-
 # Pandoc Version
+ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
 ENV PANDOC_VERSION 1.19.2
 ENV DEBIAN_REVISION ${PANDOC_VERSION}-1
 
@@ -23,25 +21,23 @@ ENV DEBCONF_NOWARNINGS yes
 #
 # Debian 
 #
-RUN apt-get -qq update && \
+RUN apt -qq update && \
     # for deployment
-    apt-get -qq -y install rsync openssh-client && \	
+    apt -qq -y install rsync openssh-client && \	
     # latex toolchain 
-    apt-get -qq -y install texlive texlive-xetex && \
+    apt -qq -y install texlive texlive-xetex && \
     # fonts
-    apt-get -qq -y install fonts-lato && \
+    apt -qq -y install fonts-lato && \
     # build tools
-    apt-get -qq -y install parallel git wget tar xz-utils python-setuptools && \
+    apt -qq -y install parallel git wget tar xz-utils python-setuptools && \
     # required by pandoc-latex-tip
-    apt-get -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
+    apt -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
     # required by panflute
-    apt-get -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
+    apt -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
     # required for PDF meta analysis
-    apt-get -qq -y install poppler-utils && \		
-    # wkhtmltopdf
-    apt-get -qq -y install wkhtmltopdf && \
+    apt -qq -y install poppler-utils && \		
     # clean up
-    apt-get clean && \
+    apt clean && \
     rm -rf /var/lib/apt/lists/*
 
 #
