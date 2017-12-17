@@ -57,8 +57,7 @@ RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBI
 #
 RUN easy_install pip && \
     pip install pandocfilters \
-		        pandoc-latex-admonition \
-                pandoc-latex-environment \
+    		pandoc-latex-environment \
                 pandoc-latex-barcode \
                 pandoc-latex-levelup \
                 pandoc-dalibo-guidelines \ 
@@ -69,7 +68,8 @@ RUN easy_install pip && \
 RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
 
 # planflute does not like python2
-RUN pip3 install panflute
+RUN pip3 install panflute \
+		 pandoc-latex-admonition
 
 # Additional Python modules
 #RUN pip install pypdf2  
