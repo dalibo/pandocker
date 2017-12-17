@@ -1,8 +1,22 @@
 Changelog
 ===============================================================================
 
+17.12-dev
+-------------------------------------------------------------------------------
+__Stack__                                                                       
 
-17.09-dev
+  * Debian 9 stretch                                                             
+  * Pandoc 1.19.2                                                               
+
+__Changes__     
+  * Switch to Stretch
+  * Add pandoc-dalibo-guidelines
+  * Abandonned wkhtml2pdf
+
+<https://github.com/dalibo/pandocker/milestone/1>
+
+
+17.09 [96dbd315b103501d10f468becad05a0094159a4e]
 -------------------------------------------------------------------------------
 
 __Stack__                                                                       
