@@ -6,7 +6,6 @@
 #    https://github.com/vpetersson/docker-pandoc/blob/master/Dockerfile
 
 FROM debian:stretch-slim
-MAINTAINER damien clochard <damien.clochard@dalibo.com>
 
 # Pandoc Version
 ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
