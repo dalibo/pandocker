@@ -20,23 +20,23 @@ ENV DEBCONF_NOWARNINGS yes
 #
 # Debian 
 #
-RUN apt -qq update && \
+RUN apt-get -qq update && \
     # for deployment
-    apt -qq -y install rsync openssh-client && \	
+    apt-get -qq -y install rsync openssh-client && \	
     # latex toolchain 
-    apt -qq -y install texlive texlive-xetex && \
+    apt-get -qq -y install texlive texlive-xetex && \
     # fonts
-    apt -qq -y install fonts-lato && \
+    apt-get -qq -y install fonts-lato && \
     # build tools
-    apt -qq -y install parallel git wget tar xz-utils python-setuptools && \
+    apt-get -qq -y install parallel git wget tar xz-utils python-setuptools && \
     # required by pandoc-latex-tip
-    apt -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
+    apt-get -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
     # required by panflute
-    apt -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
+    apt-get -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
     # required for PDF meta analysis
-    apt -qq -y install poppler-utils && \		
+    apt-get -qq -y install poppler-utils && \		
     # clean up
-    apt clean && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 #
