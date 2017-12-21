@@ -1,13 +1,13 @@
 # pandocker
 
-A simple docker for pandoc with filters, fonts, and the latex bazaar.
+A simple docker image for pandoc with filters, fonts, and the latex bazaar.
 
 ## How To
 
-Run `dalibo/pandocker` image with regular `pandoc` args. Mount your files at `/pandoc`.
+Run `dalibo/pandocker`  with regular `pandoc` args. Mount your files at `/pandoc`.
 
 ``` console
-$ docker run --rm -v ${PWD}:/pandoc dalibo/pandocker document.md
+$ docker run --rm -v ${PWD}:/pandoc dalibo/pandocker README.md
 ```
 
 Tip: use a shell alias to use `pandocker` just like `pandoc`. Add this to your `~/.bashrc` :
@@ -22,14 +22,20 @@ Note: if SELinux is enabled on you system, you might need to add the
 https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities .
 
 
-## Tags
+## Supported Tags
 
-You can use different versions of this machine using the following tags:
+You can use 2 different versions of this machine using the following tags:
 
-  * `latest`  : this is the default  (based on `master` branch)
-  * `jessie`  : based on debian 8
-  * `stretch` : based on debian 9
-  * `devel`   : based on the upcoming ubuntu distro
+* `latest` : this is the default  (based on `master` branch)
+* `stable` or `17.12`  : for production
+
+## Deprecated Tags
+
+The following versions are NOT supported anymore
+
+* `17.09`, `jessie` : obsolete
+* `no-entrypoint`  : formelly used for Gitlab-CI
+* `devel` : abandonned
 
 
 ## Build it
