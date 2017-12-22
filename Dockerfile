@@ -9,7 +9,7 @@ FROM debian:stretch-slim
 
 # Pandoc Version
 ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
-ENV PANDOC_VERSION 2.0.5
+ENV PANDOC_VERSION 1.19.2
 ENV DEBIAN_REVISION ${PANDOC_VERSION}-1
 
 # Set the env variables to non-interactive
