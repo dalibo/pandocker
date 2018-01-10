@@ -90,9 +90,6 @@ RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
 RUN pip3 install panflute \
 		 pandoc-latex-admonition
 
-# Additional Python modules
-#RUN pip install pypdf2  
-
 # Entrypoint
 RUN mkdir /pandoc
 WORKDIR /pandoc
