@@ -29,7 +29,7 @@ RUN set -x && \
         echo "Acquire::http::Proxy \"${APT_CACHER}\";" | tee /etc/apt/apt.conf.d/01proxy ; \
     fi; \
     apt-get -qq update && \
-    apt-get -qq -y install \
+    apt-get -qy install \
     # for deployment
     rsync openssh-client \
     # latex toolchain
