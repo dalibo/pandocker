@@ -60,7 +60,7 @@ RUN set -x && \
         poppler-utils \
     # clean up
     && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
 
 #
 # SSH pre-config / useful for Gitlab CI
