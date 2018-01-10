@@ -1,6 +1,7 @@
-
+NAME=dalibo/pandocker
+TAG=latest
 
 all: build
 
 build: Dockerfile
-	docker build .
+	docker build --tag $(NAME):$(TAG) .
