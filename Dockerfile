@@ -34,6 +34,7 @@ RUN set -x && \
         openssh-client \
         rsync \
         # latex toolchain
+        lmodern \
         texlive \
         texlive-xetex \
         # fonts
