@@ -76,7 +76,7 @@ RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBI
 #
 # Pandoc filters
 #
-RUN pip install \
+RUN pip2 --no-cache-dir install \
         pandocfilters \
         pandoc-latex-environment \
         pandoc-latex-barcode \
@@ -88,7 +88,7 @@ RUN pip install \
         ${NULL-}
 
 # planflute does not like python2
-RUN pip3 install panflute \
+RUN pip3 --no-cache-dir install panflute \
 		 pandoc-latex-admonition
 
 # Entrypoint
