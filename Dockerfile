@@ -46,11 +46,9 @@ RUN set -x && \
         wget \
         # pandoc-latex-tip requirements
         libjpeg62-turbo-dev \
-        libfreetype6 \
         libfreetype6-dev \
         python-imaging \
         # panflute requirements
-        python3 \
         python3-dev \
         python3-pip \
         python3-setuptools \
