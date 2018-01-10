@@ -29,7 +29,7 @@ RUN set -x && \
         echo "Acquire::http::Proxy \"${APT_CACHER}\";" | tee /etc/apt/apt.conf.d/01proxy ; \
     fi; \
     apt-get -qq update && \
-    apt-get -qy install \
+    apt-get -qy install --no-install-recommends \
     # for deployment
     rsync openssh-client \
     # latex toolchain
@@ -41,7 +41,7 @@ RUN set -x && \
     # required by pandoc-latex-tip
     python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev \
     # required by panflute
-    python3 python3-dev python3-pip python3-virtualenv \
+    python3 python3-dev python3-pip python3-setuptools \
     # required for PDF meta analysis
     poppler-utils \
     # clean up
