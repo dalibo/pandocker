@@ -20,7 +20,8 @@ ENV DEBCONF_NOWARNINGS yes
 #
 # Debian 
 #
-RUN apt-get -qq update && \
+RUN set -x && \
+    apt-get -qq update && \
     # for deployment
     apt-get -qq -y install rsync openssh-client && \	
     # latex toolchain 
