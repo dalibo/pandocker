@@ -73,13 +73,15 @@ RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBI
 #
 # Pandoc filters
 #
-RUN pip install pandocfilters \
-    		pandoc-latex-environment \
-                pandoc-latex-barcode \
-                pandoc-latex-levelup \
-                pandoc-dalibo-guidelines \ 
-                icon_font_to_png \
-                pypdf2  
+RUN pip install \
+        pandocfilters \
+        pandoc-latex-environment \
+        pandoc-latex-barcode \
+        pandoc-latex-levelup \
+        pandoc-dalibo-guidelines \
+        icon_font_to_png \
+        pypdf2 \
+        ${NULL-}
  
 # https://github.com/chdemko/pandoc-latex-tip/issues/1
 RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
