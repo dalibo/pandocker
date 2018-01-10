@@ -7,6 +7,9 @@
 
 FROM debian:stretch-slim
 
+# Proxy to APT cacher: e.g. http://apt-cacher-ng.docker:3142
+ARG APT_CACHER
+
 # Pandoc Version
 ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
 ENV PANDOC_VERSION 1.19.2
@@ -20,23 +23,41 @@ ENV DEBCONF_NOWARNINGS yes
 #
 # Debian 
 #
-RUN apt-get -qq update && \
-    # for deployment
-    apt-get -qq -y install rsync openssh-client && \	
-    # latex toolchain 
-    apt-get -qq -y install texlive texlive-xetex && \
-    # fonts
-    apt-get -qq -y install fonts-lato && \
-    # build tools
-    apt-get -qq -y install parallel git wget tar xz-utils python-setuptools && \
-    # required by pandoc-latex-tip
-    apt-get -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
-    # required by panflute
-    apt-get -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
-    # required for PDF meta analysis
-    apt-get -qq -y install poppler-utils && \		
+RUN set -x && \
+    # Setup a cacher to speed up build
+    if [ -n "${APT_CACHER}" ] ; then \
+        echo "Acquire::http::Proxy \"${APT_CACHER}\";" | tee /etc/apt/apt.conf.d/01proxy ; \
+    fi; \
+    apt-get -qq update && \
+    apt-get -qy install --no-install-recommends \
+        # for deployment
+        openssh-client \
+        rsync \
+        # latex toolchain
+        texlive \
+        texlive-xetex \
+        # fonts
+        fonts-lato \
+        # build tools
+        git \
+        parallel \
+        python-pip \
+        python-setuptools \
+        python-wheel \
+        wget \
+        # pandoc-latex-tip requirements
+        libjpeg62-turbo-dev \
+        libfreetype6-dev \
+        python-imaging \
+        # panflute requirements
+        python3-dev \
+        python3-pip \
+        python3-setuptools \
+        python3-wheel \
+        # required for PDF meta analysis
+        poppler-utils \
     # clean up
-    apt-get clean && \
+    && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 #
@@ -49,35 +70,26 @@ RUN mkdir -p ~/.ssh && \
 # Install pandoc from github / debian package is too old 
 #
 RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBIAN_REVISION}-amd64.deb && \
-    dpkg --install pandoc.deb
+    dpkg --install pandoc.deb && \
+    rm -f pandoc.deb
 
 #
 # Pandoc filters
 #
-RUN easy_install pip && \
-    pip install pandocfilters \
-    		pandoc-latex-environment \
-                pandoc-latex-barcode \
-                pandoc-latex-levelup \
-                pandoc-dalibo-guidelines \ 
-                icon_font_to_png \
-                pypdf2  
- 
-# https://github.com/chdemko/pandoc-latex-tip/issues/1
-RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
+RUN pip2 --no-cache-dir install \
+        pandocfilters \
+        pandoc-latex-environment \
+        pandoc-latex-barcode \
+        pandoc-latex-levelup \
+        pandoc-latex-tip \
+        pandoc-dalibo-guidelines \
+        icon_font_to_png \
+        pypdf2 \
+        ${NULL-}
 
 # planflute does not like python2
-RUN pip3 install panflute \
+RUN pip3 --no-cache-dir install panflute \
 		 pandoc-latex-admonition
-
-# Additional Python modules
-#RUN pip install pypdf2  
-
-# Install wkhtmltopdf
-# ENV WKHTMLTOX https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-# RUN wget -O wkhtmltox.tar.xz ${WKHTMLTOX} && \
-#     tar -xf wkhtmltox.tar.xz
-# ENV PATH ${PATH}:/wkhtmltox/bin
 
 # Entrypoint
 RUN mkdir /pandoc
