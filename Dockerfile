@@ -30,21 +30,34 @@ RUN set -x && \
     fi; \
     apt-get -qq update && \
     apt-get -qy install --no-install-recommends \
-    # for deployment
-    rsync openssh-client \
-    # latex toolchain
-    lmodern texlive texlive-lang-all \
-    texlive-latex-recommended texlive-latex-extra texlive-xetex \
-    # fonts
-    fonts-lato \
-    # build tools
-    parallel git wget tar xz-utils python-pip python-setuptools \
-    # required by pandoc-latex-tip
-    python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev \
-    # required by panflute
-    python3 python3-dev python3-pip python3-setuptools \
-    # required for PDF meta analysis
-    poppler-utils \
+        # for deployment
+        openssh-client \
+        rsync \
+        # latex toolchain
+        texlive \
+        texlive-xetex \
+        # fonts
+        fonts-lato \
+        # build tools
+        git \
+        parallel \
+        python-pip \
+        python-setuptools \
+        tar \
+        wget \
+        xz-utils \
+        # pandoc-latex-tip requirements
+        libjpeg62-turbo-dev \
+        libfreetype6 \
+        libfreetype6-dev \
+        python-imaging \
+        # panflute requirements
+        python3 \
+        python3-dev \
+        python3-pip \
+        python3-setuptools \
+        # required for PDF meta analysis
+        poppler-utils \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
