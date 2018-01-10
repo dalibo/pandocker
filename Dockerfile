@@ -7,6 +7,9 @@
 
 FROM debian:stretch-slim
 
+# Proxy to APT cacher: e.g. http://apt-cacher-ng.docker:3142
+ARG APT_CACHER
+
 # Pandoc Version
 ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
 ENV PANDOC_VERSION 1.19.2
@@ -21,6 +24,10 @@ ENV DEBCONF_NOWARNINGS yes
 # Debian 
 #
 RUN set -x && \
+    # Setup a cacher to speed up build
+    if [ -n "${APT_CACHER}" ] ; then \
+        echo "Acquire::http::Proxy \"${APT_CACHER}\";" | tee /etc/apt/apt.conf.d/01proxy ; \
+    fi; \
     apt-get -qq update && \
     # for deployment
     apt-get -qq -y install rsync openssh-client && \	
