@@ -33,7 +33,8 @@ RUN set -x && \
     # for deployment
     rsync openssh-client \
     # latex toolchain
-    texlive texlive-xetex \
+    lmodern texlive texlive-lang-all \
+    texlive-latex-recommended texlive-latex-extra texlive-xetex \
     # fonts
     fonts-lato \
     # build tools
