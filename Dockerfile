@@ -78,13 +78,11 @@ RUN pip install \
         pandoc-latex-environment \
         pandoc-latex-barcode \
         pandoc-latex-levelup \
+        pandoc-latex-tip \
         pandoc-dalibo-guidelines \
         icon_font_to_png \
         pypdf2 \
         ${NULL-}
- 
-# https://github.com/chdemko/pandoc-latex-tip/issues/1
-RUN pip install git+https://github.com/chdemko/pandoc-latex-tip.git --egg
 
 # planflute does not like python2
 RUN pip3 install panflute \
