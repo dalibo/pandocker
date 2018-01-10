@@ -70,7 +70,8 @@ RUN mkdir -p ~/.ssh && \
 # Install pandoc from github / debian package is too old 
 #
 RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBIAN_REVISION}-amd64.deb && \
-    dpkg --install pandoc.deb
+    dpkg --install pandoc.deb && \
+    rm -f pandoc.deb
 
 #
 # Pandoc filters
