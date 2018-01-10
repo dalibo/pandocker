@@ -43,6 +43,7 @@ RUN set -x && \
         parallel \
         python-pip \
         python-setuptools \
+        python-wheel \
         wget \
         # pandoc-latex-tip requirements
         libjpeg62-turbo-dev \
@@ -52,6 +53,7 @@ RUN set -x && \
         python3-dev \
         python3-pip \
         python3-setuptools \
+        python3-wheel \
         # required for PDF meta analysis
         poppler-utils \
     # clean up
