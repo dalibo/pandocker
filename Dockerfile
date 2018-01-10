@@ -29,22 +29,23 @@ RUN set -x && \
         echo "Acquire::http::Proxy \"${APT_CACHER}\";" | tee /etc/apt/apt.conf.d/01proxy ; \
     fi; \
     apt-get -qq update && \
+    apt-get -qq -y install \
     # for deployment
-    apt-get -qq -y install rsync openssh-client && \	
-    # latex toolchain 
-    apt-get -qq -y install texlive texlive-xetex && \
+    rsync openssh-client \
+    # latex toolchain
+    texlive texlive-xetex \
     # fonts
-    apt-get -qq -y install fonts-lato && \
+    fonts-lato \
     # build tools
-    apt-get -qq -y install parallel git wget tar xz-utils python-setuptools && \
+    parallel git wget tar xz-utils python-setuptools \
     # required by pandoc-latex-tip
-    apt-get -qq -y install python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev && \
+    python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev \
     # required by panflute
-    apt-get -qq -y install python3 python3-dev python3-pip python3-virtualenv && \		
+    python3 python3-dev python3-pip python3-virtualenv \
     # required for PDF meta analysis
-    apt-get -qq -y install poppler-utils && \		
+    poppler-utils \
     # clean up
-    apt-get clean && \
+    && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 #
