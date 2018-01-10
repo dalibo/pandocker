@@ -36,6 +36,7 @@ RUN set -x && \
         # latex toolchain
         lmodern \
         texlive \
+        texlive-lang-french \
         texlive-xetex \
         # fonts
         fonts-lato \
