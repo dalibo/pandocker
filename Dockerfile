@@ -37,7 +37,7 @@ RUN set -x && \
     # fonts
     fonts-lato \
     # build tools
-    parallel git wget tar xz-utils python-setuptools \
+    parallel git wget tar xz-utils python-pip python-setuptools \
     # required by pandoc-latex-tip
     python-imaging libjpeg62-turbo-dev libfreetype6 libfreetype6-dev \
     # required by panflute
@@ -63,8 +63,7 @@ RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBI
 #
 # Pandoc filters
 #
-RUN easy_install pip && \
-    pip install pandocfilters \
+RUN pip install pandocfilters \
     		pandoc-latex-environment \
                 pandoc-latex-barcode \
                 pandoc-latex-levelup \
