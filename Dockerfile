@@ -84,4 +84,5 @@ RUN pip3 --no-cache-dir install \
 
 VOLUME /pandoc
 WORKDIR /pandoc
-ENTRYPOINT ["pandoc"]
+ADD pandoc.sh /usr/local/bin
+ENTRYPOINT ["pandoc.sh"]
