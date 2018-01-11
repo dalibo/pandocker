@@ -43,21 +43,16 @@ RUN set -x && \
         # build tools
         git \
         parallel \
-        python-pip \
-        python-setuptools \
-        python-wheel \
         wget \
-        # pandoc-latex-tip requirements
-        libjpeg62-turbo-dev \
-        libfreetype6-dev \
-        python-imaging \
         # panflute requirements
-        python3-dev \
+        python3-pillow \
         python3-pip \
         python3-setuptools \
         python3-wheel \
+        python3-yaml \
         # required for PDF meta analysis
         poppler-utils \
+        zlibc \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
@@ -78,8 +73,10 @@ RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBI
 #
 # Pandoc filters
 #
-RUN pip2 --no-cache-dir install \
+RUN pip3 --no-cache-dir install \
+        panflute \
         pandocfilters \
+        pandoc-latex-admonition \
         pandoc-latex-environment \
         pandoc-latex-barcode \
         pandoc-latex-levelup \
@@ -89,11 +86,6 @@ RUN pip2 --no-cache-dir install \
         pypdf2 \
         ${NULL-}
 
-# planflute does not like python2
-RUN pip3 --no-cache-dir install panflute \
-		 pandoc-latex-admonition
-
-# Entrypoint
 VOLUME /pandoc
 WORKDIR /pandoc
 ENTRYPOINT ["pandoc"]
