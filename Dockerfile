@@ -41,6 +41,7 @@ RUN set -x && \
         # fonts
         fonts-lato \
         # build tools
+        make \
         git \
         parallel \
         wget \
