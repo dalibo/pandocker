@@ -21,7 +21,7 @@ ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
 #
-# Debian 
+# Debian
 #
 RUN set -x && \
     # Setup a cacher to speed up build
@@ -69,7 +69,7 @@ RUN mkdir -p ~/.ssh && \
     echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 #
-# Install pandoc from github / debian package is too old 
+# Install pandoc from github / debian package is too old
 #
 RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBIAN_REVISION}-amd64.deb && \
     dpkg --install pandoc.deb && \
@@ -94,6 +94,6 @@ RUN pip3 --no-cache-dir install panflute \
 		 pandoc-latex-admonition
 
 # Entrypoint
-RUN mkdir /pandoc
+VOLUME /pandoc
 WORKDIR /pandoc
 ENTRYPOINT ["pandoc"]
