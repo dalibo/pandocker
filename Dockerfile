@@ -10,11 +10,6 @@ FROM debian:stretch-slim
 # Proxy to APT cacher: e.g. http://apt-cacher-ng.docker:3142
 ARG APT_CACHER
 
-# Pandoc Version
-ENV PANDOC_SOURCE https://github.com/jgm/pandoc/releases/
-ENV PANDOC_VERSION 1.19.2
-ENV DEBIAN_REVISION ${PANDOC_VERSION}-1
-
 # Set the env variables to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBIAN_PRIORITY critical
@@ -64,9 +59,10 @@ RUN mkdir -p ~/.ssh && \
     echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 #
-# Install pandoc from github / debian package is too old
+# Install pandoc from upstream. Debian package is too old.
 #
-RUN wget -O pandoc.deb ${PANDOC_SOURCE}/download/${PANDOC_VERSION}/pandoc-${DEBIAN_REVISION}-amd64.deb && \
+ARG PANDOC_VERSION=1.19.2
+RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb && \
     dpkg --install pandoc.deb && \
     rm -f pandoc.deb
 
