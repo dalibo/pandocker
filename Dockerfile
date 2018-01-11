@@ -59,12 +59,21 @@ RUN mkdir -p ~/.ssh && \
     echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 #
+# Add local cache/. It's empty by default so this does not change the final
+# image on Docker Hub.
+#
+# However, once warmed with make warm-cache, it can save a lots of bandwidth.
+#
+ADD cache/ ./cache
+
+#
 # Install pandoc from upstream. Debian package is too old.
 #
 ARG PANDOC_VERSION=2.1
-RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb && \
-    dpkg --install pandoc.deb && \
-    rm -f pandoc.deb
+ADD fetch-pandoc.sh /usr/local/bin/
+RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
+    dpkg --install ./cache/pandoc.deb && \
+    rm -f ./cache/pandoc.deb
 
 #
 # Pandoc filters
