@@ -1,5 +1,8 @@
 # pandocker
 
+[![Docker Image](https://images.microbadger.com/badges/image/dalibo/pandocker.svg)](https://hub.docker.com/r/dalibo/pandocker)
+[![CI](https://circleci.com/gh/dalibo/pandocker.svg?style=shield)](https://circleci.com/gh/dalibo/pandocker)
+
 A simple docker image for pandoc with filters, fonts, and the latex bazaar.
 
 ## How To
@@ -46,7 +49,7 @@ Use `Makefile` or `docker` client:
 make
 ```
 
-or 
+or
 
 ```
 docker build .
