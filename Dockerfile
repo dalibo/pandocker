@@ -40,7 +40,6 @@ RUN set -x && \
         parallel \
         wget \
         # panflute requirements
-        python3-pillow \
         python3-pip \
         python3-setuptools \
         python3-wheel \
@@ -78,6 +77,10 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
 #
 # Pandoc filters
 #
+# Pillow must be installed first. When installed as a dependency from setup.py,
+# Pillow is rebuilt. However, installed explicitly first, Pillow is properly
+# installed from wheel saving a lot of build dependencies.
+RUN pip3 --no-cache-dir install Pillow
 RUN pip3 --no-cache-dir install \
         panflute \
         pandocfilters \
