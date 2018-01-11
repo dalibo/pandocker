@@ -94,6 +94,6 @@ RUN pip3 --no-cache-dir install panflute \
 		 pandoc-latex-admonition
 
 # Entrypoint
-RUN mkdir /pandoc
+VOLUME /pandoc
 WORKDIR /pandoc
 ENTRYPOINT ["pandoc"]
