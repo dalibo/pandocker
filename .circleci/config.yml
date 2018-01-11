@@ -1,0 +1,14 @@
+version: "2"
+
+jobs:
+  build:
+    docker: [{image: "docker:17.12.0-ce-git"}]
+    steps:
+    - checkout
+    - setup_remote_docker
+    - run:
+        name: Build
+        command: docker build -t dalibo/pandocker:latest .
+    - run:
+        name: Test
+        command: .circleci/test.sh
