@@ -77,22 +77,12 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
 #
 # Pandoc filters
 #
+ADD requirements.txt ./
 # Pillow must be installed first. When installed as a dependency from setup.py,
 # Pillow is rebuilt. However, installed explicitly first, Pillow is properly
 # installed from wheel saving a lot of build dependencies.
-RUN pip3 --no-cache-dir install Pillow
-RUN pip3 --no-cache-dir install \
-        panflute \
-        pandocfilters \
-        pandoc-latex-admonition \
-        pandoc-latex-environment \
-        pandoc-latex-barcode \
-        pandoc-latex-levelup \
-        pandoc-latex-tip \
-        pandoc-dalibo-guidelines \
-        icon_font_to_png \
-        pypdf2 \
-        ${NULL-}
+RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache Pillow
+RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
 
 VOLUME /pandoc
 WORKDIR /pandoc

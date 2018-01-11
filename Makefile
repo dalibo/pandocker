@@ -15,3 +15,4 @@ clean:
 
 warm-cache:
 	./fetch-pandoc.sh $(PANDOC_VERSION) cache/pandoc.deb
+	pip download --dest cache/ --requirement requirements.txt
