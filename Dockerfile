@@ -61,7 +61,7 @@ RUN mkdir -p ~/.ssh && \
 #
 # Install pandoc from upstream. Debian package is too old.
 #
-ARG PANDOC_VERSION=1.19.2
+ARG PANDOC_VERSION=2.1
 RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb && \
     dpkg --install pandoc.deb && \
     rm -f pandoc.deb
