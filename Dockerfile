@@ -32,6 +32,7 @@ RUN set -x && \
         lmodern \
         texlive \
         texlive-lang-french \
+        texlive-pstricks \
         texlive-xetex \
         # fonts
         fonts-lato \
