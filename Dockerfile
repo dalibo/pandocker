@@ -55,6 +55,12 @@ RUN set -x && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
 
 #
+# pandoc needs a `protocols` file for self-contained mode
+# see https://github.com/dalibo/pandocker/issues/18
+#
+COPY protocols /etc/protocols
+
+#
 # SSH pre-config / useful for Gitlab CI
 #
 RUN mkdir -p ~/.ssh && \
