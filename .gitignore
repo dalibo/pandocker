@@ -1,3 +1,5 @@
+cache/*
+!.gitkeep
 *.swp
 *.swo
 tmp-*

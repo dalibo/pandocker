@@ -43,7 +43,6 @@ RUN set -x && \
         parallel \
         wget \
         # panflute requirements
-        python3-pillow \
         python3-pip \
         python3-setuptools \
         python3-wheel \
@@ -62,28 +61,31 @@ RUN mkdir -p ~/.ssh && \
     echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 #
+# Add local cache/. It's empty by default so this does not change the final
+# image on Docker Hub.
+#
+# However, once warmed with make warm-cache, it can save a lots of bandwidth.
+#
+ADD cache/ ./cache
+
+#
 # Install pandoc from upstream. Debian package is too old.
 #
 ARG PANDOC_VERSION=2.1
-RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb && \
-    dpkg --install pandoc.deb && \
-    rm -f pandoc.deb
+ADD fetch-pandoc.sh /usr/local/bin/
+RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
+    dpkg --install ./cache/pandoc.deb && \
+    rm -f ./cache/pandoc.deb
 
 #
 # Pandoc filters
 #
-RUN pip3 --no-cache-dir install \
-        panflute \
-        pandocfilters \
-        pandoc-latex-admonition \
-        pandoc-latex-environment \
-        pandoc-latex-barcode \
-        pandoc-latex-levelup \
-        pandoc-latex-tip \
-        pandoc-dalibo-guidelines \
-        icon_font_to_png \
-        pypdf2 \
-        ${NULL-}
+ADD requirements.txt ./
+# Pillow must be installed first. When installed as a dependency from setup.py,
+# Pillow is rebuilt. However, installed explicitly first, Pillow is properly
+# installed from wheel saving a lot of build dependencies.
+RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache Pillow
+RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
 
 VOLUME /pandoc
 WORKDIR /pandoc
