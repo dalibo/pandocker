@@ -34,6 +34,8 @@ RUN set -x && \
         texlive-lang-french \
         texlive-pstricks \
         texlive-xetex \
+        # reveal (see issue #18)
+        netbase \
         # fonts
         fonts-lato \
         # build tools
@@ -53,12 +55,6 @@ RUN set -x && \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
-
-#
-# pandoc needs a `protocols` file for self-contained mode
-# see https://github.com/dalibo/pandocker/issues/18
-#
-COPY protocols /etc/protocols
 
 #
 # SSH pre-config / useful for Gitlab CI
