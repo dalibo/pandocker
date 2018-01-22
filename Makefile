@@ -10,6 +10,9 @@ build: Dockerfile
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
 	    --tag $(NAME):$(TAG) .
 
+test:
+	.circleci/test.sh
+
 clean:
 	docker rmi $(NAME):$(TAG)
 

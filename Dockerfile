@@ -35,6 +35,8 @@ RUN set -x && \
         texlive-luatex \
         texlive-pstricks \
         texlive-xetex \
+        # reveal (see issue #18)
+        netbase \
         # fonts
         fonts-lato \
         # build tools
