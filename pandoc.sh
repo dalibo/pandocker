@@ -1,9 +1,13 @@
 #!/bin/bash -eux
+#
+# Backward compatibility with Pandoc 1.x command lines
+#
 
-##
-## Backward compatibility with Pandoc 1.x command lines
-##
-## 1. --latex-engine becomes --pdf-engine
-## 2. --no-tex-ligatures becomes --from markdown-smart
-##
-exec pandoc $(sed -e's/--latex-engine/--pdf-engine/; s/--no-tex-ligatures/--from markdown-smart/' <<< $@)
+PANDOC_ARGS=("$@")
+# 1. --latex-engine becomes --pdf-engine
+PANDOC_ARGS=("${PANDOC_ARGS[@]//--latex-engine/--pdf-engine}")
+# 2. --no-tex-ligatures becomes --from markdown-smart
+PANDOC_ARGS=("${PANDOC_ARGS[@]//--no-tex-ligatures/--from markdown-smart}")
+
+set -x
+exec pandoc "${PANDOC_ARGS[@]}"
