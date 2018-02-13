@@ -9,3 +9,5 @@ pandoc-latex-tip
 pandoc-dalibo-guidelines
 icon_font_to_png
 pypdf2
+pandoc-minted
+pygments
