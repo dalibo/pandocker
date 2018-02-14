@@ -1,13 +1,10 @@
-Pillow
 panflute
 pandocfilters
 pandoc-latex-admonition
 pandoc-latex-environment
 pandoc-latex-barcode
 pandoc-latex-levelup
-pandoc-latex-tip
 pandoc-dalibo-guidelines
-icon_font_to_png
 pypdf2
 pandoc-minted
 pygments
