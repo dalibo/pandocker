@@ -5,7 +5,7 @@ rm -vf tmp-*
 
 docker create --name pandoc-volumes dalibo/pandocker:latest
 trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
-docker cp fixtures/sample-presentation.md pandoc-volumes:/pandoc/
+docker cp fixtures/* pandoc-volumes:/pandoc/
 
 PANDOC="docker run --rm --volumes-from pandoc-volumes dalibo/pandocker:latest --verbose"
 
