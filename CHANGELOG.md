@@ -1,14 +1,30 @@
 Changelog
 ===============================================================================
 
-17.12-dev
+18.03
 -------------------------------------------------------------------------------
-__Stack__                                                                       
 
-  * Debian 9 stretch                                                             
-  * Pandoc 1.19.2                                                               
+__Stack__
 
-__Changes__     
+  * Debian 9 stretch
+  * Pandoc 2.1
+
+__Changes__
+  *
+
+
+<https://github.com/dalibo/pandocker/milestone/2>
+
+
+
+17.12 [1ac416c98189759fe5a3978c8e8ae4b6aaeda24e]
+-------------------------------------------------------------------------------
+__Stack__
+
+  * Debian 9 stretch
+  * Pandoc 1.19.2
+
+__Changes__
   * Switch to Stretch
   * Add pandoc-dalibo-guidelines
   * Abandonned wkhtml2pdf
@@ -19,22 +35,22 @@ __Changes__
 17.09 [96dbd315b103501d10f468becad05a0094159a4e]
 -------------------------------------------------------------------------------
 
-__Stack__                                                                       
-                                                                                
-  * Debian 8 Jessie                                                             
-  * Pandoc 1.19.2                                                               
-  * wkhtmltopdf : 0.12.4                                                        
-                                                                                
-__Changes__     
+__Stack__
+
+  * Debian 8 Jessie
+  * Pandoc 1.19.2
+  * wkhtmltopdf : 0.12.4
+
+__Changes__
   * Add pandoc-latex-levelup
   * doc
 
 17.06 [ce920cd8c8855d07592f65f0a04b74cbdf7d1c51]
 -------------------------------------------------------------------------------
 
-__Stack__                                                                       
-                                                                                
-  * Debian 8 Jessie                                                             
+__Stack__
+
+  * Debian 8 Jessie
   * Pandoc 1.19.2
   * wkhtmltopdf : 0.12.4
 
