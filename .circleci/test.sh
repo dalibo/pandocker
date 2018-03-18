@@ -22,3 +22,14 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 DEST=tmp-slides.self-contained.html
 $PANDOC -t revealjs sample-presentation.md --standalone --self-contained -V revealjs-url:https://revealjs.com/  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
+
+
+# FILTER : Minted : TEX Export
+DEST=tmp-minted.tex
+$PANDOC --filter pandoc-minted minted.md  -o $DEST
+docker cp pandoc-volumes:/pandoc/$DEST .
+
+# FILTER : Minted : PDF Export
+DEST=tmp-minted.pdf
+$PANDOC --filter pandoc-minted --pdf-engine=xelatex  minted.md  -o $DEST
+docker cp pandoc-volumes:/pandoc/$DEST .
