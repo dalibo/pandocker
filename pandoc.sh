@@ -10,4 +10,4 @@ PANDOC_ARGS=("${PANDOC_ARGS[@]//--latex-engine/--pdf-engine}")
 PANDOC_ARGS=("${PANDOC_ARGS[@]//--no-tex-ligatures/--from markdown-smart}")
 
 set -x
-exec pandoc "${PANDOC_ARGS[@]}"
+exec pandoc ${PANDOC_ARGS[@]}
