@@ -1,5 +1,5 @@
 # AUTHORS
 
-Damien Clochard (@daamien)
-Etienne Bersac (@berace)
-Julien Tachoires (@julmon)
+* Damien Clochard <https://github.com/daamien>
+* Etienne Bersac <https://github.com/bersace>
+* Julien Tachoires <https://github.com/julmon>
