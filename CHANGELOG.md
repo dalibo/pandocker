@@ -10,7 +10,22 @@ __Stack__
   * Pandoc 2.1
 
 __Changes__
-  *
+  * Switch to pandoc 2.1 (bersace)
+  * Major Reduction : image size is now 262 MB (bersace)
+  * Drop pandoc-latex-tip (bersace)
+  * Add pandoc-minted and pygments (julmon)
+  * Local cache for docker build (bersace)
+  * Transfer copyright to dalibo (daamien)
+  * README : badges + fixes (bersace+damien)
+  * Only use binary and python3 (bersace)
+  * Add CI job (bersace)
+  * Restore beamer (bersace)
+  * Various updates (bersace)
+  * FIX #18 : pandoc requires a `protocols` file for the self-contained mode (daamien)
+  * FIX #19 : restore texlive-pstricks (daamien)
+  * FIX #20 : Add backward compatibility for pandoc 1.x (bersace)
+  * FIX #22 : Add imagemagick (daamien)
+  * FIX #24 : Add texlive_luatex to restore ucharcat  (daamien)
 
 
 <https://github.com/dalibo/pandocker/milestone/2>
