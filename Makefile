@@ -13,6 +13,9 @@ build: Dockerfile
 test:
 	.circleci/test.sh
 
+authors:
+	git shortlog -s -n
+
 clean:
 	docker rmi $(NAME):$(TAG)
 
