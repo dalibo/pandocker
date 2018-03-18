@@ -28,11 +28,12 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 
 
 # FILTER : Minted : TEX Export
+MINTED_OPT="--filter pandoc-minted --pdf-engine-opt=-shell-escape"
 DEST=tmp-minted.tex
-$PANDOC --filter pandoc-minted minted.md  -o $DEST
+$PANDOC $MINTED_OPT minted.md  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
 
 # FILTER : Minted : PDF Export
 DEST=tmp-minted.pdf
-$PANDOC --filter pandoc-minted --pdf-engine=xelatex  minted.md  -o $DEST
+$PANDOC $MINTED_OPT --pdf-engine=xelatex  minted.md  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .

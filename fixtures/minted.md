@@ -1,6 +1,8 @@
 ---
 pandoc-minted:
   language: python
+header-includes: |
+    \usepackage[cache=false]{minted}
 ---
 
 # Testing Minted ouput
