@@ -3,6 +3,7 @@ title: "Titre de la présentation"
 subtitle: "Kowabungaaaa !"
 date: décembre 2016
 author: Chuck Norris
+lang: fr-FR
 version: 2.0
 transition: fade
 progress: true
