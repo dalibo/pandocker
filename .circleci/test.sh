@@ -31,7 +31,7 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 # 04. Check bug #18
 # https://github.com/dalibo/pandocker/issues/18
 DEST=tmp-slides.self-contained.html
-$PANDOC -t revealjs sample-presentation.md --standalone --self-contained -V revealjs-url:https://revealjs.com/  -o $DEST
+$PANDOC -t revealjs $SRC --standalone --self-contained -V revealjs-url:https://revealjs.com/  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 05. Check bug #36 : wrapper introduces quote errors
@@ -51,6 +51,3 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 DEST=tmp-minted.pdf
 $PANDOC $MINTED_OPT --pdf-engine=xelatex  minted.md  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
-$PANDOC -t revealjs $SRC --standalone --self-contained -V revealjs-url:https://revealjs.com/  -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
-
