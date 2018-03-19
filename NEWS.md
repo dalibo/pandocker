@@ -70,7 +70,7 @@ docker run --rm -v `pwd`:/pandoc  dalibo/pandocker:stable -t beamer foo.md - o f
 How to contribute
 --------------------------------------------------------------------------------
 
-This release is brought to you by Etienne Bersac, Damien Clochard and Julien
+This release is brought to you by Étienne Bersac, Damien Clochard and Julien
 Tachoires. Pandocker is an open project, contributions are welcome.
 
 If you want to help, you can find a list of "Junior Jobs" here:
