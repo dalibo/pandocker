@@ -6,8 +6,8 @@ Changelog
 
 __Stack__
 
- * Debian 9 stretch
- * Pandoc 2.1
+* Debian 9 stretch
+* Pandoc 2.1
 
 __Changes__
 
