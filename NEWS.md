@@ -38,16 +38,39 @@ What's new in version 18.03 ?
 
 ### We switched to Pandoc 2
 
+Pandoc 2 was released in october 2017 and brings tons of great new features.
+It also introduce a few incompatibilities as some parameters have been abruptly
+renamed:
+
+* `--latex-engine` is now named `--pdf-engine`
+* `--no-tex-ligatures` is replaced by `--from=markdown-smart`
+
+Hopefully we added a wrapper that automatically supports both pandoc 1.x and
+2.x parameters, but in the long run you should consider updating your
+compilation flags.
+
+
 ### We lost weight
+
+The size of the previous image was 1.2GB (uncompressed). We reduced this to
+735MB. We stripped down the image by removing a lot of unused LaTeX packages.
+If you're missing one, please fill a bug report here :
+
+<https://github.com/dalibo/pandocker/issues>
 
 ### Beamer is Back !
 
+We restored the beamer export mode. You can simply get PDF slides like this:
+
+```
+docker run --rm -v `pwd`:/pandoc  dalibo/pandocker:stable -t beamer foo.md - o foo.beamer.pdf
+```
 
 
 How to contribute
 --------------------------------------------------------------------------------
 
-This release is brought to you by Etienne Bersac, Damien Clochard and Julien 
+This release is brought to you by Etienne Bersac, Damien Clochard and Julien
 Tachoires. Pandocker is an open project, contributions are welcome.
 
 If you want to help, you can find a list of "Junior Jobs" here:
