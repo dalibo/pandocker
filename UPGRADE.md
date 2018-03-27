@@ -8,11 +8,9 @@ docker pull dalibo/pandocker:stable
 
 ## Without docker (local setup)
 
-__TL;DR:__ We're releasing a stable version of the toolchain every 3 months. 
-and we will only support the latest stable version. 
-
-**In a nutshell**: If you want to make your life easier, use the docker image 
-as described above.
+__TL;DR:__ We're releasing a stable version of the toolchain every 3 months and 
+we will only support the latest stable version. If you want to make your life 
+easier, use the docker image as described above.
 
 
 ### Upgrade from 17.12 to 18.03
@@ -30,7 +28,7 @@ sudo dpkg --install pandoc.deb
 
 
 ```shell
-sudo apt get texlive-luatex texlive-pstricks 
+sudo apt get texlive-luatex texlive-pstricks
 ```
 
 3. Upgrade the filters
@@ -39,13 +37,16 @@ sudo apt get texlive-luatex texlive-pstricks
 sudo pip3 install --upgrade -r requirements.txt
 ```
 
+---
+
 ### Upgrade from 17.09 to 17.12
 
 Upgrade is not possible :-(
 
-You need to install a branch new `Debian Stretch` system and replay the entire 
+You need to install a branch new `Debian Stretch` system and replay the entire
 [install](INSTALL.md) process.
 
+---
 
 ### Upgrade from 17.06 to 17.09
 
@@ -55,6 +56,8 @@ You need to add the levelup filter
 sudo pip3 install pandoc-latex-levelup
 ```
 
+---
+
 ### Upgrade from 17.03 to 17.06
 
 
@@ -62,12 +65,12 @@ The panflute module requires `python3`
 
 ```shell
 sudo apt-get install python3 python3-dev python3-pip python3-virtualenv
-sudo pip3 install panflute 
+sudo pip3 install panflute
 ```
 
 The post-production script requires pypdf2
 
 ```shell
-pip install pypdf2 
+pip install pypdf2
 ```
 
