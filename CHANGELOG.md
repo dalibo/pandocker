@@ -17,7 +17,7 @@ __Changes__
 * Add pandoc-minted and pygments (julmon)
 * Local cache for docker build (bersace)
 * Transfer copyright to dalibo (daamien)
-* README : badges + fixes (bersace+damien)
+* README : badges + fixes (bersace+daamien)
 * Only use binary and python3 (bersace)
 * Add CI job (bersace)
 * Restore beamer (bersace)
@@ -28,6 +28,7 @@ __Changes__
 * FIX #20 : Add backward compatibility for pandoc 1.x (bersace)
 * FIX #22 : Add imagemagick (daamien)
 * FIX #24 : Add texlive_luatex to restore ucharcat  (daamien)
+* FIX #26 : [doc] Explain how to install the toolchain without docker (daamien)
 * FIX #36 : the pandoc.sh wrapper introduces unnecessary quotes (daamien)
 
 <https://github.com/dalibo/pandocker/milestone/2>
