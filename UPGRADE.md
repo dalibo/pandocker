@@ -8,8 +8,8 @@ docker pull dalibo/pandocker:stable
 
 ## Without docker (local setup)
 
-__TL;DR:__ We're releasing a stable version of the toolchain every 3 months and 
-we will only support the latest stable version. If you want to make your life 
+__TL;DR:__ We're releasing a stable version of the toolchain every 3 months and
+we will only support the latest stable version. If you want to make your life
 easier, use the docker image as described above.
 
 
@@ -28,7 +28,7 @@ sudo dpkg --install pandoc.deb
 
 
 ```shell
-sudo apt get texlive-luatex texlive-pstricks
+sudo apt install texlive-luatex texlive-pstricks
 ```
 
 3. Upgrade the filters
@@ -43,7 +43,7 @@ sudo pip3 install --upgrade -r requirements.txt
 
 Upgrade is not possible :-(
 
-You need to install a branch new `Debian Stretch` system and replay the entire
+You need to install a brand new `Debian Stretch` system and replay the entire
 [install](INSTALL.md) process.
 
 ---
