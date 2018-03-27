@@ -6,6 +6,9 @@ rm -vf tmp-*
 docker create --name pandoc-volumes dalibo/pandocker:latest
 trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
 docker cp fixtures/sample-presentation.md pandoc-volumes:/pandoc/
+docker cp fixtures/img pandoc-volumes:/pandoc/
+docker cp fixtures/minted.md pandoc-volumes:/pandoc/
+
 
 SRC=sample-presentation.md
 PANDOC="docker run --rm --volumes-from pandoc-volumes dalibo/pandocker:latest --verbose"
@@ -36,4 +39,15 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 PANDOCSH="docker run --rm --volumes-from pandoc-volumes --entrypoint=/usr/local/bin/pandoc.sh dalibo/pandocker:latest --verbose"
 DEST=tmp-handout.bug36.pdf
 $PANDOCSH --latex-engine=xelatex --no-tex-ligatures $SRC -o $DEST 
+docker cp pandoc-volumes:/pandoc/$DEST .
+
+# 06. FILTER : Minted : TEX Export
+MINTED_OPT="--filter pandoc-minted --pdf-engine-opt=-shell-escape"
+DEST=tmp-minted.tex
+$PANDOC $MINTED_OPT minted.md  -o $DEST
+docker cp pandoc-volumes:/pandoc/$DEST .
+
+# 07. FILTER : Minted : PDF Export
+DEST=tmp-minted.pdf
+$PANDOC $MINTED_OPT --pdf-engine=xelatex  minted.md  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
