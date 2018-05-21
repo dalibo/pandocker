@@ -16,6 +16,11 @@ ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
 #
+# We need yarn to install mermaid
+#
+ADD yarn.list /etc/apt/sources.list.d
+
+#
 # Debian
 #
 RUN set -x && \
@@ -24,7 +29,7 @@ RUN set -x && \
         echo "Acquire::http::Proxy \"${APT_CACHER}\";" | tee /etc/apt/apt.conf.d/01proxy ; \
     fi; \
     apt-get -qq update && \
-    apt-get -qy install --no-install-recommends \
+    apt-get -qy install --no-install-recommends --allow-unauthenticated \
         # for deployment
         openssh-client \
         rsync \
@@ -32,6 +37,7 @@ RUN set -x && \
         lmodern \
         texlive \
         texlive-lang-french \
+		texlive-lang-german \
         texlive-luatex \
         texlive-pstricks \
         texlive-xetex \
@@ -52,6 +58,9 @@ RUN set -x && \
         # required for PDF meta analysis
         poppler-utils \
         zlibc \
+        # required for mermaid
+        nodejs \
+        yarn \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
@@ -84,6 +93,11 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
 #
 ADD requirements.txt ./
 RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
+
+#
+# Mermaid
+#
+RUN yarn add mermaid.cli
 
 VOLUME /pandoc
 WORKDIR /pandoc
