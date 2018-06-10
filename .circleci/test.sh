@@ -54,5 +54,5 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 08. Bug #44 : Support for German characters
 DEST=markdown_de.pdf
-$PANDOC -pdf-engine=xelatex  markdown_de.md --template template_de.tex -o $DEST
+$PANDOC --pdf-engine=xelatex  --template=template_de.tex markdown_de.md -o $DEST
 
