@@ -51,3 +51,8 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 DEST=tmp-minted.pdf
 $PANDOC $MINTED_OPT --pdf-engine=xelatex  minted.md  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
+
+# 08. Bug #44 : Support for German characters
+DEST=markdown_de.pdf
+$PANDOC -pdf-engine=xelatex  markdown_de.md --template template_de.tex -o $DEST
+
