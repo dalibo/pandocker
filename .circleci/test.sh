@@ -1,17 +1,21 @@
 #!/bin/sh -eux
 # Target shell is busybox sh.
 
+# use `test.sh stable` to test the stable version
+TAG=${1:-latest}
+
 rm -vf tmp-*
 
-docker create --name pandoc-volumes dalibo/pandocker:latest
+docker create --name pandoc-volumes dalibo/pandocker:$TAG
 trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
 docker cp fixtures/sample-presentation.md pandoc-volumes:/pandoc/
 docker cp fixtures/img pandoc-volumes:/pandoc/
 docker cp fixtures/minted.md pandoc-volumes:/pandoc/
-
+docker cp fixtures/markdown_de.md pandoc-volumes:/pandoc/
+docker cp fixtures/template_de.tex pandoc-volumes:/pandoc/
 
 SRC=sample-presentation.md
-PANDOC="docker run --rm --volumes-from pandoc-volumes dalibo/pandocker:latest --verbose"
+PANDOC="docker run --rm --volumes-from pandoc-volumes dalibo/pandocker:$TAG --verbose"
 
 # 01. Beamer export
 DEST=tmp-slides.pdf
@@ -51,3 +55,8 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 DEST=tmp-minted.pdf
 $PANDOC $MINTED_OPT --pdf-engine=xelatex  minted.md  -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
+
+# 08. Bug #44 : Support for German characters
+DEST=markdown_de.pdf
+$PANDOC --pdf-engine=xelatex  --template=template_de.tex markdown_de.md -o $DEST
+
