@@ -12,6 +12,12 @@ __TL;DR:__ We're releasing a stable version of the toolchain every 3 months and
 we will only support the latest stable version. If you want to make your life
 easier, use the docker image as described above.
 
+### Upgrade from 18.03 to 18.06
+
+
+```shell                                                                                                                                     
+sudo apt install texlive-lang-german 
+```   
 
 ### Upgrade from 17.12 to 18.03
 

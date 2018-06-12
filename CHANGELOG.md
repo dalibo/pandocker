@@ -1,7 +1,23 @@
 Changelog
 ===============================================================================
 
-18.03
+18.06
+-------------------------------------------------------------------------------
+
+__Stack__                                                                                                                                    
+                                                                                                                                             
+* Debian 9 stretch                                                                                                                           
+* Pandoc 2.1       
+
+__Changes__
+
+* Support for German characters (daamien + Thanks to Michael Mayer)
+* Add a Contributing file (daamien)
+
+
+<https://github.com/dalibo/pandocker/milestone/3> 
+
+18.03 [2b303b2200e0d9beb3b16f18784ddb370c97088b]
 -------------------------------------------------------------------------------
 
 __Stack__
