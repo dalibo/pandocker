@@ -40,6 +40,7 @@ RUN set -x && \
         netbase \
         # fonts
         fonts-lato \
+		fonts-liberation \
         # build tools
         make \
         git \
