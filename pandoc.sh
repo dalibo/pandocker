@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 #
 # Backward compatibility with Pandoc 1.x command lines
 #
