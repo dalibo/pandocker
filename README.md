@@ -14,13 +14,13 @@ A simple docker image for pandoc with filters, fonts, and the latex bazaar.
 Run `dalibo/pandocker`  with regular `pandoc` args. Mount your files at `/pandoc`.
 
 ``` console
-$ docker run --rm -u $UID:$UID -v ${PWD}:/pandoc dalibo/pandocker README.md
+$ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md
 ```
 
 Tip: use a shell alias to use `pandocker` just like `pandoc`. Add this to your `~/.bashrc` :
 
 ``` console
-$ alias pandoc="docker run --rm -u $UID:$UID -v `pwd`:/pandoc dalibo/pandocker"
+$ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
 $ pandoc document.md
 ```
 
