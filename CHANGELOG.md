@@ -1,13 +1,31 @@
 Changelog
 ===============================================================================
 
-18.06
+18.08
+------------------------------------------------------------------------------- 
+
+__Stack__
+* Debian 9 stretch
+* Pandoc 2.1
+
+
+__Changes__
+
+* FIX #53 : Broken CI (daamien)
+* Only log pandoc command (bersace)
+* [doc] do not run pandoc as root  (Eric Lemoine)
+* Add Libration Font (daamien)
+
+
+<https://github.com/dalibo/pandocker/milestone/4>
+
+18.06 [dd467072547ec323f3801f4fc135a05a6e530542]
 -------------------------------------------------------------------------------
 
-__Stack__                                                                                                                                    
-                                                                                                                                             
-* Debian 9 stretch                                                                                                                           
-* Pandoc 2.1       
+__Stack__
+
+* Debian 9 stretch
+* Pandoc 2.1
 
 __Changes__
 
@@ -15,7 +33,7 @@ __Changes__
 * Add a Contributing file (daamien)
 
 
-<https://github.com/dalibo/pandocker/milestone/3> 
+<https://github.com/dalibo/pandocker/milestone/3>
 
 18.03 [2b303b2200e0d9beb3b16f18784ddb370c97088b]
 -------------------------------------------------------------------------------
