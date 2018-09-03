@@ -87,6 +87,16 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
 ADD requirements.txt ./
 RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
 
+
+#
+# eisvogel template
+#
+ARG TEMPLATES_DIR=~/.pandoc/templates
+RUN mkdir -p ${TEMPLATES_DIR} && \
+    git clone --depth=1 https://github.com/Wandmalfarbe/pandoc-latex-template.git && \
+    cp pandoc-latex-template/eisvogel.tex ${TEMPLATES_DIR}/eisvogel.latex
+
+
 VOLUME /pandoc
 WORKDIR /pandoc
 ADD pandoc.sh /usr/local/bin
