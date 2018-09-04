@@ -75,7 +75,7 @@ ADD cache/ ./cache
 #
 # Install pandoc from upstream. Debian package is too old.
 #
-ARG PANDOC_VERSION=2.3
+ARG PANDOC_VERSION=2.2.3.1
 ADD fetch-pandoc.sh /usr/local/bin/
 RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
