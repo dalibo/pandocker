@@ -36,6 +36,7 @@ RUN set -x && \
         texlive-luatex \
         texlive-pstricks \
         texlive-xetex \
+		xzdec \
         # reveal (see issue #18)
         netbase \
         # fonts
@@ -46,6 +47,7 @@ RUN set -x && \
         git \
         parallel \
         wget \
+        unzip \
         # panflute requirements
         python3-pip \
         python3-setuptools \
@@ -91,11 +93,11 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 #
 # eisvogel template
 #
-ARG TEMPLATES_DIR=~/.pandoc/templates
+ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
-    git clone --depth=1 https://github.com/Wandmalfarbe/pandoc-latex-template.git && \
-    cp pandoc-latex-template/eisvogel.tex ${TEMPLATES_DIR}/eisvogel.latex
-
+	wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+RUN tlmgr init-usertree && \
+	tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
 
 VOLUME /pandoc
 WORKDIR /pandoc
