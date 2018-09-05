@@ -1,17 +1,18 @@
-NAME=dalibo/pandocker
-TAG=latest
-PANDOC_VERSION=2.1
+NAME?=dalibo/pandocker
+TAG?=$(shell git branch | grep -e "^*" | cut -d' ' -f 2)
+PANDOC_VERSION?=2.2.3.1
 
 all: build
 
 build: Dockerfile
+	echo $(TAG)
 	docker build \
 	    --build-arg APT_CACHER=$${APT_CACHER-} \
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
 	    --tag $(NAME):$(TAG) .
 
 test:
-	.circleci/test.sh
+	.circleci/test.sh $(TAG)
 
 authors:
 	git shortlog -s -n
