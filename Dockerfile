@@ -56,6 +56,17 @@ RUN set -x && \
         # required for PDF meta analysis
         poppler-utils \
         zlibc \
+        # WeasyPrint
+		build-essential \
+        python3-dev \
+        python3-pip \
+        python3-cffi \
+        libcairo2 \
+        libpango-1.0-0 \
+        libpangocairo-1.0-0 \
+        libgdk-pixbuf2.0-0 \
+        libffi-dev \
+        shared-mime-info \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
