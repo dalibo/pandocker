@@ -8,3 +8,4 @@ pandoc-dalibo-guidelines
 pypdf2
 pandoc-minted
 pygments
+WeasyPrint
