@@ -101,6 +101,9 @@ RUN tlmgr init-usertree && \
 
 VOLUME /pandoc
 WORKDIR /pandoc
-ADD pandoc.sh /usr/local/bin
-#ENTRYPOINT ["pandoc.sh"]
+
+# Compatibility with Pandoc 1.x arguments
+# use `--entrypoint=pandoc1.sh` to activate it
+ADD pandoc1.sh /usr/local/bin
+
 ENTRYPOINT ["pandoc"]
