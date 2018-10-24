@@ -60,3 +60,11 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 DEST=markdown_de.pdf
 $PANDOC --pdf-engine=xelatex  --template=template_de.tex markdown_de.md -o $DEST
 
+# 09. Bug #56 : Compatibility wirh pandoc 1
+DEST=tmp-handout.pandoc1.pdf
+PANDOC1="docker run --rm --volumes-from pandoc-volumes --entrypoint=pandoc1.sh dalibo/pandocker:$TAG --verbose"
+$PANDOC1 --latex-engine=xelatex $SRC -o $DEST
+docker cp pandoc-volumes:/pandoc/$DEST . 
+
+
+

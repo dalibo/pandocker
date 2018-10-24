@@ -102,4 +102,5 @@ RUN tlmgr init-usertree && \
 VOLUME /pandoc
 WORKDIR /pandoc
 ADD pandoc.sh /usr/local/bin
-ENTRYPOINT ["pandoc.sh"]
+#ENTRYPOINT ["pandoc.sh"]
+ENTRYPOINT ["pandoc"]
