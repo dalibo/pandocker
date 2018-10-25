@@ -40,9 +40,9 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 05. Check bug #36 : wrapper introduces quote errors
 # https://github.com/dalibo/pandocker/issues/18
-PANDOCSH="docker run --rm --volumes-from pandoc-volumes --entrypoint=/usr/local/bin/pandoc.sh dalibo/pandocker:latest --verbose"
+PANDOCSH="docker run --rm --volumes-from pandoc-volumes --entrypoint=pandoc1.sh dalibo/pandocker:latest --verbose"
 DEST=tmp-handout.bug36.pdf
-$PANDOCSH --latex-engine=xelatex --no-tex-ligatures $SRC -o $DEST 
+$PANDOCSH --latex-engine=xelatex --no-tex-ligatures $SRC -o $DEST
 docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 06. FILTER : Minted : TEX Export
@@ -59,4 +59,3 @@ docker cp pandoc-volumes:/pandoc/$DEST .
 # 08. Bug #44 : Support for German characters
 DEST=markdown_de.pdf
 $PANDOC --pdf-engine=xelatex  --template=template_de.tex markdown_de.md -o $DEST
-
