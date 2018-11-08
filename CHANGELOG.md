@@ -12,13 +12,16 @@ __Stack__
 
 __Changes__
 
+* Switch to pandoc 2.3  (daamien)
 * Disable Pandoc1 compatibility by default (daamien)
+* Add Eisvogel template  (daamien)
+* Add a weasy print container for testing purpose  (daamien)
 
 
 <https://github.com/dalibo/pandocker/milestone/5>
 
 
-18.08
+18.08 [3a5e13cb74ee837b995146eaa4d0da3d05e87acd]
 ------------------------------------------------------------------------------- 
 
 __Stack__
