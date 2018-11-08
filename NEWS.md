@@ -1,4 +1,118 @@
 
+Pandocker 18.11 is out !
+================================================================================
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain.
+It allows you to generate slides and documents using `pandoc`, but without
+installing the required depencies on your machine.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable test.md -o test.epub
+```
+
+This image is available under BSD Licence and it is designed to work without
+specific templates.
+
+The project has 2 main branchs:
+
+* `dalibo/pandocker:stable` should be used in production ( = 18.11 )
+* `dalibo/pandocker:latest` is the development version
+
+You can also retrieve images by their version number : `dalibo/pandocker:18.03`,
+`dalibo/pandocker:17.12`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+
+What's new in version 18.11 ?
+--------------------------------------------------------------------------------
+
+### Eisvogel, a new template for everyone
+
+We're now shipping a latex template inside the image so that you can produce a
+nice PDF without installing anything. 
+
+The template is called [eivogel] and you can use it simply by adding 
+`--template=eisvogel` to your compilation lines: 
+
+```
+docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
+```
+
+[eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
+
+### End of pandoc 1.x automatic support
+
+Since version 18.03, we're using Pandoc 2 and starting with this version some
+old parameters will no longer be supported. You need to check your compilation 
+lines and make the following changes :
+
+* replace `--latex-engine` by `--pdf-engine`
+* replace `--no-tex-ligatures` by `--from=markdown-smart`
+
+As an alternative, you can also changer the entrpoint and call the `pandoc1.sh`
+compatbility wrapper
+
+```
+docker run [...] --entrypoint=/usr/local/bin/pandoc1.sh [...]
+```
+
+### Easy PDF with WeasyPrint 
+
+We're now publishing a dedicated image including [WeasyPrint], alternative pdf
+engine that generates PDF files from using HTML/CSS templates.
+
+[WeasyPrint]: https://weasyprint.org/samples/
+
+To use this template, you can simply use tag `weasy`:
+
+```
+docker run [...] dalibo/pandocker:weasy \
+                    --pdf-engine=weasyprint` \ 
+                    --pdf-engine-opt="--stylesheet template.css" \
+                    --template=template.html \
+                    foo.md \
+                    -o foo.pdf
+```
+
+We're currently testing this new engine, please send us feedback if you're 
+using it too !
+
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```
+docker pull dalibo/pandocker:stable
+```
+
+If you installed the toolchain locally, please read:
+<https://github.com/dalibo/pandocker/blob/master/UPGRADE.md#without-docker-local-setup>
+
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Jobs>
+
+
+---
+
 Pandocker 18.08 is out !
 ================================================================================
 

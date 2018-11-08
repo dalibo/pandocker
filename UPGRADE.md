@@ -12,6 +12,25 @@ __TL;DR:__ We're releasing a stable version of the toolchain every 3 months and
 we will only support the latest stable version. If you want to make your life
 easier, use the docker image as described above.
 
+### Upgrade from  18.08 to 18.11
+
+1. Upgrade Pandoc 2
+
+```shell
+URL=https://github.com/jgm/pandoc/releases/download/2.1.3/pandoc-2.1.3-1-amd64.deb
+wget -O pandoc.deb $URL
+sudo dpkg --install pandoc.deb
+```
+
+2. Install the eisvogel template
+
+```shell
+URL=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex 
+TEMPLATES_DIR=~/.pandoc/templates
+wget $URL -O ${TEMPLATES_DIR}/eisvogel.latex
+tlmgr init-usertree
+tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
+```
 
 ### Upgrade from  18.06 to 18.08
 
