@@ -42,7 +42,7 @@ What's new in version 18.11 ?
 We're now shipping a latex template inside the image so that you can produce a
 nice PDF without installing anything. 
 
-The template is called [eivogel] and you can use it simply by adding 
+The template is called [eisvogel] and you can use it simply by adding 
 `--template=eisvogel` to your compilation lines: 
 
 ```
@@ -60,8 +60,8 @@ lines and make the following changes :
 * replace `--latex-engine` by `--pdf-engine`
 * replace `--no-tex-ligatures` by `--from=markdown-smart`
 
-As an alternative, you can also changer the entrpoint and call the `pandoc1.sh`
-compatbility wrapper
+As an alternative, you can also changer the entrypoint and call the `pandoc1.sh`
+compatibility wrapper
 
 ```
 docker run [...] --entrypoint=/usr/local/bin/pandoc1.sh [...]
