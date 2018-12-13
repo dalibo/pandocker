@@ -13,7 +13,8 @@ docker cp fixtures/img pandoc-volumes:/pandoc/
 docker cp fixtures/minted.md pandoc-volumes:/pandoc/
 docker cp fixtures/markdown_de.md pandoc-volumes:/pandoc/
 docker cp fixtures/template_de.tex pandoc-volumes:/pandoc/
-docker cp fixtures/emojis.md pandoc-volumes:/pandoc/ 
+docker cp fixtures/emojis.md pandoc-volumes:/pandoc/
+docker cp fixtures/template_emojis.tex pandoc-volumes:/pandoc/
 
 SRC=sample-presentation.md
 PANDOC="docker run --rm --volumes-from pandoc-volumes dalibo/pandocker:$TAG --verbose"
@@ -67,5 +68,5 @@ $PANDOC --pdf-engine=xelatex  --template=eisvogel $SRC -o $DEST
 
 # 10. emojis
 DEST=emojis.pdf
-$PANDOC --pdf-engine=xelatex emojis.md -o $DEST
+$PANDOC --pdf-engine=xelatex --template=template_emojis.tex emojis.md -o $DEST
 

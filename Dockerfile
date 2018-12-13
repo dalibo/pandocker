@@ -99,6 +99,17 @@ RUN mkdir -p ${TEMPLATES_DIR} && \
 RUN tlmgr init-usertree && \
 	tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
 
+#
+# emojis support for latex
+#
+# this package is available on CTAN but it's not in texlive at the moment
+# we need to install it manually
+#
+RUN mkdir -p ~/Library/texmf/tex/latex/local && \
+    cd ~/Library/texmf/tex/latex/local && \
+	git clone https://github.com/alecjacobson/coloremoji.sty.git && \
+	texhash coloremoji.sty
+
 VOLUME /pandoc
 WORKDIR /pandoc
 
