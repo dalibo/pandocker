@@ -13,6 +13,7 @@ docker cp fixtures/img pandoc-volumes:/pandoc/
 docker cp fixtures/minted.md pandoc-volumes:/pandoc/
 docker cp fixtures/markdown_de.md pandoc-volumes:/pandoc/
 docker cp fixtures/template_de.tex pandoc-volumes:/pandoc/
+docker cp fixtures/emojis.md pandoc-volumes:/pandoc/ 
 
 SRC=sample-presentation.md
 PANDOC="docker run --rm --volumes-from pandoc-volumes dalibo/pandocker:$TAG --verbose"
