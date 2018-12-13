@@ -64,3 +64,7 @@ $PANDOC --pdf-engine=xelatex  --template=template_de.tex markdown_de.md -o $DEST
 DEST=eisvogel.pdf
 $PANDOC --pdf-engine=xelatex  --template=eisvogel $SRC -o $DEST
 
+# 10. emojis
+DEST=emojis.pdf
+$PANDOC --pdf-engine=xelatex emojis.md -o $DEST
+
