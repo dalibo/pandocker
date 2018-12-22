@@ -1,10 +1,10 @@
 ---
-title: Testing Emojis Support
-author: Chuck Norris
+title: Hello, 🌍
+author: Chuck Norris 💪 
 header-includes: |
     \usepackage{xltxtra}
     \usepackage{xelatexemoji}
-abstract: This should work with the default template
+abstract: Test Emojis Support, This should work with the default template
 ---
 
 # Test Emojis Support for Latex/PDF 😀
@@ -32,7 +32,7 @@ In a list :
 ---------------------------------------------------
 
 > In a blockquote :
-> 😀 😘 😚 😳 😌 
+> 😀 😘 😚 😳 😌
 >   plop
 
 
