@@ -41,7 +41,7 @@ RUN set -x && \
         netbase \
         # fonts
         fonts-lato \
-		fonts-liberation \
+	fonts-liberation \
         # build tools
         make \
         git \
@@ -95,20 +95,19 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 #
 ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
-	wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+    wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
-	tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
+    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
 #
 # emojis support for latex
+# https://github.com/mreq/xelatex-emoji
 #
-# this package is available on CTAN but it's not in texlive at the moment
-# we need to install it manually
-#
-RUN mkdir -p ~/Library/texmf/tex/latex/local && \
-    cd ~/Library/texmf/tex/latex/local && \
-	git clone https://github.com/alecjacobson/coloremoji.sty.git && \
-	texhash coloremoji.sty
+ARG TEXMF=/usr/share/texmf/tex/latex/
+RUN mkdir -p ${TEXMF} && \
+    cd ${TEXMF} && \
+    git clone --single-branch --branch images https://github.com/daamien/xelatex-emoji.git && \
+    texhash
 
 VOLUME /pandoc
 WORKDIR /pandoc
