@@ -12,6 +12,14 @@ __TL;DR:__ We're releasing a stable version of the toolchain every 3 months and
 we will only support the latest stable version. If you want to make your life
 easier, use the docker image as described above.
 
+### Upgrade from 18.11 to 19.02
+
+1. Install python-mustache and upgrade other packages
+
+```shell
+pip3 install --upgrade -r requirements.txt
+```
+
 ### Upgrade from  18.08 to 18.11
 
 1. Upgrade Pandoc 2
