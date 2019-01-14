@@ -1,6 +1,19 @@
 Changelog
 ===============================================================================
 
+19.02
+------------------------------------------------------------------------------- 
+
+__Stack__
+* Debian 9 stretch
+* Pandoc 2.5
+
+__Changes__
+
+* Switch to pandoc 2.5  (daamien)
+* Add support for mustache template syntax with `pandoc-mustache` (daamien + madtibo)
+
+<https://github.com/dalibo/pandocker/milestone/6>
 
 18.11
 ------------------------------------------------------------------------------- 
