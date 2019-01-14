@@ -17,7 +17,7 @@ easier, use the docker image as described above.
 1. Install python-mustache and upgrade other packages
 
 ```shell
-pip install --upgrade -r requirements.txt
+pip3 install --upgrade -r requirements.txt
 ```
 
 ### Upgrade from  18.08 to 18.11
