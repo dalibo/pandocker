@@ -11,4 +11,4 @@ jobs:
         command: docker build -t dalibo/pandocker:latest .
     - run:
         name: Test
-        command: .circleci/test.sh
+        command: tests/test.sh
