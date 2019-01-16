@@ -4,20 +4,20 @@
 # use `test.sh stable` to test the stable version
 TAG=${1:-latest}
 
-#docker create --name pandoc-volumes dalibo/pandocker:$TAG
-#trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
-#docker cp fixtures/sample-presentation.md pandoc-volumes:/pandoc/
-#docker cp fixtures/img pandoc-volumes:/pandoc/
-#docker cp fixtures/minted.md pandoc-volumes:/pandoc/
-#docker cp fixtures/markdown_de.md pandoc-volumes:/pandoc/
-#docker cp fixtures/template_de.tex pandoc-volumes:/pandoc/
-#docker cp fixtures/emojis.md pandoc-volumes:/pandoc/
-#docker cp fixtures/template_emojis.tex pandoc-volumes:/pandoc/
-#docker cp tests pandoc-volumes:/pandoc/tests
+docker create --name pandoc-volumes dalibo/pandocker:$TAG
+trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
+docker cp tests pandoc-volumes:/pandoc/tests
 
 SRC=sample-presentation.md
+
+# the `--user` option breaks eisvogel
 #DOCKER_OPT="--rm --volume=`pwd`:/pandoc --user $(id -u):$(id -g)"
-DOCKER_OPT="--rm --volume=`pwd`:/pandoc"
+
+# CircleCi does not mount volumes like that
+#DOCKER_OPT="--rm --volume=`pwd`:/pandoc"
+
+DOCKER_OPT="--rm --volumes-from pandoc-volumes"
+
 PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
 
 IN=tests/input
@@ -85,3 +85,7 @@ $PANDOC --pdf-engine=xelatex $IN/emojis.md -o $OUT/$DEST
 # 11. Issue #75 : https://github.com/dalibo/pandocker/issues/75
 $PANDOC --pdf-engine=xelatex $IN/magicienletter.md -o $OUT/magicienletter.html
 diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
+
+
+# fetch artefacts
+docker cp pandoc-volumes:/pandoc/$OUT $OUT
