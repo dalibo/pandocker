@@ -20,9 +20,12 @@ SRC=sample-presentation.md
 DOCKER_OPT="--rm --volume=`pwd`:/pandoc"
 PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
 
-IN=./tests/input
-EXPECTED=./tests/expected
-OUT=./tests/output
+IN=tests/input
+EXPECTED=tests/expected
+OUT=tests/output
+
+ls $IN
+ls $EXPECTED
 
 rm -fr $OUT
 mkdir -p $OUT
