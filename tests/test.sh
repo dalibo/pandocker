@@ -4,79 +4,81 @@
 # use `test.sh stable` to test the stable version
 TAG=${1:-latest}
 
-rm -vf tmp-*
-
-docker create --name pandoc-volumes dalibo/pandocker:$TAG
-trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
-docker cp fixtures/sample-presentation.md pandoc-volumes:/pandoc/
-docker cp fixtures/img pandoc-volumes:/pandoc/
-docker cp fixtures/minted.md pandoc-volumes:/pandoc/
-docker cp fixtures/markdown_de.md pandoc-volumes:/pandoc/
-docker cp fixtures/template_de.tex pandoc-volumes:/pandoc/
-docker cp fixtures/emojis.md pandoc-volumes:/pandoc/
-docker cp fixtures/template_emojis.tex pandoc-volumes:/pandoc/
-docker cp tests pandoc-volumes:/pandoc/tests
+#docker create --name pandoc-volumes dalibo/pandocker:$TAG
+#trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
+#docker cp fixtures/sample-presentation.md pandoc-volumes:/pandoc/
+#docker cp fixtures/img pandoc-volumes:/pandoc/
+#docker cp fixtures/minted.md pandoc-volumes:/pandoc/
+#docker cp fixtures/markdown_de.md pandoc-volumes:/pandoc/
+#docker cp fixtures/template_de.tex pandoc-volumes:/pandoc/
+#docker cp fixtures/emojis.md pandoc-volumes:/pandoc/
+#docker cp fixtures/template_emojis.tex pandoc-volumes:/pandoc/
+#docker cp tests pandoc-volumes:/pandoc/tests
 
 SRC=sample-presentation.md
-PANDOC="docker run --rm --volumes-from pandoc-volumes dalibo/pandocker:$TAG --verbose"
+#DOCKER_OPT="--rm --volume=`pwd`:/pandoc --user $(id -u):$(id -g)"
+DOCKER_OPT="--rm --volume=`pwd`:/pandoc"
+PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
 
-MD=./tests/md
+IN=./tests/input
 EXPECTED=./tests/expected
-RESULT=./tests/result
+OUT=./tests/output
 
-mkdir -p $RESULT
+rm -fr $OUT
+mkdir -p $OUT
 
 # 01. Beamer export
-DEST=tmp-slides.pdf
-$PANDOC -t beamer $SRC -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
+DEST=sample-presentation.beamer.pdf
+$PANDOC -t beamer $IN/$SRC -o $OUT/$DEST
+
+#docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 02. Reveal export
 DEST=tmp-slides.html
-$PANDOC -t revealjs $SRC -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
+$PANDOC -t revealjs $IN/$SRC -o $OUT/$DEST
+#docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 03. Handout PDF export
 DEST=tmp-handout.pdf
-$PANDOC --pdf-engine=xelatex $SRC -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
+$PANDOC --pdf-engine=xelatex $IN/$SRC -o $OUT/$DEST
+#docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 04. Check bug #18
 # https://github.com/dalibo/pandocker/issues/18
 DEST=tmp-slides.self-contained.html
-$PANDOC -t revealjs $SRC --standalone --self-contained -V revealjs-url:https://revealjs.com/  -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
+$PANDOC -t revealjs $IN/$SRC --standalone --self-contained -V revealjs-url:https://revealjs.com/  -o $OUT/$DEST
+#docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 05. Check bug #36 : wrapper introduces quote errors
 # https://github.com/dalibo/pandocker/issues/18
-PANDOCSH="docker run --rm --volumes-from pandoc-volumes --entrypoint=pandoc1.sh dalibo/pandocker:latest --verbose"
+PANDOCSH="docker run $DOCKER_OPT --entrypoint=pandoc1.sh dalibo/pandocker:latest --verbose"
 DEST=tmp-handout.bug36.pdf
-$PANDOCSH --latex-engine=xelatex --no-tex-ligatures $SRC -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
+$PANDOCSH --latex-engine=xelatex --no-tex-ligatures $IN/$SRC -o $OUT/$DEST
+#docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 06. FILTER : Minted : TEX Export
 MINTED_OPT="--filter pandoc-minted --pdf-engine-opt=-shell-escape"
 DEST=tmp-minted.tex
-$PANDOC $MINTED_OPT minted.md  -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
+$PANDOC $MINTED_OPT $IN/minted.md  -o $OUT/$DEST
+#docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 07. FILTER : Minted : PDF Export
 DEST=tmp-minted.pdf
-$PANDOC $MINTED_OPT --pdf-engine=xelatex  minted.md  -o $DEST
-docker cp pandoc-volumes:/pandoc/$DEST .
+$PANDOC $MINTED_OPT --pdf-engine=xelatex  $IN/minted.md  -o $OUT/$DEST
+#docker cp pandoc-volumes:/pandoc/$DEST .
 
 # 08. Bug #44 : Support for German characters
 DEST=markdown_de.pdf
-$PANDOC --pdf-engine=xelatex  --template=template_de.tex markdown_de.md -o $DEST
+$PANDOC --pdf-engine=xelatex  --template=$IN/template_de.tex $IN/markdown_de.md -o $OUT/$DEST
 
 # 09. Template : eisvogel
 DEST=eisvogel.pdf
-$PANDOC --pdf-engine=xelatex  --template=eisvogel $SRC -o $DEST
+$PANDOC --pdf-engine=xelatex  --template=eisvogel $IN/$SRC -o $OUT/$DEST
 
 # 10. emojis
 DEST=emojis.pdf
-$PANDOC --pdf-engine=xelatex emojis.md -o $DEST
+$PANDOC --pdf-engine=xelatex $IN/emojis.md -o $OUT/$DEST
 
 # 11. Issue #75 : https://github.com/dalibo/pandocker/issues/75
-$PANDOC --pdf-engine=xelatex $MD/magicienletter.md -o $RESULT/magicienletter.html
-diff $RESULT/magicienletter.html $EXPECTED/magicienletter.html
+$PANDOC --pdf-engine=xelatex $IN/magicienletter.md -o $OUT/magicienletter.html
+diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
