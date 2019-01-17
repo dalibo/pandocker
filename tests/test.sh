@@ -60,7 +60,7 @@ $PANDOC -t revealjs $IN/$SRC --standalone --self-contained -V revealjs-url:https
 
 # 05. Check bug #36 : wrapper introduces quote errors
 # https://github.com/dalibo/pandocker/issues/18
-PANDOCSH="docker run $DOCKER_OPT --entrypoint=pandoc1.sh dalibo/pandocker:latest --verbose"
+PANDOCSH="docker run $DOCKER_OPT --entrypoint=pandoc1.sh dalibo/pandocker:$TAG --verbose"
 DEST=tmp-handout.bug36.pdf
 $PANDOCSH --latex-engine=xelatex --no-tex-ligatures $IN/$SRC -o $OUT/$DEST
 #docker cp pandoc-volumes:/pandoc/$DEST .
