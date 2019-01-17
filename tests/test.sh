@@ -6,7 +6,7 @@ TAG=${1:-latest}
 
 docker create --name pandoc-volumes dalibo/pandocker:$TAG
 trap 'docker rm --force --volumes pandoc-volumes' EXIT INT TERM
-docker cp tests pandoc-volumes:/pandoc/tests
+docker cp tests pandoc-volumes:/pandoc/
 
 SRC=sample-presentation.md
 
