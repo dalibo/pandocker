@@ -30,6 +30,11 @@ ls $EXPECTED
 rm -fr $OUT
 mkdir -p $OUT
 
+
+##
+## B U I L D
+##
+
 # 01. Beamer export
 DEST=sample-presentation.beamer.pdf
 $PANDOC -t beamer $IN/$SRC -o $OUT/$DEST
@@ -84,8 +89,13 @@ $PANDOC --pdf-engine=xelatex $IN/emojis.md -o $OUT/$DEST
 
 # 11. Issue #75 : https://github.com/dalibo/pandocker/issues/75
 $PANDOC --pdf-engine=xelatex $IN/magicienletter.md -o $OUT/magicienletter.html
-diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
 
+##
+## C H E C K
+##
 
 # fetch artefacts
-docker cp pandoc-volumes:/pandoc/$OUT $OUT
+docker cp pandoc-volumes:/pandoc/$OUT tests 
+
+# 11.  Issue #75 : https://github.com/dalibo/pandocker/issues/75
+diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
