@@ -12,7 +12,7 @@ build: Dockerfile
 	    --tag $(NAME):$(TAG) .
 
 test:
-	.circleci/test.sh $(TAG)
+	tests/test.sh $(TAG)
 
 authors:
 	git shortlog -s -n

@@ -8,7 +8,7 @@ jobs:
     - setup_remote_docker
     - run:
         name: Build
-        command: docker build -t dalibo/pandocker:latest .
+        command: docker build -t dalibo/pandocker:xxxxx-test-circleci-xxxxx .
     - run:
         name: Test
-        command: .circleci/test.sh
+        command: tests/test.sh xxxxx-test-circleci-xxxxx

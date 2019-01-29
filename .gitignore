@@ -3,3 +3,4 @@ cache/*
 *.swp
 *.swo
 tmp-*
+tests/output/

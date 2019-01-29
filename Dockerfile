@@ -56,6 +56,8 @@ RUN set -x && \
         # required for PDF meta analysis
         poppler-utils \
         zlibc \
+		# for emojis
+		librsvg2-bin \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
@@ -95,9 +97,31 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 #
 ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
-	wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+    wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
-	tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
+    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
+
+#
+# emojis support for latex
+# https://github.com/mreq/xelatex-emoji
+#
+ARG TEXMF=/usr/share/texmf/tex/latex/
+ARG EMOJI_DIR=/tmp/twemoji
+RUN git clone --single-branch --depth=1 --branch gh-pages https://github.com/twitter/twemoji.git $EMOJI_DIR && \ 
+	# fetch xelatex-emoji
+	mkdir -p ${TEXMF} && \
+    cd ${TEXMF} && \
+    git clone --single-branch --branch images https://github.com/daamien/xelatex-emoji.git && \
+	# convert twemoji SVG files into PDF files
+    cp -r $EMOJI_DIR/2/svg xelatex-emoji/images && \
+	cd xelatex-emoji/images && \
+	../bin/convert_svgs_to_pdfs ./*.svg && \
+	# clean up
+	rm -f *.svg && \
+	rm -fr ${EMOJI_DIR} && \
+	# update texlive
+	cd ${TEXMF} && \
+	texhash
 
 VOLUME /pandoc
 WORKDIR /pandoc
