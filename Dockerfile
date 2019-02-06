@@ -79,7 +79,7 @@ ADD cache/ ./cache
 #
 # Install pandoc from upstream. Debian package is too old.
 #
-ARG PANDOC_VERSION=2.5
+ARG PANDOC_VERSION=2.6
 ADD fetch-pandoc.sh /usr/local/bin/
 RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
@@ -107,7 +107,7 @@ RUN tlmgr init-usertree && \
 #
 ARG TEXMF=/usr/share/texmf/tex/latex/
 ARG EMOJI_DIR=/tmp/twemoji
-RUN git clone --single-branch --depth=1 --branch gh-pages https://github.com/twitter/twemoji.git $EMOJI_DIR && \ 
+RUN git clone --single-branch --depth=1 --branch gh-pages https://github.com/twitter/twemoji.git $EMOJI_DIR && \
 	# fetch xelatex-emoji
 	mkdir -p ${TEXMF} && \
     cd ${TEXMF} && \
