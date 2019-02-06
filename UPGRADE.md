@@ -14,7 +14,15 @@ easier, use the docker image as described above.
 
 ### Upgrade from 18.11 to 19.02
 
-1. Install python-mustache and upgrade other packages
+1. Upgrade Pandoc 2
+
+```shell
+URL=https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
+wget -O pandoc.deb $URL
+sudo dpkg --install pandoc.deb
+```
+
+2. Install python-mustache and upgrade other packages
 
 ```shell
 pip3 install --upgrade -r requirements.txt
@@ -33,7 +41,7 @@ sudo dpkg --install pandoc.deb
 2. Install the eisvogel template
 
 ```shell
-URL=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex 
+URL=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex
 TEMPLATES_DIR=~/.pandoc/templates
 wget $URL -O ${TEMPLATES_DIR}/eisvogel.latex
 tlmgr init-usertree
@@ -43,7 +51,7 @@ tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
 ### Upgrade from  18.06 to 18.08
 
 ```shell
-sudo apt install fonts-liberation 
+sudo apt install fonts-liberation
 ```
 
 
@@ -114,4 +122,3 @@ The post-production script requires pypdf2
 ```shell
 pip install pypdf2
 ```
-

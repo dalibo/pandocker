@@ -1,4 +1,132 @@
 
+Pandocker 19.02 is out !
+================================================================================
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain.
+It allows you to generate slides and documents using `pandoc`, but without
+installing the required depencies on your machine.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable test.md -o test.epub
+```
+
+This image is available under BSD Licence and it is designed to work without
+specific templates.
+
+The project has 2 main branchs:
+
+* `dalibo/pandocker:stable` should be used in production ( = 18.02 )
+* `dalibo/pandocker:latest` is the development version
+
+You can also retrieve images by their version number : `dalibo/pandocker:18.03`,
+`dalibo/pandocker:17.12`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+
+What's new in version 19.02 ?
+--------------------------------------------------------------------------------
+
+### A brand new Dokuwiki Reader
+
+Pandoc is now able to parse dokuwiki pages ! You can now use pandocker as
+converter to migrate from dokuwiki to markdown.
+
+```console
+docker run [...] --from dokuwiki source.doku.txt --to markdown
+```
+
+
+### Emojis ! 😎
+
+Emojis are supported with the latex engine for PDF output (they were already
+supported for revealjs and HTML outputs).
+
+Simply add the following `header-include` parameter in your documents
+
+```markdown
+---
+title: Hello, 🌍
+header-includes: |
+    \usepackage{xltxtra}
+    \usepackage{xelatexemoji}
+---
+
+😀
+```
+
+And then run pandocker as always:
+
+```
+docker run [...] --pdf-engine=xelatex lol.md -o lol.pdf
+```
+
+### Mustache
+
+Pandocker now allows you to put variables into your markdown documents, with
+their values stored in a separate file. The language we use is the `mustache`
+template syntax.
+
+You can simply add variables like this
+
+```markdown
+---
+mustache:
+- tests/vars.yml
+---
+
+Rapport par {{auteur}}, relu par {{relecteur}}
+```
+
+And then define the variables in the `tests/vars.yml` file :
+
+```YAML
+auteur: Satsuki
+relecteur: Mei
+```
+
+To activate this option, add the mustache filter to your command line
+
+
+```console
+docker run [...] --filter pandoc-mustache [...]
+```
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+If you installed the toolchain locally, please read:
+<https://github.com/dalibo/pandocker/blob/master/UPGRADE.md#without-docker-local-setup>
+
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Jobs>
+
+
+---
+
+
 Pandocker 18.11 is out !
 ================================================================================
 
@@ -40,10 +168,10 @@ What's new in version 18.11 ?
 ### Eisvogel, a new template for everyone
 
 We're now shipping a latex template inside the image so that you can produce a
-nice PDF without installing anything. 
+nice PDF without installing anything.
 
-The template is called [eisvogel] and you can use it simply by adding 
-`--template=eisvogel` to your compilation lines: 
+The template is called [eisvogel] and you can use it simply by adding
+`--template=eisvogel` to your compilation lines:
 
 ```
 docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
@@ -54,7 +182,7 @@ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
 ### End of pandoc 1.x automatic support
 
 Since version 18.03, we're using Pandoc 2 and starting with this version some
-old parameters will no longer be supported. You need to check your compilation 
+old parameters will no longer be supported. You need to check your compilation
 lines and make the following changes :
 
 * replace `--latex-engine` by `--pdf-engine`
@@ -67,7 +195,7 @@ compatibility wrapper
 docker run [...] --entrypoint=/usr/local/bin/pandoc1.sh [...]
 ```
 
-### Easy PDF with WeasyPrint 
+### Easy PDF with WeasyPrint
 
 We're now publishing a dedicated image including [WeasyPrint], alternative pdf
 engine that generates PDF files from using HTML/CSS templates.
@@ -78,14 +206,14 @@ To use this template, you can simply use tag `weasy`:
 
 ```
 docker run [...] dalibo/pandocker:weasy \
-                    --pdf-engine=weasyprint` \ 
+                    --pdf-engine=weasyprint` \
                     --pdf-engine-opt="--stylesheet template.css" \
                     --template=template.html \
                     foo.md \
                     -o foo.pdf
 ```
 
-We're currently testing this new engine, please send us feedback if you're 
+We're currently testing this new engine, please send us feedback if you're
 using it too !
 
 
@@ -162,11 +290,11 @@ We added a new Font espacially for code blocks.
 
 ### Beware of for depracated parameters
 
-Since version 18.03, we're using Pandoc 2 and we added a wrapper that supports 
-pandoc 1.x parameters. This is the last version that will automatically 
+Since version 18.03, we're using Pandoc 2 and we added a wrapper that supports
+pandoc 1.x parameters. This is the last version that will automatically
 support pandoc 1.x.
 
-We'll continue to deliver the pandoc1 wrapper in the next versions but you 
+We'll continue to deliver the pandoc1 wrapper in the next versions but you
 should consider updating your compilation flags as soon as possible.
 
 
@@ -185,7 +313,7 @@ If you installed the toolchain locally, please read:
 How to contribute
 --------------------------------------------------------------------------------
 
-This release is brought to you by Damien Clochard with the help of Etienne 
+This release is brought to you by Damien Clochard with the help of Etienne
 Bersac and Eric Lemoine.
 
 Pandocker is an open project, contributions are welcome.
