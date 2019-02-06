@@ -10,24 +10,16 @@ __Stack__
 
 __Changes__
 
-<<<<<<< HEAD
-* Switch to pandoc 2.5  (daamien)
+* Switch to pandoc 2.6  (daamien)
 * Add emojis support for PDF (daamien + liloumuloup)
 * Add more CI tests (daamien)
-=======
-* Switch to pandoc 2.6  (daamien)
->>>>>>> origin/master
 * Add support for mustache template syntax with `pandoc-mustache` (daamien + madtibo)
 
 <https://github.com/dalibo/pandocker/milestone/6>
 
-<<<<<<< HEAD
 
 
 18.11 [a819f9abb4609cd764882e9898993556f9a1fc4c]
-=======
-18.11
->>>>>>> origin/master
 -------------------------------------------------------------------------------
 
 __Stack__

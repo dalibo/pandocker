@@ -42,8 +42,8 @@ What's new in version 19.02 ?
 Pandoc is now able to parse dokuwiki pages ! You can now use pandocker as
 converter to migrate from dokuwiki to markdown.
 
-```
-docker run [...] -f dokuwiki source.doku.txt
+```console
+docker run [...] --from dokuwiki source.doku.txt --to markdown
 ```
 
 
@@ -52,7 +52,7 @@ docker run [...] -f dokuwiki source.doku.txt
 Emojis are supported with the latex engine for PDF output (they were already
 supported for revealjs and HTML outputs).
 
-Simly add the following `header-include` parameter in your documents
+Simply add the following `header-include` parameter in your documents
 
 ```markdown
 ---
@@ -105,7 +105,7 @@ docker run [...] --filter pandoc-mustache [...]
 How to upgrade
 --------------------------------------------------------------------------------
 
-```
+```console
 docker pull dalibo/pandocker:stable
 ```
 
