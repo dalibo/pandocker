@@ -92,7 +92,7 @@ $PANDOC --pdf-engine=xelatex $IN/emojis.md -o $OUT/$DEST
 $PANDOC --pdf-engine=xelatex $IN/magicienletter.md -o $OUT/magicienletter.html
 
 # 12. Dokuwiki
-$PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt $OUT/syntax.dokuwiki.md
+$PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt -o $OUT/syntax.dokuwiki.md
 
 ##
 ## C H E C K
@@ -101,5 +101,5 @@ $PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt $OUT/syntax.dokuwi
 # fetch artefacts
 docker cp pandoc-volumes:/pandoc/$OUT tests
 
-# 11.  Issue #75 : https://github.com/dalibo/pandocker/issues/75
+# 13.  Issue #75 : https://github.com/dalibo/pandocker/issues/75
 diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
