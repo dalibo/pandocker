@@ -30,6 +30,7 @@ Note: if SELinux is enabled on you system, you might need to add the
 `--privileged` tag to force access to the mouting points. See
 https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities .
 
+Note: when using the ["pandoc-include"](https://pypi.org/project/pandoc-include) filter to include other files, the working directory `pwd` to mount in docker *should* be a common parent directory of all referenced files to include. As `!include [mypath/myfile.md]` statements within markdown *should* be relative paths, the docker arg `--workdir="my/path/to/markdownfolder"` should be used to name the folder that the markdown file including the includes resides in. Full working example: `docker run --rm -v $(pwd):/pandoc --workdir="/pandoc/my/sub/folder/to-markdown-file" dalibo/pandocker --filter pandoc-include --pdf-engine=xelatex --template=eisvogel --listings --toc --toc-depth=3 ./myfile.md -o myfile-generated.pdf'`
 
 ## Supported Tags
 
@@ -43,7 +44,7 @@ Other tags are not supported and should be used with care.
 
 ## Build it
 
-Use `make` or `docker build`
+Use `make` or `docker build .`
 
 
 ## Embedded template : Eisvogel

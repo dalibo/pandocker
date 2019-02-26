@@ -25,6 +25,8 @@ RUN set -x && \
     fi; \
     apt-get -qq update && \
     apt-get -qy install --no-install-recommends \
+        # for locales and utf-8 support
+        locales \
         # for deployment
         openssh-client \
         rsync \
@@ -58,15 +60,23 @@ RUN set -x && \
         zlibc \
 		# for emojis
 		librsvg2-bin \
+    # add en_US Locale including UTF-8 support
+    && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
 
 #
+# Set Locale for UTF-8 support
+#
+ENV LANG en_US.UTF-8
+
+#
 # SSH pre-config / useful for Gitlab CI
 #
 RUN mkdir -p ~/.ssh && \
-    echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    echo "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 #
 # Add local cache/. It's empty by default so this does not change the final
