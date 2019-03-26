@@ -12,6 +12,18 @@ __TL;DR:__ We're releasing a stable version of the toolchain every 3 months and
 we will only support the latest stable version. If you want to make your life
 easier, use the docker image as described above.
 
+### Upgrade from 19.02 to 19.05
+
+1. Upgrade Pandoc
+
+```shell
+URL=https://github.com/jgm/pandoc/releases/download/2.7/pandoc-2.7-1-amd64.deb
+wget -O pandoc.deb $URL
+sudo dpkg --install pandoc.deb
+```
+
+
+
 ### Upgrade from 18.11 to 19.02
 
 1. Upgrade Pandoc 2

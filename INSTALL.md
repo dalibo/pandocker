@@ -28,7 +28,7 @@ Install Debian Stretch
 ### 2. Pandoc
 
 ```shell
-URL=https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
+URL=https://github.com/jgm/pandoc/releases/download/2.7/pandoc-2.7-1-amd64.deb
 wget -O pandoc.deb $URL
 dpkg --install pandoc.deb
 ```
