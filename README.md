@@ -30,6 +30,33 @@ Note: if SELinux is enabled on you system, you might need to add the
 `--privileged` tag to force access to the mouting points. See
 https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities .
 
+## Filters
+
+This image embeds a number of usefull pandoc filters. You can simply enable them
+by adding the option `--filter xxx` where xxx is the name of one of the following 
+filter below:
+
+* [pandoc-include] : insert files into the source file
+* [pandoc-latex-admonition] : adding admonitions on specific DIVs
+* [pandoc-latex-environment] : adding LaTeX environments on specific DIVs
+* [pandoc-latex-barcode] : insert barcodes and QRcodes in documents
+* [pandoc-mustache] : basic variables substitution
+* [pandoc-minted] : advanced syntax highlighting
+
+NOTE: By default when using the [pandoc-include] filter, the path to target 
+files is relative to the `/pandoc` mountpoint. For instance, 
+the `!include [foo/bar.md]` statement will look for a `/pandoc/foo/bar.md` file.
+You can use the docker arg `--workdir="some/place/elsewhere"` to specify 
+another location.
+
+
+
+[pandoc-include]: https://github.com/DCsunset/pandoc-include
+[pandoc-latex-admonition]: https://github.com/chdemko/pandoc-latex-admonition
+[pandoc-latex-environment]: https://github.com/chdemko/pandoc-latex-environment
+[pandoc-latex-barcode]: https://github.com/daamien/pandoc-latex-barcode
+[pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
+[pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
 
 ## Supported Tags
 
