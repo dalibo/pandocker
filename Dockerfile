@@ -66,7 +66,7 @@ RUN set -x && \
 # SSH pre-config / useful for Gitlab CI
 #
 RUN mkdir -p ~/.ssh && \
-    echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    echo "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config # See Issue #87
 
 #
 # Add local cache/. It's empty by default so this does not change the final
