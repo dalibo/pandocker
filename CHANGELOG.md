@@ -10,7 +10,7 @@ __Stack__
 
 __Changes__
 
-* FIX #87 Error in .ssh/config ( thanks to @misamura )
+* FIX #87 Error in .ssh/config ( bersace + misamura)
 
 
 <https://github.com/dalibo/pandocker/milestone/7>
