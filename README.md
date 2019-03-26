@@ -33,7 +33,7 @@ https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabi
 ## Filters
 
 This image embeds a number of usefull pandoc filters. You can simply enable them
-by adding the option `--filter xxx` where xxx is the name of one of the following
+by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filter below:
 
 * [pandoc-include] : insert files into the source file
