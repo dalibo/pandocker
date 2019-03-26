@@ -26,14 +26,14 @@ $ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pando
 $ pandoc document.md
 ```
 
-Note: if SELinux is enabled on you system, you might need to add the
+Note: if SELinux is enabled on your system, you might need to add the
 `--privileged` tag to force access to the mouting points. See
 https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities .
 
 ## Filters
 
 This image embeds a number of usefull pandoc filters. You can simply enable them
-by adding the option `--filter xxx` where xxx is the name of one of the following 
+by adding the option `--filter xxx` where xxx is the name of one of the following
 filter below:
 
 * [pandoc-include] : insert files into the source file
@@ -43,10 +43,10 @@ filter below:
 * [pandoc-mustache] : basic variables substitution
 * [pandoc-minted] : advanced syntax highlighting
 
-NOTE: By default when using the [pandoc-include] filter, the path to target 
-files is relative to the `/pandoc` mountpoint. For instance, 
+NOTE: By default when using the [pandoc-include] filter, the path to target
+files is relative to the `/pandoc` mountpoint. For instance,
 the `!include [foo/bar.md]` statement will look for a `/pandoc/foo/bar.md` file.
-You can use the docker arg `--workdir="some/place/elsewhere"` to specify 
+You can use the docker arg `--workdir="some/place/elsewhere"` to specify
 another location.
 
 
@@ -70,7 +70,7 @@ Other tags are not supported and should be used with care.
 
 ## Build it
 
-Use `make` or `docker build`
+Use `make` or `docker build .`
 
 
 ## Embedded template : Eisvogel
@@ -86,4 +86,4 @@ $ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
 
 ✋ W**Warning:** you need to remove the `-u` option when using [eisvogel].
 
-[eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template 
+[eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
