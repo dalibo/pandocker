@@ -12,6 +12,7 @@ __Changes__
 
 * Switch to pandoc 2.7  (daamien)
 * FIX #87 Error in .ssh/config ( bersace + misamura)
+* Add include filter (misamura)
 
 
 <https://github.com/dalibo/pandocker/milestone/7>
