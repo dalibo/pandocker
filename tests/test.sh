@@ -95,7 +95,6 @@ $PANDOC --pdf-engine=xelatex $IN/magicienletter.md -o $OUT/magicienletter.html
 $PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt -o $OUT/syntax.dokuwiki.md
 
 # 13. Include
-echo '**markdown** _is_ `cool`' > /tmp/154651_pandoc_include_test.md
 $PANDOC --filter pandoc-include $IN/include.md -o $OUT/include.complete.md
 
 

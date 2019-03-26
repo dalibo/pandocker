@@ -1,7 +1,7 @@
 
 # Test include filter
 
-this is an include block :
+this is an include statement :
 
 !include tests/input/markdown_de.md
 

@@ -66,6 +66,8 @@ RUN set -x && \
 
 #
 # Set Locale for UTF-8 support
+# This is needed for panflute filters see : 
+# https://github.com/dalibo/pandocker/pull/86
 #
 RUN locale-gen C.UTF-8
 ENV LANG C.UTF-8

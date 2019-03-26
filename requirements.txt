@@ -1,6 +1,5 @@
 panflute
 pandocfilters
-pandoc-include
 pandoc-latex-admonition
 pandoc-latex-environment
 pandoc-latex-barcode
