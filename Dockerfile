@@ -66,7 +66,7 @@ RUN set -x && \
 
 #
 # Set Locale for UTF-8 support
-# This is needed for panflute filters see : 
+# This is needed for panflute filters see :
 # https://github.com/dalibo/pandocker/pull/86
 #
 RUN locale-gen C.UTF-8
@@ -76,7 +76,7 @@ ENV LANG C.UTF-8
 # SSH pre-config / useful for Gitlab CI
 #
 RUN mkdir -p ~/.ssh && \
-    echo "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config # See Issue #87
+    /bin/echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config # See Issue #87
 
 #
 # Add local cache/. It's empty by default so this does not change the final
