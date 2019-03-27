@@ -28,6 +28,8 @@ RUN set -x && \
         # for deployment
         openssh-client \
         rsync \
+        # for locales and utf-8 support
+        locales \
         # latex toolchain
         lmodern \
         texlive \
@@ -61,6 +63,14 @@ RUN set -x && \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
+
+#
+# Set Locale for UTF-8 support
+# This is needed for panflute filters see : 
+# https://github.com/dalibo/pandocker/pull/86
+#
+RUN locale-gen C.UTF-8
+ENV LANG C.UTF-8
 
 #
 # SSH pre-config / useful for Gitlab CI

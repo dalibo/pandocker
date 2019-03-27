@@ -94,6 +94,10 @@ $PANDOC --pdf-engine=xelatex $IN/magicienletter.md -o $OUT/magicienletter.html
 # 12. Dokuwiki
 $PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt -o $OUT/syntax.dokuwiki.md
 
+# 13. Include
+$PANDOC --filter pandoc-include $IN/include.md -o $OUT/include.complete.md
+
+
 ##
 ## C H E C K
 ##
@@ -101,5 +105,8 @@ $PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt -o $OUT/syntax.dok
 # fetch artefacts
 docker cp pandoc-volumes:/pandoc/$OUT tests
 
-# 13.  Issue #75 : https://github.com/dalibo/pandocker/issues/75
+# 101.  Issue #75 : https://github.com/dalibo/pandocker/issues/75
 diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
+
+# 102.  Issue #89 : Include filter
+grep -v '!include' tests/output/include.complete.md > /dev/null
