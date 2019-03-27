@@ -105,5 +105,8 @@ $PANDOC --filter pandoc-include $IN/include.md -o $OUT/include.complete.md
 # fetch artefacts
 docker cp pandoc-volumes:/pandoc/$OUT tests
 
-# 13.  Issue #75 : https://github.com/dalibo/pandocker/issues/75
+# 101.  Issue #75 : https://github.com/dalibo/pandocker/issues/75
 diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
+
+# 102.  Issue #89 : Include filter
+grep -v '!include' tests/output/include.complete.md > /dev/null
