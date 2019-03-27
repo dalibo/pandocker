@@ -6,10 +6,11 @@ Changelog
 
 __Stack__
 * Debian 9 stretch
-* Pandoc 2.6
+* Pandoc 2.7
 
 __Changes__
 
+* Switch to pandoc 2.7  (daamien)
 * FIX #87 Error in .ssh/config ( bersace + misamura)
 
 
