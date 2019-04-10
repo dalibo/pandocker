@@ -84,6 +84,6 @@ lines:
 $ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
 ```
 
-✋ W**Warning:** you need to remove the `-u` option when using [eisvogel].
+✋ **Warning:** you need to remove the `-u` option when using [eisvogel].
 
 [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
