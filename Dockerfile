@@ -5,7 +5,7 @@
 #    https://github.com/geometalab/docker-pandoc/blob/develop/Dockerfile
 #    https://github.com/vpetersson/docker-pandoc/blob/master/Dockerfile
 
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 # Proxy to APT cacher: e.g. http://apt-cacher-ng.docker:3142
 ARG APT_CACHER
