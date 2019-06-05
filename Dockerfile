@@ -41,6 +41,8 @@ RUN set -x && \
 		xzdec \
         # reveal (see issue #18)
         netbase \
+		# dia
+		dia \
         # fonts
         fonts-lato \
 		fonts-liberation \
