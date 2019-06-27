@@ -22,6 +22,11 @@ wget -O pandoc.deb $URL
 sudo dpkg --install pandoc.deb
 ```
 
+2. Install the include filter
+
+```shell
+pip3 install --upgrade -r requirements.txt
+```
 
 
 ### Upgrade from 18.11 to 19.02
