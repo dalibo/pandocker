@@ -2,6 +2,89 @@
 Pandocker 19.02 is out !
 ================================================================================
 
+Paris, june 27th
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain.
+
+It allows you to generate slides and documents using `pandoc`, but without
+installing the required depencies on your machine.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable test.md -o test.epub
+```
+
+This image is available under BSD Licence and it is designed to work without
+specific templates.
+
+The project has 2 main branchs:
+
+* `dalibo/pandocker:stable` should be used in production ( = 19.05 )
+* `dalibo/pandocker:latest` is the development version
+
+You can also retrieve images by their version number : `dalibo/pandocker:18.03`,
+`dalibo/pandocker:17.12`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+What's new in version 19.05 ?
+--------------------------------------------------------------------------------
+
+### Include files into your documents
+
+You can now import content for an external markdown file with this simple 
+syntax :
+
+```
+!include relative_path/foo.md
+```
+
+To use this plugin, just add `--filter pandoc-include` to the command line.
+
+For more details about this filter, check out [pandoc-include].
+
+[pandoc-include]: https://github.com/DCsunset/pandoc-include
+
+Many thanks to @misamura who submitted this feature !
+
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+If you installed the toolchain locally, please read:
+<https://github.com/dalibo/pandocker/blob/master/UPGRADE.md#without-docker-local-setup>
+
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Jobs>
+
+
+
+---
+
+Pandocker 19.02 is out !
+================================================================================
+
 What is this ?
 --------------------------------------------------------------------------------
 
