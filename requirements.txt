@@ -1,5 +1,6 @@
 panflute
 pandocfilters
+pandoc-codeblock-include
 pandoc-include
 pandoc-latex-admonition
 pandoc-latex-environment

@@ -36,7 +36,8 @@ This image embeds a number of usefull pandoc filters. You can simply enable them
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filter below:
 
-* [pandoc-include] : insert files into the source file
+* [pandoc-codeblock-include]: insert an external file into a codeblock
+* [pandoc-include] : insert external markdown files into the main document
 * [pandoc-latex-admonition] : adding admonitions on specific DIVs
 * [pandoc-latex-environment] : adding LaTeX environments on specific DIVs
 * [pandoc-latex-barcode] : insert barcodes and QRcodes in documents
@@ -50,7 +51,7 @@ You can use the docker arg `--workdir="some/place/elsewhere"` to specify
 another location.
 
 
-
+[pandoc-codeblock-include]: https://github.com/chdemko/pandoc-codeblock-include
 [pandoc-include]: https://github.com/DCsunset/pandoc-include
 [pandoc-latex-admonition]: https://github.com/chdemko/pandoc-latex-admonition
 [pandoc-latex-environment]: https://github.com/chdemko/pandoc-latex-environment
