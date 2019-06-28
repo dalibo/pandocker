@@ -12,9 +12,11 @@
 
 6. Rebase the stable branch from master
 
-7. Create a new milestone
+7. Wait for docker hup to rebuild the images
 
-8. Publish the announcement
+8. Create a new milestone
 
-9. Update the [CHANGELOG.md]
+9. Publish the announcement
+
+10. Update the [CHANGELOG.md]
 
