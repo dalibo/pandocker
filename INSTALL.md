@@ -41,7 +41,7 @@ Here be dragons ! Prepare yourself for 1 GB of obscure latex dependencies.
 ```shell
 sudo apt install lmodern texlive texlive-lang-french texlive-lang-german \
                  texlive-luatex texlive-pstricks texlive-xetex \
-								 fonts-lato fonts-liberation
+                 fonts-lato fonts-liberation
 ```
 
 
