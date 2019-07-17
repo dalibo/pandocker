@@ -108,8 +108,16 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
     wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+# « Debian/buster comes with TL2018, and thus refuses to work with the 2019 repositories »
+# https://tex.stackexchange.com/a/495222
 RUN tlmgr init-usertree && \
+	tlmgr option repository http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2018/tlnet-final/ && \
+	# the first `tlmgr install` will fail for no reason
+    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto || \
+    # let's launch the command a second time to check that the packages are actually installed
     tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
+    # welcome to the Tex Live Hell <3
+
 
 #
 # emojis support for latex
