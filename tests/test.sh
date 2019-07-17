@@ -97,6 +97,8 @@ $PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt -o $OUT/syntax.dok
 # 13. Include
 $PANDOC --filter pandoc-include $IN/include.md -o $OUT/include.complete.md
 
+# 14. Codeblock Include
+$PANDOC --filter pandoc-codeblock-include $IN/codeblock_include.md -o $OUT/codeblock_include.complete.md
 
 ##
 ## C H E C K
