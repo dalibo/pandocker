@@ -97,6 +97,9 @@ $PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt -o $OUT/syntax.dok
 # 13. Include
 $PANDOC --filter pandoc-include $IN/include.md -o $OUT/include.complete.md
 
+# 14. dia
+DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
+$DIA $IN/db.dia --export $OUT/db.svg
 
 ##
 ## C H E C K
