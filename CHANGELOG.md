@@ -1,15 +1,18 @@
 Changelog
 ===============================================================================
 
-19.11 - WIP
+19.08 - WIP
 -------------------------------------------------------------------------------
 
 __Stack__
-* Debian 9 stretch
+* Debian 10 buster
+* TeX Live 2018
 * Pandoc 2.7
 
 __Changes__
 
+* Switch to Debian 10 buster. (daamien)
+* Freeze alternative TeX packages to Tex Live 2018 (daamien)
 
 
 
