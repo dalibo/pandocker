@@ -88,3 +88,22 @@ $ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
 ✋ **Warning:** you need to remove the `-u` option when using [eisvogel].
 
 [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
+
+## Additional tools
+
+The docker image embeds additional software related to editing and publishing:
+
+* [dia] a simple tool to design diagrams
+* [poppler-utils] a collection of tools built to manage PDF and extract content
+* [rsync] for deployment
+
+[dia]: http://dia-installer.de/
+[poppler-utils]: https://en.wikipedia.org/wiki/Poppler_(software)#poppler-utils
+[rsync]: https://rsync.samba.org/documentation.html
+
+These tools can be used by modifying the entrypoint of the image. For instance,
+you can convert a `dia` source file into an SVG image like this:
+
+``` console
+$ docker run [..] --entrypoint dia dalibo/pandocker foo.dia -e foo.svg
+```

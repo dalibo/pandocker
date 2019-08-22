@@ -1,7 +1,7 @@
 Changelog
 ===============================================================================
 
-19.11 - WIP
+19.08 - WIP
 -------------------------------------------------------------------------------
 
 __Stack__
@@ -10,8 +10,9 @@ __Stack__
 
 __Changes__
 
-
-
+* Freeze pip versions (daamien)
+* Add pandoc-codeblock-include filter (daamien)
+* Add dia (daamien)
 
 <https://github.com/dalibo/pandocker/milestone/8>
 
