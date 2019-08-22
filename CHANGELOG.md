@@ -1,6 +1,21 @@
 Changelog
 ===============================================================================
 
+19.08 - WIP
+-------------------------------------------------------------------------------
+
+__Stack__
+* Debian 9 stretch
+* Pandoc 2.7
+
+__Changes__
+
+* Freeze pip versions (daamien)
+* Add pandoc-codeblock-include filter (daamien)
+* Add dia (daamien)
+
+<https://github.com/dalibo/pandocker/milestone/8>
+
 19.05
 -------------------------------------------------------------------------------
 
