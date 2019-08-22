@@ -42,8 +42,10 @@ What's new in version 19.08 ?
 
 You can now import code for an external file with this simple syntax :
 
+~~~
 ``` { .sql include=query1.sql}
 ```
+~~~
 
 To use this plugin, just add `--filter pandoc-codeblock-include` to the command line.
 
