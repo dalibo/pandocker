@@ -107,9 +107,11 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 #
 # eisvogel template
 #
+ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
+ARG EISVOGEL_VERSION=v1.3.0
 ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
-    wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+    wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -P ${TEMPLATES_DIR}
 RUN tlmgr init-usertree && \
     tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
