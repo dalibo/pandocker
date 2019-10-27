@@ -111,7 +111,7 @@ ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-te
 ARG EISVOGEL_VERSION=v1.3.0
 ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
-    wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -P ${TEMPLATES_DIR}
+    wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
     tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
