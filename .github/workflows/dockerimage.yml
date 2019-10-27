@@ -12,5 +12,5 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx .
+        docker build . --file Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
         tests/test.sh xxxxx-test-githubci-xxxxx
