@@ -7,11 +7,15 @@ Changelog
 
 __Stack__
 * Debian 9 stretch
-* Pandoc 2.7
+* Pandoc 2.7.3
+* Eisvogel 1.3.0
 
 __Changes__
 
 <https://github.com/dalibo/pandocker/milestone/9>
+
+* Switch to Pandoc 2.7.3 (colindean)
+* Switch to Eisvogel 1.3 (daamien)
 
 
 19.08

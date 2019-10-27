@@ -10,7 +10,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
     - name: Build the Docker image
-      run: |
-        docker build . --file Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
-        tests/test.sh xxxxx-test-githubci-xxxxx
+      run: docker build . --file Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
+
+    - name: Regression Tests
+      run: tests/test.sh xxxxx-test-githubci-xxxxx
