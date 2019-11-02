@@ -9,9 +9,9 @@ assignees: ''
 
 **Read the FAQ**
 
-Please take a look at the [Frequently Adsked Questions], the answer to your problem may already be there
+Please take a look at the [Frequently Adsked Questions], the answer to your problem may already be there.
 
-[Frequently Adsked Questions]: FAQ.md
+[Frequently Adsked Questions]: https://github.com/dalibo/pandocker/blob/master/FAQ.md
 
 **Describe the bug**
 
