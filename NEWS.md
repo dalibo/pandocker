@@ -1,3 +1,72 @@
+Pandocker 19.11 is out !
+================================================================================
+
+Paris, november 12
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain.
+
+It allows you to generate slides and documents using `pandoc`, but without
+installing the required depencies on your machine.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
+```
+
+This image is available under BSD Licence and it is designed to work without
+specific templates.
+
+The project has 2 main branchs:
+
+* `dalibo/pandocker:stable` should be used in production ( = 19.11 )
+* `dalibo/pandocker:latest` is the development version
+
+You can also retrieve images by their version number : `dalibo/pandocker:18.03`,
+`dalibo/pandocker:17.12`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+This is a maintenance release
+--------------------------------------------------------------------------------
+
+This is version brings very few changes. The version of Pandoc has been updated
+and the embbeded template ([eisvogel]) has been upgraded too. 
+
+
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+If you installed the toolchain locally, please read:
+<https://github.com/dalibo/pandocker/blob/master/UPGRADE.md#without-docker-local-setup>
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Jobs>
+
+
+
+---
+
 Pandocker 19.08 is out !
 ================================================================================
 
