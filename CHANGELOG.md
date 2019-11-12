@@ -1,9 +1,10 @@
 Changelog
 ===============================================================================
 
-19.11 - WIP
+19.11
 -------------------------------------------------------------------------------
 
+<!-- git log 19.08..19.11 --oneline -->
 
 __Stack__
 * Debian 9 stretch
@@ -16,6 +17,8 @@ __Changes__
 
 * Switch to Pandoc 2.7.3 (colindean)
 * Switch to Eisvogel 1.3 (daamien)
+* [doc] FAQ
+* [CI] enable Github Actions
 
 
 19.08
