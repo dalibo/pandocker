@@ -1,20 +1,38 @@
 Changelog
 ===============================================================================
 
-19.08 - WIP
+19.11
+-------------------------------------------------------------------------------
+
+<!-- git log 19.08..19.11 --oneline -->
+
+__Stack__
+* Debian 9 stretch
+* Pandoc 2.7.3
+* Eisvogel 1.3.0
+
+__Changes__
+
+<https://github.com/dalibo/pandocker/milestone/9>
+
+* Switch to Pandoc 2.7.3 (colindean)
+* Switch to Eisvogel 1.3 (daamien)
+* [doc] FAQ
+* [CI] enable Github Actions
+
+
+19.08
 -------------------------------------------------------------------------------
 
 __Stack__
-* Debian 10 buster
-* TeX Live 2018
+* Debian 9 stretch
 * Pandoc 2.7
 
 __Changes__
 
-* Switch to Debian 10 buster. (daamien)
-* Freeze alternative TeX packages to Tex Live 2018 (daamien)
-
-
+* Freeze pip versions (daamien)
+* Add pandoc-codeblock-include filter (daamien)
+* Add dia (daamien)
 
 <https://github.com/dalibo/pandocker/milestone/8>
 

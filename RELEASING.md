@@ -2,11 +2,11 @@
 
 1. Close all open ticket on the current milestone
 
-2. Update the [CHANGELOG.md]
+2. Update the [CHANGELOG.md]()
 
-3. Update the [UPGRADE.md] procedure
+3. Update the [UPGRADE.md]() procedure
 
-4. Write a announcement in [NEWS.md]
+4. Write a announcement in [NEWS.md]()
 
 5. Add a tag to master
 
@@ -18,5 +18,5 @@
 
 9. Publish the announcement
 
-10. Update the [CHANGELOG.md]
+10. Update the [CHANGELOG.md]()
 

@@ -13,18 +13,29 @@ we will only support the latest stable version. If you want to make your life
 easier, use the docker image as described above.
 
 
+## Upgrade from 19.08 to 19.11
 
-### Upgrade from 19.05 to 19.08
-
-1. FIXME Upgrade Pandoc
+1. Upgrade Pandoc
 
 ```shell
-URL=https://github.com/jgm/pandoc/releases/download/2.7/pandoc-2.7-1-amd64.deb
+URL=https://github.com/jgm/pandoc/releases/download/2.7/pandoc-2.7-3-amd64.deb
 wget -O pandoc.deb $URL
 sudo dpkg --install pandoc.deb
 ```
 
-2. Install the codeblock-include filter
+2. Upgrade Eisvogel
+
+```shell
+$ export EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
+$ export EISVOGEL_VERSION=v1.3.0
+$ export TEMPLATES_DIR=~/.pandoc/templates
+$ wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+```
+
+### Upgrade from 19.05 to 19.08
+
+
+1. Install the codeblock-include filter
 
 ```shell
 pip3 install --upgrade -r requirements.txt

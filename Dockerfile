@@ -34,16 +34,18 @@ RUN set -x && \
         lmodern \
         texlive \
         texlive-lang-french \
-		texlive-lang-german \
+        texlive-lang-german \
         texlive-luatex \
         texlive-pstricks \
         texlive-xetex \
-		xzdec \
+        xzdec \
         # reveal (see issue #18)
         netbase \
+		# dia
+		dia \
         # fonts
         fonts-lato \
-		fonts-liberation \
+        fonts-liberation \
         # build tools
         make \
         git \
@@ -58,8 +60,8 @@ RUN set -x && \
         # required for PDF meta analysis
         poppler-utils \
         zlibc \
-		# for emojis
-		librsvg2-bin \
+        # for emojis
+        librsvg2-bin \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
@@ -89,7 +91,7 @@ ADD cache/ ./cache
 #
 # Install pandoc from upstream. Debian package is too old.
 #
-ARG PANDOC_VERSION=2.7
+ARG PANDOC_VERSION=2.7.3
 ADD fetch-pandoc.sh /usr/local/bin/
 RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
@@ -105,9 +107,12 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 #
 # eisvogel template
 #
+ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
+ARG EISVOGEL_VERSION=v1.3.0
 ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
-    wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+    wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+
 # « Debian/buster comes with TL2018, and thus refuses to work with the 2019 repositories »
 # https://tex.stackexchange.com/a/495222
 RUN tlmgr init-usertree && \
@@ -126,20 +131,20 @@ RUN tlmgr init-usertree && \
 ARG TEXMF=/usr/share/texmf/tex/latex/
 ARG EMOJI_DIR=/tmp/twemoji
 RUN git clone --single-branch --depth=1 --branch gh-pages https://github.com/twitter/twemoji.git $EMOJI_DIR && \
-	# fetch xelatex-emoji
-	mkdir -p ${TEXMF} && \
+    # fetch xelatex-emoji
+    mkdir -p ${TEXMF} && \
     cd ${TEXMF} && \
     git clone --single-branch --branch images https://github.com/daamien/xelatex-emoji.git && \
-	# convert twemoji SVG files into PDF files
+    # convert twemoji SVG files into PDF files
     cp -r $EMOJI_DIR/2/svg xelatex-emoji/images && \
-	cd xelatex-emoji/images && \
-	../bin/convert_svgs_to_pdfs ./*.svg && \
-	# clean up
-	rm -f *.svg && \
-	rm -fr ${EMOJI_DIR} && \
-	# update texlive
-	cd ${TEXMF} && \
-	texhash
+    cd xelatex-emoji/images && \
+    ../bin/convert_svgs_to_pdfs ./*.svg && \
+    # clean up
+    rm -f *.svg && \
+    rm -fr ${EMOJI_DIR} && \
+    # update texlive
+    cd ${TEXMF} && \
+    texhash
 
 VOLUME /pandoc
 WORKDIR /pandoc

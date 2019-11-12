@@ -100,6 +100,10 @@ $PANDOC --filter pandoc-include $IN/include.md -o $OUT/include.complete.md
 # 14. Codeblock Include
 $PANDOC --filter pandoc-codeblock-include $IN/codeblock_include.md -o $OUT/codeblock_include.complete.md
 
+# 15. dia
+DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
+$DIA $IN/db.dia --export $OUT/db.svg
+
 ##
 ## C H E C K
 ##
