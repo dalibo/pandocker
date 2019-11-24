@@ -104,6 +104,10 @@ $PANDOC --filter pandoc-codeblock-include $IN/codeblock_include.md -o $OUT/codeb
 DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
 $DIA $IN/db.dia --export $OUT/db.svg
 
+# 16. Inline PDF output
+cat $IN/markdown_de.md | docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex > $OUT/markdown_de.inline.pdf
+
+
 ##
 ## C H E C K
 ##

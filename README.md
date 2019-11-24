@@ -14,14 +14,14 @@ latex bazaar.
 
 Run `dalibo/pandocker`  with regular `pandoc` args. Mount your files at `/pandoc`.
 
-``` console
+```console
 $ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md
 ```
 
 Tip: use a shell alias to use `pandocker` just like `pandoc`.
 Add this to your `~/.bashrc` :
 
-``` console
+```console
 $ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
 $ pandoc document.md
 ```
@@ -30,9 +30,17 @@ Note: if SELinux is enabled on your system, you might need to add the
 `--privileged` tag to force access to the mouting points. See
 https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities .
 
+Alternatively, you can use pipes like this:
+
+```console
+$ cat foo.md | docker run --rm -i dalibo/pandocker --template=eisvogel -t pdf > foo.pdf
+```
+
+This method will not work if the source document contains images or includes...
+
 ## Filters
 
-This image embeds a number of usefull pandoc filters. You can simply enable them
+This docker image embeds a number of usefull pandoc filters. You can simply enable them
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filter below:
 
