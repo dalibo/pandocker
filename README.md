@@ -44,6 +44,7 @@ This docker image embeds a number of usefull pandoc filters. You can simply enab
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filter below:
 
+* [pandoc-citeproc]: manage bibliographies and citations 
 * [pandoc-codeblock-include]: insert an external file into a codeblock
 * [pandoc-include] : insert external markdown files into the main document
 * [pandoc-latex-admonition] : adding admonitions on specific DIVs
@@ -58,7 +59,7 @@ the `!include [foo/bar.md]` statement will look for a `/pandoc/foo/bar.md` file.
 You can use the docker arg `--workdir="some/place/elsewhere"` to specify
 another location.
 
-
+[pandoc-citeproc]: https://pandoc.org/demo/example19/Extension-citations.html
 [pandoc-codeblock-include]: https://github.com/chdemko/pandoc-codeblock-include
 [pandoc-include]: https://github.com/DCsunset/pandoc-include
 [pandoc-latex-admonition]: https://github.com/chdemko/pandoc-latex-admonition
