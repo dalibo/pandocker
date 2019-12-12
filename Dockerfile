@@ -103,6 +103,16 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
 ADD requirements.txt ./
 RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
 
+#
+# pandoc-crossref
+#
+ARG PANDOC_CROSSREF_VERSION=0.3.6.0
+ADD fetch-pandoc-crossref.sh /usr/local/bin/
+RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cache/pandoc-crossref.tar.gz && \
+    tar xf ./cache/pandoc-crossref.tar.gz && \
+    install pandoc-crossref /usr/local/bin/ && \
+    install -d /usr/local/man/man1 && \
+    install pandoc-crossref.1 /usr/local/man/man1/
 
 #
 # eisvogel template
