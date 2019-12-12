@@ -15,9 +15,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
-#
-# Debian
-#
+##
+## Debian packages
+##
 RUN set -x && \
     # Setup a cacher to speed up build
     if [ -n "${APT_CACHER}" ] ; then \
@@ -41,8 +41,8 @@ RUN set -x && \
         xzdec \
         # reveal (see issue #18)
         netbase \
-		# dia
-		dia \
+        # dia
+        dia \
         # fonts
         fonts-lato \
         fonts-liberation \
@@ -88,18 +88,33 @@ RUN mkdir -p ~/.ssh && \
 #
 ADD cache/ ./cache
 
-#
+##
+## Pandoc
+##
+
 # Install pandoc from upstream. Debian package is too old.
-#
 ARG PANDOC_VERSION=2.9
 ADD fetch-pandoc.sh /usr/local/bin/
 RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
     rm -f ./cache/pandoc.deb
 
-#
-# Pandoc filters
-#
+##
+## Pandoc filters from binaries
+##
+
+# pandoc-crossref
+ARG CROSSREF_REPO=https://github.com/lierdakil/pandoc-crossref/releases/download
+ARG CROSSREF_VERSION=3.6.0
+# /!\ make sure the pandoc version matches the version of pandoc-crossref
+ARG CROSSREF_BIN=linux-pandoc_2_9.tar.gz
+RUN wget ${CROSSREF_REPO}/v0.${CROSSREF_VERSION}/${CROSSREF_BIN} -O /tmp/crossref.tar.gz && \
+    tar xzvf /tmp/crossref.tar.gz -C /usr/bin
+
+
+##
+## Install Pandoc filters from pip
+##
 ADD requirements.txt ./
 RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
 
