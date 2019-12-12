@@ -41,8 +41,8 @@ RUN set -x && \
         xzdec \
         # reveal (see issue #18)
         netbase \
-		# dia
-		dia \
+        # dia
+        dia \
         # fonts
         fonts-lato \
         fonts-liberation \
@@ -52,6 +52,8 @@ RUN set -x && \
         parallel \
         wget \
         unzip \
+        # pandoc filters
+        pandoc-citeproc \
         # panflute requirements
         python3-pip \
         python3-setuptools \
