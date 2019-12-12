@@ -1,6 +1,6 @@
 NAME?=dalibo/pandocker
 TAG?=$(shell git branch | grep -e "^*" | cut -d' ' -f 2)
-PANDOC_VERSION?=2.8
+PANDOC_VERSION?=2.9
 
 all: build
 
