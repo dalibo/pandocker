@@ -51,6 +51,7 @@ filter below:
 * [pandoc-latex-barcode] : insert barcodes and QRcodes in documents
 * [pandoc-mustache] : basic variables substitution
 * [pandoc-minted] : advanced syntax highlighting
+* [pandoc-crossref] : support for cross-referencing sections, figures, and more
 
 NOTE: By default when using the [pandoc-include] filter, the path to target
 files is relative to the `/pandoc` mountpoint. For instance,
@@ -66,6 +67,7 @@ another location.
 [pandoc-latex-barcode]: https://github.com/daamien/pandoc-latex-barcode
 [pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
 [pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
+[pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
 
 ## Supported Tags
 
