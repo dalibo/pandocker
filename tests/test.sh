@@ -107,6 +107,9 @@ $DIA $IN/db.dia --export $OUT/db.svg
 # 16. Inline PDF output
 cat $IN/markdown_de.md | docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex > $OUT/markdown_de.inline.pdf
 
+# 17. citeproc
+$PANDOC --filter pandoc-citeproc --bibliography=citeproc.bibtex -M link-citations $IN/citeproc.md --output $OUT/citeproc.pdf
+
 
 ##
 ## C H E C K
