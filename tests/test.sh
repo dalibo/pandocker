@@ -111,7 +111,7 @@ cat $IN/markdown_de.md | docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf
 $PANDOC --filter pandoc-citeproc --bibliography=$IN/citeproc.bibtex -M link-citations $IN/citeproc.md -o $OUT/citeproc.pdf
 
 # 18. crossref
-$PANDOC --filter pandoc-crossref $IN/crossref.md -o $OUT/crossref.pdf
+$PANDOC --filter pandoc-crossref $IN/crossref.md -o $OUT/crossref.md
 
 ##
 ## C H E C K
@@ -125,3 +125,9 @@ diff $OUT/magicienletter.html $EXPECTED/magicienletter.html
 
 # 102.  Issue #89 : Include filter
 grep -v '!include' tests/output/include.complete.md > /dev/null
+
+# 103. Issue #122 : check pandoc-crossref filter
+diff $OUT/crossref.md $EXPECTED/crossref.md
+
+
+
