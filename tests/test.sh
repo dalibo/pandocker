@@ -105,7 +105,10 @@ DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
 $DIA $IN/db.dia --export $OUT/db.svg
 
 # 16. Inline PDF output
-cat $IN/markdown_de.md | docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex > $OUT/markdown_de.inline.pdf
+cat $IN/markdown_de.md | docker run --rm -i dalibo/pandocker:$TAG --to=latex --pdf-engine=xelatex > $OUT/markdown_de.inline.pdf
+
+# 18. crossref
+$PANDOC --filter pandoc-crossref $IN/crossref.md | grep -ls 'Sec. 1.1 shows tbl. 1 and sec. 1.2 shows eq. 1.'
 
 
 ##
