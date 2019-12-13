@@ -1,5 +1,9 @@
 NAME?=dalibo/pandocker
 TAG?=$(shell git branch | grep -e "^*" | cut -d' ' -f 2)
+
+# These versions must be changed together.
+# See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
+# release corresponding to the desired Pandoc version.
 PANDOC_VERSION?=2.9
 PANDOC_CROSSREF_VERSION?=0.3.6.0
 
