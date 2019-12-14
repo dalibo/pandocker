@@ -17,8 +17,10 @@ build: Dockerfile
 	    --build-arg PANDOC_CROSSREF_VERSION=$(PANDOC_CROSSREF_VERSION) \
 	    --tag $(NAME):$(TAG) .
 
+.PHONY: test
 test:
-	tests/test.sh $(TAG)
+#	tests/test.sh $(TAG)
+	TAG=$(TAG) ./tests/libs/bats/bin/bats tests/docker.bats
 
 authors:
 	git shortlog -s -n

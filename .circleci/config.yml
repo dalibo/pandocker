@@ -11,4 +11,5 @@ jobs:
         command: docker build -t dalibo/pandocker:xxxxx-test-circleci-xxxxx .
     - run:
         name: Test
-        command: tests/test.sh xxxxx-test-circleci-xxxxx
+        command: TAG=xxxxx-test-circleci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats
+        #command: tests/test.sh xxxxx-test-circleci-xxxxx
