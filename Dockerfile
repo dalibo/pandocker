@@ -5,7 +5,7 @@
 #    https://github.com/geometalab/docker-pandoc/blob/develop/Dockerfile
 #    https://github.com/vpetersson/docker-pandoc/blob/master/Dockerfile
 
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 # Proxy to APT cacher: e.g. http://apt-cacher-ng.docker:3142
 ARG APT_CACHER
@@ -46,6 +46,7 @@ RUN set -x && \
         # fonts
         fonts-lato \
         fonts-liberation \
+        texlive-fonts-extra \
         # build tools
         make \
         git \
@@ -127,8 +128,8 @@ ARG EISVOGEL_VERSION=v1.3.0
 ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
     wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
-RUN tlmgr init-usertree && \
-    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
+#RUN tlmgr init-usertree && \
+#    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
 #
 # emojis support for latex
