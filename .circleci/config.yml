@@ -16,8 +16,8 @@ jobs:
         command: docker build -t dalibo/pandocker:xxxxx-test-circleci-xxxxx .
     - run:
         name: Install bash fot bats
-        run: apk add --no-cache bash
+        command: apk add --no-cache bash
     - run:
         name: Test
-        command: TAG=xxxxx-test-circleci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats
+        command: TAG=xxxxx-test-circleci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats --tap
         #command: tests/test.sh xxxxx-test-circleci-xxxxx
