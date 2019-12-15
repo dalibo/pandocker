@@ -14,14 +14,14 @@ latex bazaar.
 
 Run `dalibo/pandocker`  with regular `pandoc` args. Mount your files at `/pandoc`.
 
-``` console
+```console
 $ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md
 ```
 
 Tip: use a shell alias to use `pandocker` just like `pandoc`.
 Add this to your `~/.bashrc` :
 
-``` console
+```console
 $ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
 $ pandoc document.md
 ```
@@ -30,12 +30,21 @@ Note: if SELinux is enabled on your system, you might need to add the
 `--privileged` tag to force access to the mouting points. See
 https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities .
 
+Alternatively, you can use pipes like this:
+
+```console
+$ cat foo.md | docker run --rm -i dalibo/pandocker --template=eisvogel -t pdf > foo.pdf
+```
+
+This method will not work if the source document contains images or includes...
+
 ## Filters
 
-This image embeds a number of usefull pandoc filters. You can simply enable them
+This docker image embeds a number of usefull pandoc filters. You can simply enable them
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filter below:
 
+* [pandoc-citeproc]: manage bibliographies and citations 
 * [pandoc-codeblock-include]: insert an external file into a codeblock
 * [pandoc-include] : insert external markdown files into the main document
 * [pandoc-latex-admonition] : adding admonitions on specific DIVs
@@ -43,6 +52,7 @@ filter below:
 * [pandoc-latex-barcode] : insert barcodes and QRcodes in documents
 * [pandoc-mustache] : basic variables substitution
 * [pandoc-minted] : advanced syntax highlighting
+* [pandoc-crossref] : support for cross-referencing sections, figures, and more
 
 NOTE: By default when using the [pandoc-include] filter, the path to target
 files is relative to the `/pandoc` mountpoint. For instance,
@@ -50,7 +60,7 @@ the `!include [foo/bar.md]` statement will look for a `/pandoc/foo/bar.md` file.
 You can use the docker arg `--workdir="some/place/elsewhere"` to specify
 another location.
 
-
+[pandoc-citeproc]: https://pandoc.org/demo/example19/Extension-citations.html
 [pandoc-codeblock-include]: https://github.com/chdemko/pandoc-codeblock-include
 [pandoc-include]: https://github.com/DCsunset/pandoc-include
 [pandoc-latex-admonition]: https://github.com/chdemko/pandoc-latex-admonition
@@ -58,6 +68,7 @@ another location.
 [pandoc-latex-barcode]: https://github.com/daamien/pandoc-latex-barcode
 [pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
 [pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
+[pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
 
 ## Supported Tags
 

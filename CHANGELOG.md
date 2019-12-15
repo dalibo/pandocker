@@ -1,10 +1,29 @@
 Changelog
 ===============================================================================
 
-19.11
+20.02 - WORK IN PROGESS
 -------------------------------------------------------------------------------
 
-<!-- git log 19.08..19.11 --oneline -->
+
+__Stack__
+
+* Debian 9 stretch
+* Pandoc 2.9
+* Eisvogel 1.3.0
+
+__Changes__
+
+<https://github.com/dalibo/pandocker/milestone/10>
+
+* Switch to Pandoc 2.9 (daamien)
+* [filters] add pandoc-crossref (colindean)
+* [doc] using pipes to produce a pdf file
+* [doc] the pandoc-citeproc is already installed
+
+
+
+19.11
+-------------------------------------------------------------------------------
 
 __Stack__
 * Debian 9 stretch

@@ -41,8 +41,8 @@ RUN set -x && \
         xzdec \
         # reveal (see issue #18)
         netbase \
-		# dia
-		dia \
+        # dia
+        dia \
         # fonts
         fonts-lato \
         fonts-liberation \
@@ -91,7 +91,9 @@ ADD cache/ ./cache
 #
 # Install pandoc from upstream. Debian package is too old.
 #
-ARG PANDOC_VERSION=2.7.3
+# When incrementing this version, also increment
+# PANDOC_CROSSREF_VERSION below.
+ARG PANDOC_VERSION=2.9
 ADD fetch-pandoc.sh /usr/local/bin/
 RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
@@ -103,6 +105,19 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
 ADD requirements.txt ./
 RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
 
+#
+# pandoc-crossref
+#
+# This version must correspond to the correct PANDOC_VERSION.
+# See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
+# release corresponding to the desired pandoc version.
+ARG PANDOC_CROSSREF_VERSION=0.3.6.0
+ADD fetch-pandoc-crossref.sh /usr/local/bin/
+RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cache/pandoc-crossref.tar.gz && \
+    tar xf ./cache/pandoc-crossref.tar.gz && \
+    install pandoc-crossref /usr/local/bin/ && \
+    install -d /usr/local/man/man1 && \
+    install pandoc-crossref.1 /usr/local/man/man1/
 
 #
 # eisvogel template
