@@ -46,6 +46,7 @@ RUN set -x && \
         # fonts
         fonts-lato \
         fonts-liberation \
+        fonts-symbola \
         # build tools
         make \
         git \
