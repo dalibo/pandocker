@@ -95,7 +95,10 @@ teardown() {
 ##
 
 @test "Generate a PDF file containing German characters" {
-  $PANDOC --pdf-engine=xelatex  --template=$IN/template_de.tex $IN/markdown_de.md -o $OUT/markdown_de.pdf
+  $PANDOC --pdf-engine=xelatex \
+          --template=$IN/template_de.tex \
+          $IN/markdown_de.md \
+          -o $OUT/markdown_de.pdf
 }
 
 @test "Generate a PDF file containing emojis" {
@@ -125,7 +128,7 @@ teardown() {
   $PANDOC $MINTED_OPT $IN/minted.md  -o $OUT/minted.tex
 }
 
-@test "Generate a TEX file using the minted filter" {
+@test "Generate a PDF file using the minted filter" {
   MINTED_OPT="--filter pandoc-minted --pdf-engine-opt=-shell-escape"
   $PANDOC $MINTED_OPT $IN/minted.md --pdf-engine=xelatex -o $OUT/minted.tex
 }
