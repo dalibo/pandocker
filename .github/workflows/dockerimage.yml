@@ -18,5 +18,5 @@ jobs:
       run: docker build . --file Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
 
     - name: Regression Tests
-      run: TAG=xxxxx-test-githubci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats
+      run: TAG=xxxxx-test-githubci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats --tap
 #      run: tests/test.sh xxxxx-test-githubci-xxxxx
