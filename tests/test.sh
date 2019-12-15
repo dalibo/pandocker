@@ -1,4 +1,12 @@
 #!/bin/sh -eux
+
+##########################################################
+##
+## This file is deprecated !
+## CI tests are now run with bats (see docker.bats)
+##
+###########################################################
+
 # Target shell is busybox sh.
 
 # use `test.sh stable` to test the stable version
