@@ -130,6 +130,13 @@ RUN mkdir -p ${TEMPLATES_DIR} && \
 RUN tlmgr init-usertree && \
     tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
+
+#
+# letter template
+#
+ARG LETTER_TEX=https://raw.githubusercontent.com/aaronwolen/pandoc-letter/master/template-letter.tex
+RUN wget ${LETTER_TEX} -O ${TEMPLATES_DIR}/letter.tex
+
 #
 # emojis support for latex
 # https://github.com/mreq/xelatex-emoji
