@@ -11,8 +11,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
 
     - name: Regression Tests
-      run: tests/test.sh xxxxx-test-githubci-xxxxx
+      run: TAG=xxxxx-test-githubci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats --tap

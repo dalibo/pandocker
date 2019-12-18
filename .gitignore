@@ -4,3 +4,4 @@ cache/*
 *.swo
 tmp-*
 tests/output/
+tests/docker.bats.log
