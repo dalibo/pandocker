@@ -20,4 +20,3 @@ jobs:
     - run:
         name: Test
         command: TAG=xxxxx-test-circleci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats --tap
-        #command: tests/test.sh xxxxx-test-circleci-xxxxx
