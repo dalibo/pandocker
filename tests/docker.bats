@@ -90,6 +90,10 @@ teardown() {
   $PANDOC --pdf-engine=xelatex  --template=eisvogel $IN/sample-presentation.md  -o $OUT/sample-presentation.eisvogel.pdf
 }
 
+@test "Generate a PDF file using the letter template" {
+  $PANDOC --pdf-engine=xelatex  --template=letter $IN/letter/letter.md -o $OUT/letter.pdf
+}
+
 ##
 ## Special Characters
 ##
