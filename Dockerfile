@@ -99,8 +99,12 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
     rm -f ./cache/pandoc.deb
 
+##
+## F I L T E R S
+##
+
 #
-# Pandoc filters
+# Python filters
 #
 ADD requirements.txt ./
 RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
@@ -119,23 +123,22 @@ RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cach
     install -d /usr/local/man/man1 && \
     install pandoc-crossref.1 /usr/local/man/man1/
 
-#
+##
+## T E M P L A T E S
+##
+ARG TEMPLATES_DIR=/root/.pandoc/templates
+
 # eisvogel template
-#
 ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
 ARG EISVOGEL_VERSION=v1.3.0
-ARG TEMPLATES_DIR=/root/.pandoc/templates
 RUN mkdir -p ${TEMPLATES_DIR} && \
     wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
     tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
-
-#
 # letter template
-#
 ARG LETTER_TEX=https://raw.githubusercontent.com/aaronwolen/pandoc-letter/master/template-letter.tex
-RUN wget ${LETTER_TEX} -O ${TEMPLATES_DIR}/letter.tex
+RUN wget ${LETTER_TEX} -O ${TEMPLATES_DIR}/letter.latex
 
 #
 # emojis support for latex
