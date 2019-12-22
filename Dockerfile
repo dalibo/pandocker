@@ -44,8 +44,10 @@ RUN set -x && \
         # dia
         dia \
         # fonts
+        fonts-dejavu \
         fonts-lato \
         fonts-liberation \
+        fonts-noto \
         # build tools
         make \
         git \
