@@ -155,6 +155,20 @@ teardown() {
   diff $OUT/crossref.md $EXPECTED/crossref.md
 }
 
+
+##
+## Fonts
+##
+
+@test "Generate a PDF file with the Lato font" {
+  pandoc --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_lato.pdf --variable mainfont="Lato"
+}
+
+@test "Generate a PDF file with the Liberation font" {
+  pandoc --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_lato.pdf --variable mainfont="Liberation Serif"
+}
+
+
 ##
 ## Other tools
 ##
