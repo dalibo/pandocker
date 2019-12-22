@@ -38,13 +38,39 @@ $ cat foo.md | docker run --rm -i dalibo/pandocker --template=eisvogel -t pdf > 
 
 This method will not work if the source document contains images or includes...
 
+## Templates
+
+We're shipping a selection of latex templates inside the image so that you
+can produce a nice PDF documents without installing anything.
+
+So far, we provide the 2 templates below:
+
+* [eisvogel] is designed for lecture notes and exercises with a focus on computer science.
+* [letter] is for writing letters in markdown
+
+You can use them simply by adding `--template=xxx` to your compilation
+lines:
+
+``` console
+$ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
+```
+
+Each template has specific variables that you can use to adapt the document.
+Please go the project page of each template for more details.
+
+✋ **Warning:** you need to remove the `-u` option when using the `--template`
+option.
+
+[eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
+[letter]: https://github.com/aaronwolen/pandoc-letter
+
 ## Filters
 
 This docker image embeds a number of usefull pandoc filters. You can simply enable them
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filter below:
 
-* [pandoc-citeproc]: manage bibliographies and citations 
+* [pandoc-citeproc]: manage bibliographies and citations
 * [pandoc-codeblock-include]: insert an external file into a codeblock
 * [pandoc-include] : insert external markdown files into the main document
 * [pandoc-latex-admonition] : adding admonitions on specific DIVs
@@ -69,6 +95,15 @@ another location.
 [pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
 [pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
 [pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
+
+## Fonts
+
+The pandocker image includes the following open-source fonts:
+
+* Deja Vu: https://dejavu-fonts.github.io/
+* Lato: https://fonts.google.com/specimen/Lato
+* Liberation: https://github.com/liberationfonts/liberation-fonts
+* Noto: https://www.google.com/get/noto/
 
 ## Supported Tags
 

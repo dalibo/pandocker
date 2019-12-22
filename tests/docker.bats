@@ -155,6 +155,29 @@ teardown() {
   diff $OUT/crossref.md $EXPECTED/crossref.md
 }
 
+
+##
+## Fonts
+##
+
+@test "Generate a PDF file with the Deja Vu font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_dejavu.pdf --variable mainfont="DejaVu Sans"
+}
+
+@test "Generate a PDF file with the Lato font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_lato.pdf --variable mainfont="Lato"
+}
+
+@test "Generate a PDF file with the Liberation font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_lato.pdf --variable mainfont="Liberation Serif"
+}
+
+@test "Generate a PDF file with the Noto font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_noto.pdf --variable mainfont="Noto Sans"
+}
+
+
+
 ##
 ## Other tools
 ##
