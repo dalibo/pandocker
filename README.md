@@ -7,8 +7,13 @@ release](https://img.shields.io/github/release/dalibo/pandocker.svg?label=curren
 [![License](https://img.shields.io/github/license/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/blob/master/LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/branches)
 
-A simple docker image for pandoc with filters, templates, fonts and the
-latex bazaar.
+A simple docker image for pandoc with [filters], [templates], [fonts] and [additional tools].
+
+[filters]: #filters
+[templates]: #templates
+[fonts]: #fonts
+[additional tools]: #additional_tools
+
 
 ## How To
 
@@ -119,21 +124,6 @@ Other tags are not supported and should be used with care.
 
 Use `make` or `docker build .`
 
-
-## Embedded template : Eisvogel
-
-We're shipping a latex template inside the image so that you can produce a
-nice PDF without installing anything.  The template is called [eisvogel] and
-you can use it simply by adding `--template=eisvogel` to your compilation
-lines:
-
-``` console
-$ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
-```
-
-✋ **Warning:** you need to remove the `-u` option when using [eisvogel].
-
-[eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
 
 ## Additional tools
 
