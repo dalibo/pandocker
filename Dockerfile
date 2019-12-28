@@ -170,6 +170,8 @@ RUN git clone --single-branch --depth=1 --branch gh-pages https://github.com/twi
     # clean up
     rm -f *.svg && \
     rm -fr ${EMOJI_DIR} && \
+    # On buster, microtype package is not compatible with xelatexemoji, so we remove it
+    rm -fr /usr/share/texlive/texmf-dist/tex/latex/microtype && \
     # update texlive
     cd ${TEXMF} && \
     texhash
