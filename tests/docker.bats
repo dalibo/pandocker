@@ -90,6 +90,10 @@ teardown() {
   $PANDOC --pdf-engine=xelatex  --template=eisvogel $IN/sample-presentation.md  -o $OUT/sample-presentation.eisvogel.pdf
 }
 
+@test "Generate a PDF file using the letter template" {
+  $PANDOC --pdf-engine=xelatex  --template=letter $IN/letter/letter.md -o $OUT/letter.pdf
+}
+
 ##
 ## Special Characters
 ##
@@ -99,6 +103,10 @@ teardown() {
           --template=$IN/template_de.tex \
           $IN/markdown_de.md \
           -o $OUT/markdown_de.pdf
+}
+
+@test "Generate a PDF file using the xelaxemoji minimal example" {
+  xelatex $IN/xelatexemoji.tex && mv xelatexemoji.* $OUT
 }
 
 @test "Generate a PDF file containing emojis" {
@@ -149,6 +157,31 @@ teardown() {
 @test "Generate a markdown file using the crossref filter" {
   $PANDOC --to markdown --filter pandoc-crossref $IN/crossref.md > $OUT/crossref.md
   diff $OUT/crossref.md $EXPECTED/crossref.md
+}
+
+
+##
+## Fonts
+##
+
+@test "Generate a PDF file with the Deja Vu font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_dejavu.pdf --variable mainfont="DejaVu Sans"
+}
+
+@test "Generate a PDF file with the Lato font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_lato.pdf --variable mainfont="Lato"
+}
+
+@test "Generate a PDF file with the Liberation font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_lato.pdf --variable mainfont="Liberation Serif"
+}
+
+@test "Generate a PDF file with the Noto font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_noto.pdf --variable mainfont="Noto Sans"
+}
+
+@test "Generate a PDF file with the Noto Emoji font" {
+  $PANDOC --pdf-engine=xelatex $IN/fonts.md -o $OUT/fonts_noto_emoji.pdf --variable mainfont="Noto Emoji Color"
 }
 
 ##
