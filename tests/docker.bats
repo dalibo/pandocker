@@ -107,7 +107,7 @@ teardown() {
 
 @test "Generate a PDF file using the xelaxemoji minimal example" {
   XELATEX="docker run $DOCKER_OPT --entrypoint=xelatex dalibo/pandocker:$TAG"
-  $XELATEX $IN/xelatexemoji.tex && mv xelatexemoji.* $OUT
+  $XELATEX --output-dir=$OUT $IN/xelatexemoji.tex
 }
 
 @test "Generate a PDF file containing emojis" {
@@ -191,8 +191,8 @@ teardown() {
 ##
 
 @test "Generate a SVG image with dia" {
-    DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
-    $DIA $IN/db.dia --export $OUT/db.svg
+  DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
+  $DIA $IN/db.dia --export $OUT/db.svg
 }
 
 
@@ -207,6 +207,6 @@ teardown() {
 }
 
 @test "Generate a PDF file using the inline mode" {
-    PANDOC_PDF_BOX=docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex
-    cat $IN/markdown_de.md | $PANDOC_PDF_BOX > $OUT/markdown_de.inline.pdf
+  PANDOC_PDF_BOX=docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex
+  cat $IN/markdown_de.md | $PANDOC_PDF_BOX > $OUT/markdown_de.inline.pdf
 }
