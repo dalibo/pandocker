@@ -1,16 +1,28 @@
+## make dalibo/pandocker
+
+##
+## V A R I A B L E S
+##
+
+# name of the image
 NAME?=dalibo/pandocker
+
+# By default, the tag is the git branch name
 TAG?=$(shell git branch | grep -e "^*" | cut -d' ' -f 2)
 
 # These versions must be changed together.
 # See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
 # release corresponding to the desired Pandoc version.
-PANDOC_VERSION?=2.9
-PANDOC_CROSSREF_VERSION?=0.3.6.0
+PANDOC_VERSION?=2.9.1
+PANDOC_CROSSREF_VERSION?=0.3.6.1a
 
+
+##
+## T A R G E T S
+##
 all: build
 
 build: Dockerfile
-	echo $(TAG)
 	docker build \
 	    --build-arg APT_CACHER=$${APT_CACHER-} \
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
@@ -19,7 +31,6 @@ build: Dockerfile
 
 .PHONY: test
 test:
-#	tests/test.sh $(TAG)
 	TAG=$(TAG) ./tests/libs/bats/bin/bats tests/docker.bats
 
 authors:
