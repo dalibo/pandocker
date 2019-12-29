@@ -20,15 +20,16 @@ How To Submit a Patch
 -------------------------------------------------------------------------------
 
 1. Run `make all` locally to build your modifications before submitting
-
+2. Run `make test` to pass all the regession tests
 2. Check that you have included the media files necessary to test your patch
 
 Upgrade the Pandoc version
 -------------------------------------------------------------------------------
 
-1. Modify the `PANDOC_VERSION` variable in the [Makefile](Makefile)
-2. Modify the `PANDOC_VERSION` variable in the [Dockerfile](Dockerfile)
-3. If needed modify the `PANDOC_CROSSREF_VERSION` likewise
+1. Check for the latest release of Pandoc here: https://github.com/jgm/pandoc/releases
+2. Check for the latest release of Crossref here: https://github.com/lierdakil/pandoc-crossref/releases
+3. Modify the `PANDOC_VERSION` and `PANDOC_CROSSREF_VERSION` variable in the [Makefile](Makefile)
+4. Modify the `PANDOC_VERSION` and `PANDOC_CROSSREF_VERSION` variable in the [Dockerfile](Dockerfile)
 
 Handling your personal data
 -------------------------------------------------------------------------------
