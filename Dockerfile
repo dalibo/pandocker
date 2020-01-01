@@ -139,8 +139,14 @@ RUN tlmgr init-usertree && \
     tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
 # letter template
-ARG LETTER_TEX=https://raw.githubusercontent.com/aaronwolen/pandoc-letter/master/template-letter.tex
-RUN wget ${LETTER_TEX} -O ${TEMPLATES_DIR}/letter.latex
+ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
+ARG LETTER_VERSION=master
+RUN wget ${LETTER_REPO}/${LETTER_VERSION}/template-letter.tex -O ${TEMPLATES_DIR}/letter.latex
+
+# leaflet template
+ARG LEAFLET_REPO=https://gitlab.com/daamien/pandoc-leaflet-template/raw
+ARG LEAFLET_VERSION=1.0
+RUN wget ${LEAFLET_REPO}/${LEAFLET_VERSION}/leaflet.latex -O ${TEMPLATES_DIR}/leaflet.latex
 
 #
 # emojis support for latex
