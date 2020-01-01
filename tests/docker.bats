@@ -95,7 +95,7 @@ teardown() {
 }
 
 @test "Generate a PDF brochure using the leaflet template" {
-  $PANDOC --pdf-engine=xelatex  --template=leafet $IN/leaflet/leaflet.md -o $OUT/leaflet.pdf
+  $PANDOC --pdf-engine=xelatex  --template=leaflet $IN/leaflet/leaflet.md -o $OUT/leaflet.pdf
 }
 
 ##
