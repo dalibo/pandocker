@@ -51,6 +51,7 @@ can produce a nice PDF documents without installing anything.
 So far, we provide the 2 templates below:
 
 * [eisvogel] is designed for lecture notes and exercises with a focus on computer science.
+* [leaflet] creates simple 3-fold brochures
 * [letter] is for writing letters in markdown
 
 You can use them simply by adding `--template=xxx` to your compilation
@@ -67,6 +68,7 @@ Please go the project page of each template for more details.
 option.
 
 [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
+[leaflet]: https://gitlab.com/daamien/pandoc-leaflet-template
 [letter]: https://github.com/aaronwolen/pandoc-letter
 
 ## Filters
