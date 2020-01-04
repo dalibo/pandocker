@@ -30,7 +30,7 @@ setup() {
   # use `bats docker.bats stable` to test the stable version
   export TAG=${TAG:-latest}
   log "setup: TAG = $TAG"
-  export DOCKER_OPT="--rm --volumes-from pandoc-volumes"
+  export DOCKER_OPT="--rm --volumes-from pandoc-volumes "
   export PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
   export IN=tests/input
   export EXPECTED=tests/expected
@@ -83,11 +83,17 @@ teardown() {
 }
 
 ##
-## Templates
+## T E M P L A T E S
 ##
 
-@test "Generate a PDF file using the eisvogel template" {
-  $PANDOC --template=eisvogel $IN/sample-presentation.md  -o $OUT/sample-presentation.eisvogel.pdf
+@test "Generate a PDF file using the eisvogel template with pdftex" {
+  $PANDOC --template=eisvogel $IN/sample-presentation.md  -o $OUT/sample-presentation.eisvogel.pdftex.pdf
+}
+
+@test "Generate a PDF file using the eisvogel template with xelatex" {
+  DOCKER_OPT="--rm --volume `pwd`:/pandoc -u 1000:1000"
+  PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
+  $PANDOC --pdf-engine=xelatex --template=eisvogel $IN/sample-presentation.md  -o $OUT/sample-presentation.eisvogel.xelatex.pdf
 }
 
 @test "Generate a PDF file using the letter template" {
