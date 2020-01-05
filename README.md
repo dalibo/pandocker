@@ -20,25 +20,37 @@ A simple docker image for pandoc with [filters], [templates], [fonts] and [addit
 Run `dalibo/pandocker`  with regular `pandoc` args. Mount your files at `/pandoc`.
 
 ```console
-$ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md
+$ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md -o README.pdf
 ```
 
-Tip: use a shell alias to use `pandocker` just like `pandoc`.
-Add this to your `~/.bashrc` :
+Notes:
+
+* The `-v ...` option mount the current folder as the `/pandoc` directory
+  inside the container. if SELinux is enabled on your system, you might need to
+  add the `--privileged` tag to force access to the mouting points. For more
+  details, read the documentation about [docker runtime privileges].
+
+[docker runtime privileges]: https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
+
+
+* The `--rm` option destroys the container once the document is produced.
+  This is not mandatory but it's a good practice.
+
+* The `-u` option ensures that the output files will belong to you.
+  Again this is not necessary but it's useful.
+
+> Tip: You can define a shell alias to use `pandocker` just like `pandoc`.
+> Add this to your `~/.bashrc` :
 
 ```console
 $ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
-$ pandoc document.md
+$ pandoc README.md -o README.epub
 ```
 
-Note: if SELinux is enabled on your system, you might need to add the
-`--privileged` tag to force access to the mouting points. See
-https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities .
-
-Alternatively, you can use pipes like this:
+Alternatively, you can use a pipe like this:
 
 ```console
-$ cat foo.md | docker run --rm -i dalibo/pandocker --template=eisvogel -t pdf > foo.pdf
+$ cat foo.md | docker run --rm -i dalibo/pandocker -t pdf > foo.pdf
 ```
 
 This method will not work if the source document contains images or includes...
@@ -50,9 +62,10 @@ can produce a nice PDF documents without installing anything.
 
 So far, we provide the 2 templates below:
 
-* [eisvogel] is designed for lecture notes and exercises with a focus on computer science.
-* [leaflet] creates simple 3-fold brochures
-* [letter] is for writing letters in markdown
+* [eisvogel] is designed for lecture notes and exercises with a focus on computer
+  science. It works with `pdflatex` and `xelatex`.
+* [leaflet] creates simple 3-fold brochures. Works only with `xelatex`
+* [letter] is for writing letters in markdown. Works only with `xelatex`
 
 You can use them simply by adding `--template=xxx` to your compilation
 lines:
@@ -64,9 +77,6 @@ $ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
 Each template has specific variables that you can use to adapt the document.
 Please go the project page of each template for more details.
 
-✋ **Warning:** you need to remove the `-u` option when using the `--template`
-option.
-
 [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
 [leaflet]: https://gitlab.com/daamien/pandoc-leaflet-template
 [letter]: https://github.com/aaronwolen/pandoc-letter
@@ -77,8 +87,8 @@ This docker image embeds a number of usefull pandoc filters. You can simply enab
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filter below:
 
-* [pandoc-citeproc]: manage bibliographies and citations
-* [pandoc-codeblock-include]: insert an external file into a codeblock
+* [pandoc-citeproc] : manage bibliographies and citations
+* [pandoc-codeblock-include] : insert an external file into a codeblock
 * [pandoc-include] : insert external markdown files into the main document
 * [pandoc-latex-admonition] : adding admonitions on specific DIVs
 * [pandoc-latex-environment] : adding LaTeX environments on specific DIVs
@@ -117,7 +127,7 @@ The pandocker image includes the following open-source fonts:
 You can use 2 different versions of this machine with the following tags:
 
 * `latest` : this is the default  (based on `master` branch)
-* `stable` or `17.12`  : for production
+* `stable` or `20.02`  : for production
 
 Other tags are not supported and should be used with care.
 
@@ -145,3 +155,5 @@ you can convert a `dia` source file into an SVG image like this:
 ``` console
 $ docker run [..] --entrypoint dia dalibo/pandocker foo.dia -e foo.svg
 ```
+
+
