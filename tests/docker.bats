@@ -21,6 +21,7 @@ initial_setup(){
   # clean remaining output files from previous tests
   rm -fr $OUT
   mkdir -p $OUT
+  chmod a+rwx $OUT
   # mount a dedicated volume and put the tests files in it
   docker create --name pandoc-volumes dalibo/pandocker:$TAG
   docker cp tests pandoc-volumes:/pandoc/
@@ -40,7 +41,7 @@ setup() {
   fi
 
   # Uncomment to launch only one test
-  #run_only_test 16
+  #run_only_test 7
 }
 
 final_teardown() {
