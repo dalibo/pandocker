@@ -5,3 +5,4 @@ cache/*
 tmp-*
 tests/output/
 tests/docker.bats.log
+missfont.log

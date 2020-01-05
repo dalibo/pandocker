@@ -96,7 +96,7 @@ ADD cache/ ./cache
 #
 # When incrementing this version, also increment
 # PANDOC_CROSSREF_VERSION below.
-ARG PANDOC_VERSION=2.9
+ARG PANDOC_VERSION=2.9.1
 ADD fetch-pandoc.sh /usr/local/bin/
 RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
@@ -118,7 +118,7 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 # This version must correspond to the correct PANDOC_VERSION.
 # See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
 # release corresponding to the desired pandoc version.
-ARG PANDOC_CROSSREF_VERSION=0.3.6.0
+ARG PANDOC_CROSSREF_VERSION=0.3.6.1a
 ADD fetch-pandoc-crossref.sh /usr/local/bin/
 RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cache/pandoc-crossref.tar.gz && \
     tar xf ./cache/pandoc-crossref.tar.gz && \
@@ -129,16 +129,45 @@ RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cach
 ##
 ## T E M P L A T E S
 ##
-ARG TEMPLATES_DIR=/root/.pandoc/templates
+
+# kpsewhich -var-value=TEXMFLOCAL
+ARG TEXMFLOCAL=/usr/local/share/texmf
+
+# If docker is run with the `--user` option, the $HOME var
+# is empty when the user does not exist inside the container.
+# This causes several problems for pandoc and xelatex/pdftex.
+# We solve the issue by putting the pandoc templates and the
+# latex packages in shared spaces (TEXMFLOCAL, TEMPLATES_DIR)
+# and creating symbolic links inside the `/root` home so that
+# the templates and packages can be accessed by root and a
+# non-existent `--user`
+#
+# See Bug #110 : https://github.com/dalibo/pandocker/issues/110
+#
+
+# CTAM packages are installed in the system-wide latex tree
+# See `kpsewhich -var-value=TEXMFLOCAL`
+ENV TEXMFLOCAL=/usr/local/share/texmf
+
+# Templates are installed in '/.pandoc'.
+ARG TEMPLATES_DIR=/.pandoc/templates
+
+RUN mkdir -p ${TEMPLATES_DIR} && \
+    mkdir /.texlive2016 && \
+    # Links for the non-existent
+    ln -s ${TEXMFLOCAL} /texmf && \
+    # Links for the root user
+    ln -s /.pandoc /root/.pandoc && \
+    ln -s ${TEXMFLOCAL} /root/texmf && \
+    ln -s /.texlive2016 /root/.texlive2016
 
 # eisvogel template
 ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
 ARG EISVOGEL_VERSION=v1.3.0
-RUN mkdir -p ${TEMPLATES_DIR} && \
-    wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 
 # « Debian/buster comes with TL2018, and thus refuses to work with the 2019 repositories »
 # https://tex.stackexchange.com/a/495222
+RUN wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
     tlmgr option repository http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2018/tlnet-final/ && \
     # the first `tlmgr install` will fail for no reason
@@ -149,8 +178,19 @@ RUN tlmgr init-usertree && \
 
 
 # letter template
-ARG LETTER_TEX=https://raw.githubusercontent.com/aaronwolen/pandoc-letter/master/template-letter.tex
-RUN wget ${LETTER_TEX} -O ${TEMPLATES_DIR}/letter.latex
+ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
+ARG LETTER_VERSION=master
+RUN wget ${LETTER_REPO}/${LETTER_VERSION}/template-letter.tex -O ${TEMPLATES_DIR}/letter.latex
+
+# leaflet template
+ARG LEAFLET_REPO=https://gitlab.com/daamien/pandoc-leaflet-template/raw
+ARG LEAFLET_VERSION=1.0
+RUN wget ${LEAFLET_REPO}/${LEAFLET_VERSION}/leaflet.latex -O ${TEMPLATES_DIR}/leaflet.latex
+
+
+##
+## M I S C
+##
 
 #
 # emojis support for latex
