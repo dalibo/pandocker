@@ -116,6 +116,13 @@ teardown() {
           -o $OUT/markdown_de.pdf
 }
 
+@test "Generate a PDF file containing Dutch characters" {
+  $PANDOC --pdf-engine=xelatex \
+          --template=$IN/template_nl.tex \
+          $IN/markdown_nl.md \
+          -o $OUT/markdown_nl.pdf
+}
+
 @test "Generate a PDF file containing emojis" {
   $PANDOC --pdf-engine=xelatex $IN/emojis.md -o $OUT/emojis.pdf
 }
