@@ -139,8 +139,14 @@ teardown() {
           -o $OUT/markdown_de.pdf
 }
 
-## 42x: Fonts
+@test "412: Generate a PDF file containing Dutch characters" {
+  $PANDOC --pdf-engine=xelatex \
+          --template=$IN/template_nl.tex \
+          $IN/markdown_nl.md \
+          -o $OUT/markdown_nl.pdf
+}
 
+## 42x: Fonts
 @test "421: Generate a PDF file with the Deja Vu font" {
   $PANDOC --pdf-engine=xelatex $IN/fonts.md \
           -o $OUT/fonts_dejavu.pdf \
