@@ -210,7 +210,6 @@ teardown() {
   DIR=pandoc-minted
   $PANDOC $IN/$DIR/minted.md  \
           --filter pandoc-minted \
-          --pdf-engine-opt=-shell-escape \
           -o $OUT/$DIR/minted.tex
 }
 
