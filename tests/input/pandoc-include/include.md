@@ -3,7 +3,7 @@
 
 this is an include statement :
 
-!include tests/input/markdown_de.md
+!include tests/input/german/markdown_de.md
 
 
 

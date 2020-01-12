@@ -15,7 +15,7 @@ Regular codeblock
 
 ## Basic Inclusion
 
-``` { include=tests/input/query1.sql}
+``` { include=tests/input/pandoc-codeblock-include/query1.sql}
 ```
 
 ## Inclusion of a portion
@@ -27,7 +27,7 @@ Regular codeblock
 
 ## With syntax highlight
 
-``` { .sql include=tests/input/query1.sql}
+``` { .sql include=tests/input/pandoc-codeblock-include/query1.sql}
 ```
 
 

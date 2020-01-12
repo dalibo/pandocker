@@ -10,11 +10,13 @@ log() {
 }
 
 initial_setup(){
-  log "initial setup"
-  # clean remaining output files from previous tests
-  rm -fr $OUT
-  mkdir -p $OUT
-  chmod a+rwx $OUT
+  #log "initial setup"
+  # remove artefacts from previous tests,
+  # but keep the directory structure
+  find $OUT -type f -delete
+  #rm -fr $OUT
+  #mkdir -p $OUT
+  #chmod a+rwx $OUT
   # mount a dedicated volume and put the tests files in it
   docker create --name pandoc-volumes dalibo/pandocker:$TAG
   docker cp tests pandoc-volumes:/pandoc/
@@ -26,6 +28,7 @@ setup() {
   log "setup: TAG = $TAG"
   export DOCKER_OPT="--rm --volumes-from pandoc-volumes "
   export PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
+  export DIFF="docker run $DOCKER_OPT --entrypoint=diff dalibo/pandocker:$TAG"
   export IN=tests/input
   export EXP=tests/expected
   export OUT=tests/output
@@ -58,7 +61,9 @@ teardown() {
 # Check bug #36 : https://github.com/dalibo/pandocker/issues/18
 @test "021: Generate a PDF file with the pandoc 1.x wrapper" {
   PANDOCSH="docker run $DOCKER_OPT --entrypoint=pandoc1.sh dalibo/pandocker:$TAG --verbose"
-  $PANDOCSH --latex-engine=xelatex --no-tex-ligatures $IN/sample-presentation.md -o $OUT/sample-presentation.handout.bug36.pdf
+  $PANDOCSH --latex-engine=xelatex --no-tex-ligatures \
+            $IN/sample-presentation.md \
+            -o $OUT/sample-presentation.handout.bug36.pdf
 }
 
 @test "031: Generate a PDF file using the inline mode" {
@@ -97,8 +102,11 @@ teardown() {
 
 ## 21x: dokuwiki
 @test "211: Generate a markdown file from a dokuwiki source" {
-  $PANDOC --from dokuwiki --to markdown $IN/syntax.dokuwiki.txt \
-          -o $OUT/syntax.dokuwiki.md
+  DIR=dokuwiki
+  $PANDOC --from dokuwiki --to markdown \
+          $IN/$DIR/syntax.dokuwiki.txt \
+          -o $OUT/$DIR/syntax.dokuwiki.md
+  $DIFF $OUT/$DIR/syntax.dokuwiki.md $EXP/$DIR/syntax.dokuwiki.md
 }
 
 ##
@@ -133,53 +141,63 @@ teardown() {
 ## 41x: Languages
 
 @test "411: Generate a PDF file containing German characters" {
+  DIR=german
   $PANDOC --pdf-engine=xelatex \
-          --template=$IN/template_de.tex \
-          $IN/markdown_de.md \
-          -o $OUT/markdown_de.pdf
+          --template=$IN/$DIR/template_de.tex \
+          $IN/$DIR/markdown_de.md \
+          -o $OUT/$DIR/markdown_de.pdf
 }
 
 @test "412: Generate a PDF file containing Dutch characters" {
+  DIR=dutch
   $PANDOC --pdf-engine=xelatex \
-          --template=$IN/template_nl.tex \
-          $IN/markdown_nl.md \
-          -o $OUT/markdown_nl.pdf
+          --template=$IN/$DIR/template_nl.tex \
+          $IN/$DIR/markdown_nl.md \
+          -o $OUT/$DIR/markdown_nl.pdf
 }
 
 ## 42x: Fonts
 @test "421: Generate a PDF file with the Deja Vu font" {
-  $PANDOC --pdf-engine=xelatex $IN/fonts.md \
-          -o $OUT/fonts_dejavu.pdf \
+  DIR=fonts
+  $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
+          -o $OUT/$DIR/fonts_dejavu.pdf \
           --variable mainfont="DejaVu Sans"
 }
 
 @test "422: Generate a PDF file with the Lato font" {
-  $PANDOC --pdf-engine=xelatex $IN/fonts.md \
-          -o $OUT/fonts_lato.pdf \
+  DIR=fonts
+  $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
+          -o $OUT/$DIR/fonts_lato.pdf \
           --variable mainfont="Lato"
 }
 
 @test "423: Generate a PDF file with the Liberation font" {
-  $PANDOC --pdf-engine=xelatex $IN/fonts.md \
-          -o $OUT/fonts_lato.pdf \
+  DIR=fonts
+  $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
+          -o $OUT/$DIR/fonts_lato.pdf \
           --variable mainfont="Liberation Serif"
 }
 
 @test "424: Generate a PDF file with the Noto font" {
-  $PANDOC --pdf-engine=xelatex $IN/fonts.md \
-          -o $OUT/fonts_noto.pdf \
+  DIR=fonts
+  $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
+          -o $OUT/$DIR/fonts_noto.pdf \
           --variable mainfont="Noto Sans"
 }
 
 ## 44x: Emojis
 @test "441: Generate a PDF file containing emojis" {
-  $PANDOC --pdf-engine=xelatex $IN/emojis.md -o $OUT/emojis.pdf
+  DIR=emojis
+  $PANDOC $IN/$DIR/emojis.md \
+          --pdf-engine=xelatex \
+          -o $OUT/$DIR/emojis.pdf
 }
 
 # Bug #75 : https://github.com/dalibo/pandocker/issues/75
-@test "442: Generate a PDF file containing weird emojis" {
-  $PANDOC --pdf-engine=xelatex $IN/magicienletter.md > $OUT/magicienletter.html
-  diff $OUT/magicienletter.html $EXP/magicienletter.html
+@test "442: Generate an HTML file containing weird emojis" {
+  DIR=emojis
+  $PANDOC $IN/$DIR/magicienletter.md -o $OUT/$DIR/magicienletter.html
+  $DIFF $OUT/$DIR/magicienletter.html $EXP/$DIR/magicienletter.html
 }
 
 
@@ -189,42 +207,65 @@ teardown() {
 
 ## 51x: pandoc-minted
 @test "511: Generate a TEX file using the minted filter" {
-  MINTED_OPT="--filter pandoc-minted --pdf-engine-opt=-shell-escape"
-  $PANDOC $MINTED_OPT $IN/minted.md  -o $OUT/minted.tex
+  DIR=pandoc-minted
+  $PANDOC $IN/$DIR/minted.md  \
+          --filter pandoc-minted \
+          --pdf-engine-opt=-shell-escape \
+          -o $OUT/$DIR/minted.tex
 }
 
 @test "512: Generate a PDF file using the minted filter" {
-  MINTED_OPT="--filter pandoc-minted --pdf-engine-opt=-shell-escape"
-  $PANDOC $MINTED_OPT $IN/minted.md --pdf-engine=xelatex -o $OUT/minted.tex
+    DIR=pandoc-minted
+    $PANDOC $IN/$DIR/minted.md  \
+            --filter pandoc-minted \
+            --pdf-engine=xelatex \
+            --pdf-engine-opt=-shell-escape \
+            -o $OUT/$DIR/minted.pdf
 }
 
 ## 52x: pandoc-include + pandoc-codeblock-include
 @test "521: Generate a markdown file using the include filter" {
-  $PANDOC --to markdown --filter pandoc-include $IN/include.md > $OUT/include.complete.md
-  grep -v '!include' $OUT/include.complete.md
+  DIR=pandoc-include
+  $PANDOC --to markdown --filter pandoc-include \
+          $IN/$DIR/include.md \
+          -o $OUT/$DIR/include.complete.md
+  $DIFF $OUT/$DIR/include.complete.md $EXP/$DIR/include.complete.md
 }
 
 @test "522: Generate a markdown file using the codeblock-include filter" {
-  $PANDOC --filter pandoc-codeblock-include $IN/codeblock_include.md -o $OUT/codeblock_include.complete.md
+  DIR=pandoc-codeblock-include
+  $PANDOC --to markdown \
+          --filter pandoc-codeblock-include \
+          $IN/$DIR/codeblock_include.md \
+          -o $OUT/$DIR/codeblock_include.complete.md
+  $DIFF $OUT/$DIR/codeblock_include.complete.md $EXP/$DIR/codeblock_include.complete.md
 }
 
 ## 53x: pandoc-citeproc + pandoc-crossref
 @test "531: Generate a PDF file using the citeproc filter" {
-  $PANDOC --filter pandoc-citeproc --bibliography=$IN/citeproc.bibtex -M link-citations $IN/citeproc.md -o $OUT/citeproc.pdf
+  DIR=pandoc-citeproc
+  $PANDOC $IN/$DIR/citeproc.md \
+          --filter pandoc-citeproc \
+          --bibliography=$IN/$DIR/citeproc.bibtex \
+          -M link-citations \
+          -o $OUT/$DIR/citeproc.pdf
 }
 
 @test "532: Generate a markdown file using the crossref filter" {
-  $PANDOC --to markdown --filter pandoc-crossref $IN/crossref.md > $OUT/crossref.md
-  diff $OUT/crossref.md $EXP/crossref.md
+  DIR=pandoc-crossref
+  $PANDOC --filter pandoc-crossref \
+          $IN/$DIR/crossref.md \
+          -o $OUT/$DIR/crossref.md
+  $DIFF $OUT/$DIR/crossref.md $EXP/$DIR/crossref.md
 }
 
 ## 54x: pandoc-mustache
 @test "541: Generate a markdown file using the mustache filter" {
   DIR=pandoc-mustache
-  mkdir -p $OUT/$DIR
-  ls $OUT/$DIR
-  $PANDOC $IN/$DIR/weather.md --to markdown --filter pandoc-mustache > $OUT/$DIR/weather.md
-  diff $OUT/$DIR/weather.md  $EXP/$DIR/weather.md
+  $PANDOC $IN/$DIR/weather.md \
+          --filter pandoc-mustache \
+          -o $OUT/$DIR/weather.md
+  $DIFF $OUT/$DIR/weather.md  $EXP/$DIR/weather.md
 }
 
 ##
@@ -232,8 +273,9 @@ teardown() {
 ##
 
 @test "911: Generate a SVG image with dia" {
+    DIR=dia
     DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
-    $DIA $IN/db.dia --export $OUT/db.svg
+    $DIA $IN/$DIR/db.dia --export $OUT/$DIR/db.svg
 }
 
 
