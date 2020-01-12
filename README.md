@@ -23,10 +23,10 @@ Run `dalibo/pandocker`  with regular `pandoc` args. Mount your files at `/pandoc
 $ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md -o README.pdf
 ```
 
-Notes:
+**Notes about the docker options:**
 
-* The `-v ...` option mount the current folder as the `/pandoc` directory
-  inside the container. if SELinux is enabled on your system, you might need to
+* The `-v ...` option will mount the current folder as the `/pandoc` directory
+  inside the container. If SELinux is enabled on your system, you might need to
   add the `--privileged` tag to force access to the mouting points. For more
   details, read the documentation about [docker runtime privileges].
 
@@ -58,9 +58,9 @@ This method will not work if the source document contains images or includes...
 ## Templates
 
 We're shipping a selection of latex templates inside the image so that you
-can produce a nice PDF documents without installing anything.
+can produce nice PDF documents without installing anything.
 
-So far, we provide the 2 templates below:
+So far, we provide the 3 templates below:
 
 * [eisvogel] is designed for lecture notes and exercises with a focus on computer
   science. It works with `pdflatex` and `xelatex`.
@@ -85,7 +85,7 @@ Please go the project page of each template for more details.
 
 This docker image embeds a number of usefull pandoc filters. You can simply enable them
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
-filter below:
+filters below:
 
 * [pandoc-citeproc] : manage bibliographies and citations
 * [pandoc-codeblock-include] : insert an external file into a codeblock
@@ -101,7 +101,8 @@ NOTE: By default when using the [pandoc-include] filter, the path to target
 files is relative to the `/pandoc` mountpoint. For instance,
 the `!include [foo/bar.md]` statement will look for a `/pandoc/foo/bar.md` file.
 You can use the docker arg `--workdir="some/place/elsewhere"` to specify
-another location.
+another location. The same principle applies to the [pandoc-codeblock-include]
+and [pandoc-mustache] filters.
 
 [pandoc-citeproc]: https://pandoc.org/demo/example19/Extension-citations.html
 [pandoc-codeblock-include]: https://github.com/chdemko/pandoc-codeblock-include
@@ -126,8 +127,8 @@ The pandocker image includes the following open-source fonts:
 
 You can use 2 different versions of this machine with the following tags:
 
-* `latest` : this is the default  (based on `master` branch)
-* `stable` or `20.02`  : for production
+* `latest`: this is the default
+* `stable` or `20.02`: for production
 
 Other tags are not supported and should be used with care.
 
@@ -149,7 +150,7 @@ The docker image embeds additional software related to editing and publishing:
 [poppler-utils]: https://en.wikipedia.org/wiki/Poppler_(software)#poppler-utils
 [rsync]: https://rsync.samba.org/documentation.html
 
-These tools can be used by modifying the entrypoint of the image. For instance,
+These tools can be called by modifying the entrypoint of the image. For instance,
 you can convert a `dia` source file into an SVG image like this:
 
 ``` console
