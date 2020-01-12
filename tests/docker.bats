@@ -14,9 +14,8 @@ initial_setup(){
   # remove artefacts from previous tests,
   # but keep the directory structure
   find $OUT -type f -and -not -name .keep -delete
-  #rm -fr $OUT
-  #mkdir -p $OUT
-  #chmod a+rwx $OUT
+  # allow all users to write artefacts
+  chmod a+rwx $OUT
   # mount a dedicated volume and put the tests files in it
   docker create --name pandoc-volumes dalibo/pandocker:$TAG
   docker cp tests pandoc-volumes:/pandoc/
@@ -121,7 +120,9 @@ teardown() {
 @test "312: Generate a PDF file using the eisvogel template with xelatex" {
   DOCKER_OPT="--rm --volumes-from pandoc-volumes -u 1000:1000"
   PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
-  $PANDOC --pdf-engine=xelatex --template=eisvogel $IN/sample-presentation.md  -o $OUT/sample-presentation.eisvogel.xelatex.pdf
+  $PANDOC --pdf-engine=xelatex --template=eisvogel \
+          $IN/sample-presentation.md  \
+          -o $OUT/sample-presentation.eisvogel.xelatex.pdf
 }
 
 ## 32x: Letter
