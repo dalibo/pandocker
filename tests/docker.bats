@@ -13,7 +13,7 @@ initial_setup(){
   #log "initial setup"
   # remove artefacts from previous tests,
   # but keep the directory structure
-  find $OUT -type f -delete
+  find $OUT -type f -and -not -name .keep -delete
   #rm -fr $OUT
   #mkdir -p $OUT
   #chmod a+rwx $OUT
