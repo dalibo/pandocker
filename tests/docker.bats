@@ -218,6 +218,14 @@ teardown() {
   diff $OUT/crossref.md $EXP/crossref.md
 }
 
+## 54x: pandoc-mustache
+@test "541: Generate a markdown file using the mustache filter" {
+  DIR=pandoc-mustache
+  mkdir -p $OUT/$DIR
+  ls $OUT/$DIR
+  $PANDOC $IN/$DIR/weather.md --to markdown --filter pandoc-mustache > $OUT/$DIR/weather.md
+  diff $OUT/$DIR/weather.md  $EXP/$DIR/weather.md
+}
 
 ##
 ## 9xx: Other entrypoints
