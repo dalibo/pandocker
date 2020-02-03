@@ -19,4 +19,4 @@ jobs:
         command: apk add --no-cache bash
     - run:
         name: Test
-        command: TAG=xxxxx-test-circleci-xxxxx ./tests/libs/bats/bin/bats tests/docker.bats --tap
+        command: TAG=xxxxx-test-circleci-xxxxx ./tests/libs/bats-core/bin/bats tests/docker.bats --tap
