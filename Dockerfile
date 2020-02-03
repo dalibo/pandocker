@@ -165,37 +165,8 @@ RUN mkdir -p ${TEMPLATES_DIR} && \
 ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
 ARG EISVOGEL_VERSION=v1.4.0
 RUN wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
-# https://github.com/Wandmalfarbe/pandoc-latex-template#texlive
 RUN tlmgr init-usertree && \
-    tlmgr install   adjustbox \
-                    babel-german \
-                    background \
-                    bidi \
-                    collectbox \
-                    csquotes \
-                    everypage \
-                    filehook \
-                    footmisc \
-                    footnotebackref \
-                    framed \
-                    fvextra \
-                    letltxmacro \
-                    ly1 \
-                    mdframed \
-                    mweights \
-                    needspace \
-                    pagecolor \
-                    sourcecodepro \
-                    sourcesanspro \
-                    titling \
-                    ucharcat \
-                    ulem \
-                    unicode-math \
-                    upquote \
-                    xecjk \
-                    xurl \
-                    zref
-
+    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
 
 # letter template
 ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
