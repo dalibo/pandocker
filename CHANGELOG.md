@@ -9,16 +9,17 @@ __Stack__
 
 * Debian 9 stretch
 * Pandoc 2.9
-* Eisvogel 1.3.0
+* Eisvogel 1.4.0
 
 __Changes__
 
 <https://github.com/dalibo/pandocker/milestone/10>
 
 * Switch to Pandoc 2.9 (daamien)
+* Switch to Pandoc 2.9 (daamien)
 * [filters] add pandoc-crossref (colindean)
-* [doc] using pipes to produce a pdf file
-* [doc] the pandoc-citeproc is already installed
+* [doc] using pipes to produce a pdf file (daamien)
+* [doc] the pandoc-citeproc is already installed (daamien)
 
 
 
