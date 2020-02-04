@@ -24,9 +24,13 @@ __Changes__
 * [templates] add leaflet template (daamien)
 * [templates] add Letter Template (daamien)
 * [CI] use bats-core for testing (daamien)
+* [CI] remove the fixtures folder (daamien)
 * [fonts] add deja-vu and noto (daamien)
 * [dev] the default branch is not called `latest`  (daamien)
 * [dev] the `master` branch is obsolete  (daamien)
+* [doc] using pipes to generate pdf files (daamien)
+* [doc] explaining the `docker run` options (daamien)
+
 
 19.11
 -------------------------------------------------------------------------------
