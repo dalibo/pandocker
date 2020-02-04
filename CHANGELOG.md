@@ -24,6 +24,7 @@ __Changes__
 * [templates] add leaflet template (daamien)
 * [templates] add Letter Template (daamien)
 * [CI] use bats-core for testing (daamien)
+* [CI] remove useless submodules (daamien)
 * [CI] remove the fixtures folder (daamien)
 * [fonts] add deja-vu and noto (daamien)
 * [dev] the default branch is not called `latest`  (daamien)
