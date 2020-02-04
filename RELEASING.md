@@ -4,9 +4,10 @@
 * [ ] Update the [CHANGELOG.md]()
 * [ ] Update the [UPGRADE.md]() procedure
 * [ ] Write a announcement in [NEWS.md]()
-* [ ] Add a tag to master
-* [ ] Rebase the `stable` and `weasy` branches from `master`
+* [ ] Add a tag to `latest`
+* [ ] Rebase the `stable` and `weasy` branches from `latest`
 * [ ] Wait for docker hub to rebuild the images
-* [ ] Create a new milestone
+* [ ] Create the next milestone
 * [ ] Publish the announcement
 * [ ] Bump to the new version in [CHANGELOG.md]()
+* [ ] Close the current milestone
