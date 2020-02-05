@@ -13,6 +13,34 @@ we will only support the latest stable version. If you want to make your life
 easier, use the docker image as described above.
 
 
+## Upgrade from 19.11 to 20.02
+
+1. Upgrade Pandoc
+
+```shell
+make warm-cache
+sudo dpkg --install cache/pandoc.deb
+```
+
+2. Install pandoc-crossref
+
+```shell
+make warm-cache
+tar xf ./cache/pandoc-crossref.tar.gz
+install pandoc-crossref /usr/local/bin/
+```
+
+3. Upgrade Eisvogel
+
+```shell
+$ export EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
+$ export EISVOGEL_VERSION=v1.4.0
+$ export TEMPLATES_DIR=~/.pandoc/templates
+$ wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+```
+
+
+
 ## Upgrade from 19.08 to 19.11
 
 1. Upgrade Pandoc

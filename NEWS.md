@@ -1,3 +1,104 @@
+Pandocker 20.02: the palindrome edition !
+================================================================================
+
+Paris, February 5th, 2020
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain
+based on `pandoc` with filters, templates, fonts, and the latex bazaar
+
+It allows you to generate slides and documents without installing the required
+depencies on your machine.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
+```
+
+This image is available under BSD Licence and it has 2 main tags:
+
+* `dalibo/pandocker:stable` should be used in production ( = 20.20 )
+* `dalibo/pandocker:latest` is the development version
+
+You can also retrieve older versions by their version number:
+`dalibo/pandocker:20.02`, `dalibo/pandocker:19.11`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+More templates, more fonts, more filters, more langs
+--------------------------------------------------------------------------------
+
+This is new version brings several new items:
+
+* 2 more filters: [pandoc-crossref] and [pandoc-citeproc]
+* 2 more templates: [leaflet] and [letter]
+* 2 more fonts: Noto and Deja-Vu
+* All european languages are now supported
+
+[pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
+[pandoc-citeproc]: https://github.com/jgm/pandoc-citeproc
+[leaflet]: https://gitlab.com/daamien/pandoc-leaflet-template
+[letter]:  https://github.com/aaronwolen/pandoc-letter
+
+There's also some improvements on the existing tools:
+
+* Pandoc has been updated to 2.9
+* The [eisvogel] template has been upgraded to 1.4
+
+Many thanks to @colindean and @DigitalTravelDuck for their contributions to these
+features !
+
+
+Using pandocker with pipes
+--------------------------------------------------------------------------------
+
+It is now possible to run the pandocker image as a 'black box' by passing the
+source file through a pipe and collecting the result on the standard output.
+
+For example:
+
+```
+$ cat foo.md | docker run --rm -i dalibo/pandocker -t pdf > foo.pdf
+```
+
+This is useful if you want to use pandocker in a stream or when you don't want
+to mount a docker volume. However, this method will not work if the source
+document contains images or includes external files...
+
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+If you installed the toolchain locally, please read:
+<https://github.com/dalibo/pandocker/blob/master/UPGRADE.md#without-docker-local-setup>
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Job>
+
+
+
+---
+
+
 Pandocker 19.11 is out !
 ================================================================================
 
@@ -39,7 +140,7 @@ This is a maintenance release
 --------------------------------------------------------------------------------
 
 This is version brings very few changes. The version of Pandoc has been updated
-and the embbeded template ([eisvogel]) has been upgraded too. 
+and the embbeded template ([eisvogel]) has been upgraded too.
 
 
 
