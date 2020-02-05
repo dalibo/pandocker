@@ -1,7 +1,7 @@
 Pandocker 20.02: the palindrome edition !
 ================================================================================
 
-Paris, februray 5th
+Paris, February 5th, 2020
 
 What is this ?
 --------------------------------------------------------------------------------
@@ -19,13 +19,13 @@ type:
 docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
 ```
 
-This image is available under BSD Licence and it has 2 main branchs:
+This image is available under BSD Licence and it has 2 main tags:
 
 * `dalibo/pandocker:stable` should be used in production ( = 20.20 )
 * `dalibo/pandocker:latest` is the development version
 
-You can also retrieve images by their version number : `dalibo/pandocker:18.03`,
-`dalibo/pandocker:17.12`, etc.
+You can also retrieve older versions by their version number:
+`dalibo/pandocker:20.02`, `dalibo/pandocker:19.11`, etc.
 
 For more details :
 
@@ -38,11 +38,13 @@ More templates, more fonts, more filters, more langs
 
 This is new version brings several new items:
 
-* 2 more filters: pandoc-crossref and pandoc-citeproc
+* 2 more filters: [pandoc-crossref] and [pandoc-citeproc]
 * 2 more templates: [leaflet] and [letter]
 * 2 more fonts: Noto and Deja-Vu
 * All european languages are now supported
 
+[pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
+[pandoc-citeproc]: https://github.com/jgm/pandoc-citeproc
 [leaflet]: https://gitlab.com/daamien/pandoc-leaflet-template
 [letter]:  https://github.com/aaronwolen/pandoc-letter
 
@@ -51,7 +53,7 @@ There's also some improvements on the existing tools:
 * Pandoc has been updated to 2.9
 * The [eisvogel] template has been upgraded to 1.4
 
-Many thanks to @colindean and @DigitalTravelDuck for their contribution to these
+Many thanks to @colindean and @DigitalTravelDuck for their contributions to these
 features !
 
 
@@ -90,7 +92,7 @@ Pandocker is an open project, contributions are welcome.
 
 If you want to help, you can find a list of "Junior Jobs" here:
 
-<https://github.com/dalibo/pandocker/labels/Junior%20Jobs>
+<https://github.com/dalibo/pandocker/labels/Junior%20Job>
 
 
 
