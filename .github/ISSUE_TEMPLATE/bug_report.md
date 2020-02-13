@@ -11,7 +11,7 @@ assignees: ''
 
 Please take a look at the [Frequently Adsked Questions], the answer to your problem may already be there.
 
-[Frequently Adsked Questions]: https://github.com/dalibo/pandocker/blob/master/FAQ.md
+[Frequently Asked Questions]: https://github.com/dalibo/pandocker/blob/latest/FAQ.md
 
 **Describe the bug**
 
