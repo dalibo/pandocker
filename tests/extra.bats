@@ -187,6 +187,24 @@ teardown() {
 }
 
 
+## 45x: FontAwesome
+@test "451: A PDF file containings awesomeboxes with fontawesome" {
+  DIR=fonts
+  $PANDOC $IN/$DIR/boxes.md \
+          --template=eisvogel \
+          --pdf-engine=xelatex \
+          --filter pandoc-latex-environment \
+          --listings \
+          -o $OUT/$DIR/boxes.pdf
+}
+
+@test "452: A PDF file containings fontawesome macros" {
+  DIR=fonts
+  $PANDOC $IN/$DIR/fontawesome.md \
+          --pdf-engine=xelatex \
+          -o $OUT/$DIR/fontawesome.pdf
+}
+
 ##
 ## 5xx: Filters
 ##
