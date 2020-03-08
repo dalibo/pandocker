@@ -57,14 +57,6 @@ teardown() {
   command -v docker
 }
 
-# Check bug #36 : https://github.com/dalibo/pandocker/issues/18
-@test "021: Generate a PDF file with the pandoc 1.x wrapper" {
-  PANDOCSH="docker run $DOCKER_OPT --entrypoint=pandoc1.sh dalibo/pandocker:$TAG --verbose"
-  $PANDOCSH --latex-engine=xelatex --no-tex-ligatures \
-            $IN/sample-presentation.md \
-            -o $OUT/sample-presentation.handout.bug36.pdf
-}
-
 @test "031: Generate a PDF file using the inline mode" {
     PANDOC_PDF_BOX=docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex
     cat $IN/markdown_de.md | $PANDOC_PDF_BOX > $OUT/markdown_de.inline.pdf

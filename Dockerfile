@@ -208,8 +208,4 @@ RUN git clone --single-branch --depth=1 --branch gh-pages https://github.com/twi
 VOLUME /pandoc
 WORKDIR /pandoc
 
-# Compatibility with Pandoc 1.x arguments
-# use `--entrypoint=pandoc1.sh` to activate it
-ADD pandoc1.sh /usr/local/bin
-
 ENTRYPOINT ["pandoc"]
