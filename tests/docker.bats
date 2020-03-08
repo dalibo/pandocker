@@ -171,12 +171,12 @@ teardown() {
           --variable mainfont="Liberation Serif"
 }
 
-@test "424: Generate a PDF file with the Noto font" {
-  DIR=fonts
-  $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
-          -o $OUT/$DIR/fonts_noto.pdf \
-          --variable mainfont="Noto Sans"
-}
+#@test "424: Generate a PDF file with the Noto font" {
+#  DIR=fonts
+#  $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
+#          -o $OUT/$DIR/fonts_noto.pdf \
+#          --variable mainfont="Noto Sans"
+#}
 
 ## 44x: Emojis
 @test "441: Generate a PDF file containing emojis" {
