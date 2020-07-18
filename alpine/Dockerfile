@@ -1,4 +1,4 @@
-FROM pandoc/latex:2.9.2
+FROM pandoc/latex:edge
 
 
 RUN apk --no-cache add \
@@ -6,9 +6,7 @@ RUN apk --no-cache add \
         rsync \
         openssh-client \
         fontconfig \
-        ttf-dejavu \
-        ttf-liberation \
-        font-noto
+        ttf-liberation
 
 RUN tlmgr update --self && \
     tlmgr install \
@@ -75,18 +73,8 @@ RUN tlmgr update --self && \
         # fonts
         ec \
         cm-super \
-        dejavu \
-        collection-fontsrecommended \
-        lato \
         # misc.
         catchfile
-
-
-RUN wget http://www.latofonts.com/download/Lato2OFL.zip -O /tmp/lato.zip && \
-    unzip /tmp/lato.zip -d /usr/share/fonts && \
-    wget https://github.com/googlefonts/noto-emoji/raw/master/fonts/NotoColorEmoji.ttf -O /usr/share/fonts && \
-    wget https://github.com/googlefonts/noto-emoji/raw/master/fonts/NotoEmoji-Regular.ttf -O /usr/share/fonts && \
-    fc-cache -fv
 
 ##
 ## F I L T E R S

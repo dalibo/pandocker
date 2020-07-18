@@ -42,12 +42,31 @@ endif
 ##
 all: build
 
-build: Dockerfile
+.PHONY: build
+build: Dockerfile alpine/Dockerfile full/Dockerfile
+
+.PHONY: debian
+.PHONY: alpine
+.PHONY: full
+debian: Dockerfile
+
+Dockerfile:
 	docker build \
 	    --build-arg APT_CACHER=$${APT_CACHER-} \
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
 	    --build-arg PANDOC_CROSSREF_VERSION=$(PANDOC_CROSSREF_VERSION) \
 	    --tag $(NAME):$(TAG) .
+
+
+alpine: alpine/Dockerfile
+	docker build \
+		--build-arg APT_CACHER=$${APT_CACHER-} \
+		--build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
+		--build-arg PANDOC_CROSSREF_VERSION=$(PANDOC_CROSSREF_VERSION) \
+		--tag $(NAME):$(TAG) \
+		--file $^ .
+
+
 
 .PHONY: test
 test:
