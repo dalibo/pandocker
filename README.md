@@ -125,9 +125,10 @@ The pandocker image includes the following open-source fonts:
 
 ## Supported Tags
 
-You can use 2 different versions of this machine with the following tags:
+You can use 3 different versions of this machine with the following tags:
 
 * `latest`: this is the default
+* `latest-alpine` : the latest version, based on alpine
 * `stable` or `20.02`: for production
 
 Other tags are not supported and should be used with care.
