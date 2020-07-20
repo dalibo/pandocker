@@ -1,0 +1,21 @@
+name: Alpine-Full Image Regression Tests
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
+    - name: Build the Docker image
+      run: docker build . --file alpine-full/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-alpine-full
+
+    - name: Regression Tests
+      run: TAG=xxxxx-test-githubci-alpine-full ./tests/libs/bats-core/bin/bats tests/docker.bats --tap
