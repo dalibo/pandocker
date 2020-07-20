@@ -2,6 +2,7 @@ FROM pandoc/latex:edge
 
 
 RUN apk --no-cache add \
+        bash \
         py3-pip \
         rsync \
         openssh-client \
