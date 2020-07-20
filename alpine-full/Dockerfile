@@ -1,4 +1,4 @@
-FROM dalibo/pandocker:alpine
+FROM dalibo/pandocker:latest-alpine
 
 
 RUN apk --no-cache add \
