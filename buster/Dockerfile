@@ -48,7 +48,7 @@ RUN set -x && \
         fonts-dejavu \
         fonts-lato \
         fonts-liberation \
-        fonts-noto \
+#        fonts-noto \    # /!\ noto = 63Mo
         # build tools
         make \
         git \
@@ -166,7 +166,8 @@ ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-te
 ARG EISVOGEL_VERSION=v1.4.0
 RUN wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
-    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights noto
+    tlmgr option repository ftp://tug.org/historic/systems/texlive/2018/tlnet-final && \
+    tlmgr install ly1 mweights
 
 # letter template
 ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
