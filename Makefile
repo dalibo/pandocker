@@ -63,7 +63,7 @@ alpine-full: alpine-full/Dockerfile
 
 .PHONY: buster
 buster: buster/Dockerfile
-	docker build --tag $(NAME):$(TAG) --file $^ .
+	docker build --tag $(NAME):$(TAG)-$@ --file $^ .
 
 .PHONY: test
 test:

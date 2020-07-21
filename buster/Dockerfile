@@ -31,6 +31,7 @@ RUN set -x && \
         # for locales and utf-8 support
         locales \
         # latex toolchain
+        ghostscript \
         lmodern \
         texlive \
         texlive-lang-french \
@@ -171,7 +172,9 @@ RUN tlmgr init-usertree && \
     tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights || \
     # This first call returns an error but the packages are installed,
     # we call it again to check that everything is fine
-    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
+    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights && \
+    # update the font map
+    updmap-sys
 
 # letter template
 ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
