@@ -166,8 +166,12 @@ ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-te
 ARG EISVOGEL_VERSION=v1.4.0
 RUN wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
+    # Debian/buster comes with TL2018, and thus refuses to work with the 2020 repositories, even in self mode
     tlmgr option repository ftp://tug.org/historic/systems/texlive/2018/tlnet-final && \
-    tlmgr install ly1 mweights
+    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights || \
+    # This first call returns an error but the packages are installed,
+    # we call it again to check that everything is fine
+    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
 
 # letter template
 ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
