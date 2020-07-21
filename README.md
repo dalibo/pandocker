@@ -121,7 +121,7 @@ The pandocker image includes the following open-source fonts:
 * Deja Vu: https://dejavu-fonts.github.io/
 * Lato: https://fonts.google.com/specimen/Lato
 * Liberation: https://github.com/liberationfonts/liberation-fonts
-* Noto: https://www.google.com/get/noto/
+
 
 ## Supported Tags
 
