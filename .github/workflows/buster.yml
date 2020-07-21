@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Buster Image Regression Tests
 
 on: [push]
 
@@ -15,7 +15,7 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
+      run: docker build . --file buster/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-buster
 
     - name: Regression Tests
-      run: TAG=xxxxx-test-githubci-xxxxx VARIANT=stretch ./tests/libs/bats-core/bin/bats tests/docker.bats --tap
+      run: TAG=xxxxx-test-githubci-buster VARIANT=buster ./tests/libs/bats-core/bin/bats tests/docker.bats --tap

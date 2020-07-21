@@ -61,6 +61,10 @@ alpine: alpine/Dockerfile
 alpine-full: alpine-full/Dockerfile
 	docker build --tag $(NAME):$(TAG) --file $^ .
 
+.PHONY: buster
+buster: buster/Dockerfile
+	docker build --tag $(NAME):$(TAG)-$@ --file $^ .
+
 .PHONY: test
 test:
 	$(BATS) $(BATS_FILTER) tests/docker.bats

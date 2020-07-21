@@ -18,4 +18,4 @@ jobs:
       run: docker build . --file alpine/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
 
     - name: Regression Tests
-      run: TAG=xxxxx-test-githubci-xxxxx ./tests/libs/bats-core/bin/bats tests/docker.bats --tap
+      run: TAG=xxxxx-test-githubci-xxxxx VARIANT=alpine ./tests/libs/bats-core/bin/bats tests/docker.bats --tap

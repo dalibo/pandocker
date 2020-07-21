@@ -24,7 +24,8 @@ initial_setup(){
 setup() {
   # use `TAG=stable bats docker.bats` to test the stable version
   export TAG=${TAG:-latest}
-  log "setup: TAG = $TAG"
+  export VARIANT=${VARIANT:-}
+  log "setup: TAG = $TAG & VARIANT=$VARIANT"
   export DOCKER_OPT="--rm --volumes-from pandoc-volumes "
   export PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
   export DIFF="docker run $DOCKER_OPT --entrypoint=diff dalibo/pandocker:$TAG"
@@ -180,6 +181,9 @@ teardown() {
 
 ## 44x: Emojis
 @test "441: Generate a PDF file containing emojis" {
+  if [ $VARIANT = 'buster' ]; then
+    skip "Emojis support is not fully functionnal with buster (see issue #176)"
+  fi
   DIR=emojis
   $PANDOC $IN/$DIR/emojis.md \
           --pdf-engine=xelatex \
