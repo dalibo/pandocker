@@ -97,7 +97,7 @@ ADD cache/ ./cache
 #
 # When incrementing this version, also increment
 # PANDOC_CROSSREF_VERSION below.
-ARG PANDOC_VERSION=2.9.1
+ARG PANDOC_VERSION=2.10.1
 ADD fetch-pandoc.sh /usr/local/bin/
 RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     dpkg --install ./cache/pandoc.deb && \
@@ -119,10 +119,10 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 # This version must correspond to the correct PANDOC_VERSION.
 # See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
 # release corresponding to the desired pandoc version.
-ARG PANDOC_CROSSREF_VERSION=0.3.6.1a
+ARG PANDOC_CROSSREF_VERSION=0.3.7.0a
 ADD fetch-pandoc-crossref.sh /usr/local/bin/
-RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cache/pandoc-crossref.tar.gz && \
-    tar xf ./cache/pandoc-crossref.tar.gz && \
+RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cache/pandoc-crossref.tar.xz && \
+    tar xf ./cache/pandoc-crossref.tar.xz && \
     install pandoc-crossref /usr/local/bin/ && \
     install -d /usr/local/man/man1 && \
     install pandoc-crossref.1 /usr/local/man/man1/
