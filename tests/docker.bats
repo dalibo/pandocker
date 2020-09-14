@@ -124,9 +124,11 @@ teardown() {
 }
 
 ## 33x: Leaflet
-@test "331: Generate a PDF brochure using the leaflet template" {
-  $PANDOC --pdf-engine=xelatex  --template=leaflet $IN/leaflet/leaflet.md -o $OUT/leaflet.pdf
-}
+## Disable until we fix #182
+## https://github.com/dalibo/pandocker/issues/182
+#@test "331: Generate a PDF brochure using the leaflet template" {
+#  $PANDOC --pdf-engine=xelatex  --template=leaflet $IN/leaflet/leaflet.md -o $OUT/leaflet.pdf
+#}
 
 ##
 ## 4xx: Fonts, Langages and Special Characters
