@@ -1,5 +1,4 @@
-FROM pandoc/latex:edge
-
+FROM pandoc/latex:2.9.2.1
 
 RUN apk --no-cache add \
         bash \
