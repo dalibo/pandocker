@@ -1,16 +1,8 @@
-# cache
 cache/*
-pandoc_crossref*
-pandoc-crossref*
-# meta
 !.gitkeep
-# vim
 *.swp
 *.swo
-# tmp files
 tmp-*
-# tests
 tests/output/
 tests/docker.bats.log
-# latex
 missfont.log

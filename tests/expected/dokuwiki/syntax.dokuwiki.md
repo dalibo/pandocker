@@ -12,8 +12,9 @@ accessible via [quickbuttons](https://www.dokuwiki.org/toolbar), too.
 Basic Text Formatting
 ---------------------
 
-DokuWiki supports **bold**, *italic*, [underlined]{.ul} and `monospaced`
-texts. Of course you can **[*`combine`*]{.ul}** all these.
+DokuWiki supports **bold**, *italic*, [underlined]{.underline} and
+`monospaced` texts. Of course you can **[*`combine`*]{.underline}** all
+these.
 
     DokuWiki supports **bold**, //italic//, __underlined__ and ''monospaced'' texts.
     Of course you can **__//''combine''//__** all these.
@@ -529,11 +530,11 @@ class HelloWorldApp {
 
 The following language strings are currently recognized: *4cs 6502acme
 6502kickass 6502tasm 68000devpac abap actionscript3 actionscript ada
-aimms algol68 apache applescript apt_sources arm asm asp asymptote
+aimms algol68 apache applescript apt\_sources arm asm asp asymptote
 autoconf autohotkey autoit avisynth awk bascomavr bash basic4gl batch bf
 biblatex bibtex blitzbasic bnf boo caddcl cadlisp ceylon cfdg cfm
-chaiscript chapel cil c_loadrunner clojure c_mac cmake cobol
-coffeescript c cpp cpp-qt cpp-winapi csharp css cuesheet c_winapi dart
+chaiscript chapel cil c\_loadrunner clojure c\_mac cmake cobol
+coffeescript c cpp cpp-qt cpp-winapi csharp css cuesheet c\_winapi dart
 dcl dcpu16 dcs delphi diff div dos dot d ecmascript eiffel email epc e
 erlang euphoria ezt f1 falcon fo fortran freebasic freeswitch fsharp
 gambas gdb genero genie gettext glsl gml gnuplot go groovy gwbasic
@@ -553,7 +554,7 @@ smarty spark sparql sql standardml stonescript swift systemverilog
 tclegg tcl teraterm texgraph text thinbasic tsql twig typoscript unicon
 upc urbi uscript vala vbnet vb vbscript vedit verilog vhdl vim
 visualfoxpro visualprolog whitespace whois winbatch xbasic xml xojo
-xorg_conf xpp yaml z80 zxbasic*
+xorg\_conf xpp yaml z80 zxbasic*
 
 There are additional [advanced
 options](https://www.dokuwiki.org/syntax_highlighting) available for
