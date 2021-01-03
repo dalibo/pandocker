@@ -74,6 +74,7 @@ RUN tlmgr update --self && \
         # fonts
         ec \
         cm-super \
+        fontawesome5 \
         # misc.
         catchfile
 
