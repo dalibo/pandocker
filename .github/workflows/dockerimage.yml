@@ -1,6 +1,6 @@
-name: Docker Image CI
+name: Stretch Image (main) Regression Tests
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
 
