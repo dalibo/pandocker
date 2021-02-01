@@ -51,15 +51,15 @@ stretch: stretch/Dockerfile
 	    --build-arg APT_CACHER=$${APT_CACHER-} \
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
 	    --build-arg PANDOC_CROSSREF_VERSION=$(CROSSREF_VERSION) \
-	    --tag $(NAME):stretch-$(TAG) --file $^ .
+	    --tag $(NAME):$@-$(TAG) --file $^ .
 
 .PHONY: alpine
 alpine: alpine/Dockerfile
-	docker build --tag $(NAME):alpine-$(TAG) --file $^ .
+	docker build --tag $(NAME):$@-$(TAG) --file $^ .
 
 .PHONY: alpine-full
 alpine-full: alpine-full/Dockerfile
-	docker build --tag $(NAME):alpine-full-$(TAG) --file $^ .
+	docker build --tag $(NAME):$@-$(TAG) --file $^ .
 
 .PHONY: buster
 buster: buster/Dockerfile
@@ -67,7 +67,7 @@ buster: buster/Dockerfile
 	    $(BUILD_OPT) \
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
 	    --build-arg CROSSREF_VERSION=$(CROSSREF_VERSION) \
-	    --tag $(NAME):buster-$(TAG)-$@ --file $^ .
+	    --tag $(NAME):$@-$(TAG) --file $^ .
 
 .PHONY: test
 test:
