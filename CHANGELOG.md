@@ -1,18 +1,24 @@
 Changelog
 ===============================================================================
 
-20.05 - WIP
+21.02 - WIP
 -------------------------------------------------------------------------------
 
 __Stack__
 
-* Debian 9 stretch
-* Pandoc 2.9
-* Eisvogel 1.4.0
+* Debian 10 buster ( or alpine ) 
+* Pandoc 2.11
+* Eisvogel FIXME
 
 __Changes__
 
+<https://github.com/dalibo/pandocker/milestone/11>
 
+* Upgrade to debian buster
+* Archive the debian stretch version
+* Upgrade to pandoc 2.11 
+* [filters] `pandoc-citeproc` is now obsolete, use `--citeproc` instead
+* Remove pandoc 1.x compatibility
 
 20.02
 -------------------------------------------------------------------------------
