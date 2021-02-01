@@ -119,9 +119,11 @@ teardown() {
 }
 
 ## 32x: Letter
-@test "321: Generate a PDF file using the letter template" {
-  $PANDOC --pdf-engine=xelatex  --template=letter $IN/letter/letter.md -o $OUT/letter.pdf
-}
+## Disable until we fix #178
+## https://github.com/dalibo/pandocker/issues/178
+#@test "321: Generate a PDF file using the letter template" {
+#  $PANDOC --pdf-engine=xelatex  --template=letter $IN/letter/letter.md -o $OUT/letter.pdf
+#}
 
 ## 33x: Leaflet
 @test "331: Generate a PDF brochure using the leaflet template" {
