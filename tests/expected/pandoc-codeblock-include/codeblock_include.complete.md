@@ -1,13 +1,10 @@
-Test codebock include filter
-============================
+# Test codebock include filter
 
-No Inclusion
-------------
+## No Inclusion
 
     Regular codeblock
 
-Basic Inclusion
----------------
+## Basic Inclusion
 
 ``` {include="tests/input/pandoc-codeblock-include/query1.sql"}
 WITH RECURSIVE
@@ -50,16 +47,14 @@ GROUP BY Iy
 ORDER BY Iy;
 ```
 
-Inclusion of a portion
-----------------------
+## Inclusion of a portion
 
 ``` {include="tests/input/lorem" startFrom="2" endAt="3"}
 vel metus bibendum consectetur. Morbi maximus nisi velit. Donec vitae nisl et
 lacus interdum pulvinar. Curabitur aliquet varius arcu sit amet consectetur.
 ```
 
-With syntax highlight
----------------------
+## With syntax highlight
 
 ``` {.sql include="tests/input/pandoc-codeblock-include/query1.sql"}
 WITH RECURSIVE
