@@ -63,7 +63,12 @@ alpine-full: alpine-full/Dockerfile
 
 .PHONY: buster
 buster: buster/Dockerfile
-	docker build --tag $(NAME):$(TAG)-$@ --file $^ .
+	docker build \
+	    $(BUILD_OPT) \
+	    --build-arg APT_CACHER=$${APT_CACHER-} \
+	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
+	    --build-arg PANDOC_CROSSREF_VERSION=$(PANDOC_CROSSREF_VERSION) \
+	    --tag $(NAME):$(TAG)-$@ --file $^ .
 
 .PHONY: test
 test:
