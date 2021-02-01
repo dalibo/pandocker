@@ -1,13 +1,10 @@
-Test include filter
-===================
+# Test include filter
 
 this is an include statement :
 
-Kochrezepte
-===========
+# Kochrezepte
 
-Parmesansuppe
--------------
+## Parmesansuppe
 
 Zwiebeln fein hacken und die Frühlingszwiebeln in dünne Scheiben
 schneiden. In einem Topf die Zwiebeln in etwas Olivenöl anbrutzeln bis
@@ -23,8 +20,7 @@ und etwas Salz abschmecken. Das Obers unterrühren bis eine richtige
 cremige Konsistenz erreicht wurde. Die Suppe nochmals kurz aufkochen
 lassen und sofort servieren.
 
-Italienisches Landbrot
-----------------------
+## Italienisches Landbrot
 
 Das Weizenbrotmehl mit der Trockengerm verrühren und danach das warme
 Wasser einrühren. Den Teig zugedeckt ca. 1 Stunde gehen lassen. In einer
@@ -46,8 +42,7 @@ Minuten im Rohr stehen lassen.
 Danach das Brot nicht zugedeckt abkühlen lassen damit es schön knusprig
 bleibt.
 
-Dutch Babies mit Speck
-----------------------
+## Dutch Babies mit Speck
 
 Den Käse grob reiben. Eine ofenfeste Pfanne (28 cm Durchmesser) in den
 Backofen stellen und auf 220C aufheizen. In der Zwischenzeit alle

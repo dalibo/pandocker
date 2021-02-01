@@ -13,8 +13,8 @@ TAG?=$(shell git branch | grep -e "^*" | cut -d' ' -f 2)
 # These versions must be changed together.
 # See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
 # release corresponding to the desired Pandoc version.
-PANDOC_VERSION?=2.9.1
-PANDOC_CROSSREF_VERSION?=0.3.6.1a
+PANDOC_VERSION?=2.11.3
+CROSSREF_VERSION?=0.3.9.0a
 
 # Bats
 # We use bats-core instead of the original bats
@@ -63,7 +63,11 @@ alpine-full: alpine-full/Dockerfile
 
 .PHONY: buster
 buster: buster/Dockerfile
-	docker build --tag $(NAME):$(TAG)-$@ --file $^ .
+	docker build \
+	    $(BUILD_OPT) \
+	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
+	    --build-arg CROSSREF_VERSION=$(CROSSREF_VERSION) \
+	    --tag $(NAME):$(TAG)-$@ --file $^ .
 
 .PHONY: test
 test:

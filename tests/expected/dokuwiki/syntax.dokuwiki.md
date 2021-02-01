@@ -1,5 +1,4 @@
-Formatting Syntax
-=================
+# Formatting Syntax
 
 [DokuWiki](https://www.dokuwiki.org/DokuWiki) supports some simple
 markup language, which tries to make the datafiles to be as readable as
@@ -9,12 +8,10 @@ pressing \"Edit this page\". If you want to try something, just use the
 [playground](/playground/playground) page. The simpler markup is easily
 accessible via [quickbuttons](https://www.dokuwiki.org/toolbar), too.
 
-Basic Text Formatting
----------------------
+## Basic Text Formatting
 
-DokuWiki supports **bold**, *italic*, [underlined]{.underline} and
-`monospaced` texts. Of course you can **[*`combine`*]{.underline}** all
-these.
+DokuWiki supports **bold**, *italic*, [underlined]{.ul} and `monospaced`
+texts. Of course you can **[*`combine`*]{.ul}** all these.
 
     DokuWiki supports **bold**, //italic//, __underlined__ and ''monospaced'' texts.
     Of course you can **__//''combine''//__** all these.
@@ -42,8 +39,7 @@ a whitespace \\\\this happens without it.
 
 You should use forced newlines only if really needed.
 
-Links
------
+## Links
 
 DokuWiki supports multiple ways of creating links.
 
@@ -151,15 +147,13 @@ The whole [image](#images_and_other_files) and [link](#links) syntax is
 supported (including image resizing, internal and external images and
 URLs and interwiki links).
 
-Footnotes
----------
+## Footnotes
 
 You can add footnotes [^1] by using double parentheses.
 
     You can add footnotes ((This is a footnote)) by using double parentheses.
 
-Sectioning
-----------
+## Sectioning
 
 You can use up to five different levels of headlines to structure your
 content. If you have more than three headlines, a table of contents is
@@ -180,8 +174,7 @@ By using four or more dashes, you can make a horizontal line:
 
 ------------------------------------------------------------------------
 
-Media Files
------------
+## Media Files
 
 You can include external and internal [images, videos and audio
 files](https://www.dokuwiki.org/images) with curly brackets. Optionally
@@ -266,8 +259,7 @@ before the video has started. That image needs to have the same filename
 as the video and be either a jpg or png file. In the example above a
 `video.jpg` file would work.
 
-Lists
------
+## Lists
 
 Dokuwiki supports ordered and unordered lists. To create a list item,
 indent your text by two spaces and use a `*` for unordered lists or a
@@ -299,8 +291,7 @@ indent your text by two spaces and use a `*` for unordered lists or a
 Also take a look at the [FAQ on list
 items](https://www.dokuwiki.org/faq:lists).
 
-Text Conversions
-----------------
+## Text Conversions
 
 DokuWiki can convert certain pre-defined characters or strings into
 images or other text or HTML.
@@ -358,8 +349,7 @@ multiplication entity (640x480), \'single\' and \"double quotes\". They
 can be turned off through a [config
 option](https://www.dokuwiki.org/config:typography).
 
-Quoting
--------
+## Quoting
 
 Some times you want to mark some text to show it\'s a reply or comment.
 You can use the following syntax:
@@ -388,8 +378,7 @@ I think we should do it
 
 > > > Then lets do it!
 
-Tables
-------
+## Tables
 
 DokuWiki supports a simple syntax to create tables.
 
@@ -465,8 +454,7 @@ This is how it looks in the source:
 
 Note: Vertical alignment is not supported.
 
-No Formatting
--------------
+## No Formatting
 
 If you need to display text exactly like it is typed (without any
 formatting), enclose the area either with `<nowiki>` tags or even
@@ -481,8 +469,7 @@ with it. The same is true for //\_\_this\_\_ text// with a smiley ;-).
     </nowiki>
     The same is true for %%//__this__ text// with a smiley ;-)%%.
 
-Code Blocks
------------
+## Code Blocks
 
 You can include code blocks into your documents by either indenting them
 by at least two spaces (like used for the previous examples) or by using
@@ -530,11 +517,11 @@ class HelloWorldApp {
 
 The following language strings are currently recognized: *4cs 6502acme
 6502kickass 6502tasm 68000devpac abap actionscript3 actionscript ada
-aimms algol68 apache applescript apt\_sources arm asm asp asymptote
+aimms algol68 apache applescript apt_sources arm asm asp asymptote
 autoconf autohotkey autoit avisynth awk bascomavr bash basic4gl batch bf
 biblatex bibtex blitzbasic bnf boo caddcl cadlisp ceylon cfdg cfm
-chaiscript chapel cil c\_loadrunner clojure c\_mac cmake cobol
-coffeescript c cpp cpp-qt cpp-winapi csharp css cuesheet c\_winapi dart
+chaiscript chapel cil c_loadrunner clojure c_mac cmake cobol
+coffeescript c cpp cpp-qt cpp-winapi csharp css cuesheet c_winapi dart
 dcl dcpu16 dcs delphi diff div dos dot d ecmascript eiffel email epc e
 erlang euphoria ezt f1 falcon fo fortran freebasic freeswitch fsharp
 gambas gdb genero genie gettext glsl gml gnuplot go groovy gwbasic
@@ -554,7 +541,7 @@ smarty spark sparql sql standardml stonescript swift systemverilog
 tclegg tcl teraterm texgraph text thinbasic tsql twig typoscript unicon
 upc urbi uscript vala vbnet vb vbscript vedit verilog vhdl vim
 visualfoxpro visualprolog whitespace whois winbatch xbasic xml xojo
-xorg\_conf xpp yaml z80 zxbasic*
+xorg_conf xpp yaml z80 zxbasic*
 
 There are additional [advanced
 options](https://www.dokuwiki.org/syntax_highlighting) available for
@@ -577,8 +564,7 @@ specifying a file name after language code like this:
 If you don\'t want any highlighting but want a downloadable file,
 specify a dash (`-`) as the language code: `<code - myfile.foo>`.
 
-Embedding HTML and PHP
-----------------------
+## Embedding HTML and PHP
 
 You can embed raw HTML or PHP code into your documents by using the
 `<html>` or `<php>` tags. (Use uppercase tags if you need to enclose
@@ -628,8 +614,7 @@ echo '</tr></table>';
 **Please Note**: HTML and PHP embedding is disabled by default in the
 configuration. If disabled, the code is displayed instead of executed.
 
-RSS/ATOM Feed Aggregation
--------------------------
+## RSS/ATOM Feed Aggregation
 
 [DokuWiki](DokuWiki) can integrate data from external XML feeds. For
 parsing the XML feeds, [SimplePie](http://simplepie.org/) is used. All
@@ -664,8 +649,7 @@ feed as is with `nosort`.
 
 ![//slashdot.org/index.rss 5 author date 1h](/rss>http///slashdot.org/index.rss 5 author date 1h){.align-left}
 
-Control Macros
---------------
+## Control Macros
 
 Some syntax influences how DokuWiki renders a page without creating any
 output it self. The following control macros are availble:
@@ -675,8 +659,7 @@ output it self. The following control macros are availble:
   \~\~NOTOC\~\~     If this macro is found on the page, no table of contents will be created
   \~\~NOCACHE\~\~   DokuWiki caches all output by default. Sometimes this might not be wanted (eg. when the \<php\> syntax above is used), adding this macro will force DokuWiki to rerender a page on every call
 
-Syntax Plugins
---------------
+## Syntax Plugins
 
 DokuWiki\'s syntax can be extended by
 [Plugins](https://www.dokuwiki.org/plugins). How the installed plugins
