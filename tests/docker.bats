@@ -240,10 +240,11 @@ teardown() {
 }
 
 ## 53x: pandoc-citeproc + pandoc-crossref
+## pandoc-citeproc is deprecated, we test --citeproc instead
 @test "531: Generate a PDF file using the citeproc filter" {
   DIR=pandoc-citeproc
   $PANDOC $IN/$DIR/citeproc.md \
-          --filter pandoc-citeproc \
+          --citeproc \
           --bibliography=$IN/$DIR/citeproc.bibtex \
           -M link-citations \
           -o $OUT/$DIR/citeproc.pdf
