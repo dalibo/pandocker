@@ -1,4 +1,4 @@
-name: Alpine Image Regression Tests
+name: Alpine Image (alt) Regression Tests
 
 on: [push, workflow_dispatch]
 

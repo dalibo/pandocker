@@ -1,4 +1,4 @@
-name: Buster Image Regression Tests
+name: Buster Image (main) Regression Tests
 
 on: [push, workflow_dispatch]
 
