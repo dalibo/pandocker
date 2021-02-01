@@ -119,10 +119,10 @@ RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements
 # This version must correspond to the correct PANDOC_VERSION.
 # See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
 # release corresponding to the desired pandoc version.
-ARG PANDOC_CROSSREF_VERSION=0.3.9.0a
-ADD fetch-pandoc-crossref.sh /usr/local/bin/
-RUN fetch-pandoc-crossref.sh ${PANDOC_VERSION} ${PANDOC_CROSSREF_VERSION} ./cache/pandoc-crossref.tar.xz && \
-    tar xf ./cache/pandoc-crossref.tar.xz && \
+ARG CROSSREF_REPO=https://github.com/lierdakil/pandoc-crossref/releases/download/
+ARG CROSSREF_VERSION=0.3.9.0a
+RUN wget ${CROSSREF_REPO}/v${CROSSREF_VERSION}/pandoc-crossref-Linux.tar.xz -O /tmp/pandoc-crossref.tar.xz && \
+    tar xf /tmp/pandoc-crossref.tar.xz && \
     install pandoc-crossref /usr/local/bin/ && \
     install -d /usr/local/man/man1 && \
     install pandoc-crossref.1 /usr/local/man/man1/
