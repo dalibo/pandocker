@@ -183,9 +183,9 @@ teardown() {
 
 ## 44x: Emojis
 @test "441: Generate a PDF file containing emojis" {
-  if [ $VARIANT = 'buster' ]; then
+  #if [ $VARIANT = 'buster' ]; then
     skip "Emojis support is not fully functionnal with buster (see issue #176)"
-  fi
+  #fi
   DIR=emojis
   $PANDOC $IN/$DIR/emojis.md \
           --pdf-engine=xelatex \
