@@ -152,6 +152,15 @@ teardown() {
           -o $OUT/$DIR/markdown_nl.pdf
 }
 
+@test "413:  Generate a PDF file containing Persian characters" {
+  DIR=german
+  $PANDOC --pdf-engine=xelatex \
+##          --template=$IN/$DIR/template_fa.tex \
+          $IN/$DIR/markdown_fa.md \
+          -o $OUT/$DIR/markdown_fa.pdf
+}
+
+
 ## 42x: Fonts
 @test "421: Generate a PDF file with the Deja Vu font" {
   DIR=fonts

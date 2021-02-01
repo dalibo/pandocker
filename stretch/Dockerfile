@@ -33,6 +33,7 @@ RUN set -x && \
         # latex toolchain
         lmodern \
         texlive \
+        texlive-lang-arabic \
         texlive-lang-french \
         texlive-lang-german \
         texlive-lang-european \
