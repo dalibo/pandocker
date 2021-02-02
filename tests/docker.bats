@@ -152,7 +152,7 @@ teardown() {
           -o $OUT/$DIR/markdown_nl.pdf
 }
 
-@test "413:  Generate a PDF file containing Persian characters" {
+@test "413: Generate a PDF file containing Persian characters" {
   DIR=persian
   $PANDOC --pdf-engine=xelatex \
           --variable mainfont='Nazli' \
