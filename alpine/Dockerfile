@@ -6,7 +6,8 @@ RUN apk --no-cache add \
         rsync \
         openssh-client \
         fontconfig \
-        ttf-liberation
+        ttf-liberation \
+        dia
 
 RUN tlmgr update --self && \
     tlmgr install \
@@ -106,8 +107,8 @@ RUN mkdir -p ${TEMPLATES_DIR} && \
 
 # eisvogel template
 ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template
-ARG EISVOGEL_VERSION=v1.4.0
-RUN wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
+ARG EISVOGEL_VERSION=2.0.0
+RUN wget ${EISVOGEL_REPO}/v${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 
 # letter template
 ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
