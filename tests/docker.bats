@@ -160,6 +160,13 @@ teardown() {
           -o $OUT/$DIR/markdown_fa.pdf
 }
 
+@test "414: Generate a PDF file containing Hindi characters" {
+  DIR=hindi
+  $PANDOC --pdf-engine=xelatex \
+          --variable mainfont='Devanagari' \
+          $IN/$DIR/markdown_hi.md \
+          -o $OUT/$DIR/markdown_hi.pdf
+}
 
 ## 42x: Fonts
 @test "421: Generate a PDF file with the Deja Vu font" {

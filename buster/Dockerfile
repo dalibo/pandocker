@@ -42,6 +42,8 @@ RUN set -x && \
         texlive-pstricks \
         texlive-xetex \
         xzdec \
+        # hindi fonts
+        fonts-deva \
         # persian fonts
         fonts-farsiweb \
         # reveal (see issue #18)
