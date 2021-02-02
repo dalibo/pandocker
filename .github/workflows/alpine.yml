@@ -1,6 +1,8 @@
 name: Alpine Image (alt) Regression Tests
 
-on: [push, workflow_dispatch]
+# disable automatic testing for Alpine until we decide what goes in alpine vs. alpine-full
+# on: [push, workflow_dispatch] 
+on: [workflow_dispatch]
 
 jobs:
 
