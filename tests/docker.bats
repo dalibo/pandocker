@@ -153,9 +153,9 @@ teardown() {
 }
 
 @test "413:  Generate a PDF file containing Persian characters" {
-  DIR=german
+  DIR=persian
   $PANDOC --pdf-engine=xelatex \
-##          --template=$IN/$DIR/template_fa.tex \
+          --variable mainfont='Nazli' \
           $IN/$DIR/markdown_fa.md \
           -o $OUT/$DIR/markdown_fa.pdf
 }

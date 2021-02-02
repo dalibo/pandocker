@@ -77,6 +77,7 @@ authors:
 	git shortlog -s -n
 
 clean:
+	find tests/output -type f -and -not -name .keep -delete
 	docker rmi $(NAME):$(TAG)
 
 warm-cache:

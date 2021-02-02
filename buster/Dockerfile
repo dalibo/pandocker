@@ -33,7 +33,7 @@ RUN set -x && \
         # latex toolchain
         ghostscript \
         lmodern \
-        texlive \
+        texlive-lang-arabic \
         texlive-lang-french \
         texlive-lang-german \
         texlive-lang-european \
@@ -41,6 +41,8 @@ RUN set -x && \
         texlive-pstricks \
         texlive-xetex \
         xzdec \
+        # persian fonts
+        fonts-farsiweb \
         # reveal (see issue #18)
         netbase \
         # dia
