@@ -155,6 +155,7 @@ teardown() {
 @test "413: Generate a PDF file containing Persian characters" {
   DIR=persian
   $PANDOC --pdf-engine=xelatex \
+          --template=eisvogel \
           --variable mainfont='Nazli' \
           $IN/$DIR/markdown_fa.md \
           -o $OUT/$DIR/markdown_fa.pdf
@@ -163,7 +164,8 @@ teardown() {
 @test "414: Generate a PDF file containing Hindi characters" {
   DIR=hindi
   $PANDOC --pdf-engine=xelatex \
-          --variable mainfont='Devanagari' \
+          --template=eisvogel \
+          --variable mainfont='Lohit Devanagari' \
           $IN/$DIR/markdown_hi.md \
           -o $OUT/$DIR/markdown_hi.pdf
 }
