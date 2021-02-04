@@ -161,7 +161,7 @@ teardown() {
           -o $OUT/$DIR/markdown_fa.pdf
 }
 
-@test "413: Generate a PDF file containing Persian characters" {
+@test "414: Generate a PDF file containing Hindi characters" {
   DIR=persian
   $PANDOC --pdf-engine=xelatex \
           --template eisvogel \
