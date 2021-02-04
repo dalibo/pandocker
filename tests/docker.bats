@@ -155,11 +155,20 @@ teardown() {
 @test "413: Generate a PDF file containing Persian characters" {
   DIR=persian
   $PANDOC --pdf-engine=xelatex \
+          --template eisvogel \
           --variable mainfont='Nazli' \
           $IN/$DIR/markdown_fa.md \
           -o $OUT/$DIR/markdown_fa.pdf
 }
 
+@test "414: Generate a PDF file containing Hindi characters" {
+  DIR=persian
+  $PANDOC --pdf-engine=xelatex \
+          --template eisvogel \
+          --variable mainfont='Lohit Devanagari' \
+          $IN/$DIR/markdown_fa.md \
+          -o $OUT/$DIR/markdown_fa.pdf
+}
 
 ## 42x: Fonts
 @test "421: Generate a PDF file with the Deja Vu font" {
