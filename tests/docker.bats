@@ -152,23 +152,6 @@ teardown() {
           -o $OUT/$DIR/markdown_nl.pdf
 }
 
-@test "413: Generate a PDF file containing Persian characters" {
-  DIR=persian
-  $PANDOC --pdf-engine=xelatex \
-          --template eisvogel \
-          --variable mainfont='Nazli' \
-          $IN/$DIR/markdown_fa.md \
-          -o $OUT/$DIR/markdown_fa.pdf
-}
-
-@test "414: Generate a PDF file containing Hindi characters" {
-  DIR=persian
-  $PANDOC --pdf-engine=xelatex \
-          --template eisvogel \
-          --variable mainfont='Lohit Devanagari' \
-          $IN/$DIR/markdown_fa.md \
-          -o $OUT/$DIR/markdown_fa.pdf
-}
 
 ## 42x: Fonts
 @test "421: Generate a PDF file with the Deja Vu font" {
@@ -190,31 +173,6 @@ teardown() {
   $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
           -o $OUT/$DIR/fonts_lato.pdf \
           --variable mainfont="Liberation Serif"
-}
-
-#@test "424: Generate a PDF file with the Noto font" {
-#  DIR=fonts
-#  $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
-#          -o $OUT/$DIR/fonts_noto.pdf \
-#          --variable mainfont="Noto Sans"
-#}
-
-## 44x: Emojis
-@test "441: Generate a PDF file containing emojis" {
-  #if [ $VARIANT = 'buster' ]; then
-    skip "Emojis support is not fully functionnal with buster (see issue #176)"
-  #fi
-  DIR=emojis
-  $PANDOC $IN/$DIR/emojis.md \
-          --pdf-engine=xelatex \
-          -o $OUT/$DIR/emojis.pdf
-}
-
-# Bug #75 : https://github.com/dalibo/pandocker/issues/75
-@test "442: Generate an HTML file containing weird emojis" {
-  DIR=emojis
-  $PANDOC $IN/$DIR/magicienletter.md -o $OUT/$DIR/magicienletter.html
-  $DIFF $OUT/$DIR/magicienletter.html $EXP/$DIR/magicienletter.html
 }
 
 
@@ -288,11 +246,4 @@ teardown() {
 ##
 ## 9xx: Other entrypoints
 ##
-
-@test "911: Generate a SVG image with dia" {
-    DIR=dia
-    DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
-    $DIA $IN/$DIR/db.dia --export $OUT/$DIR/db.svg
-}
-
 

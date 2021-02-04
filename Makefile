@@ -67,11 +67,23 @@ buster: buster/Dockerfile
 	    $(BUILD_OPT) \
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
 	    --build-arg CROSSREF_VERSION=$(CROSSREF_VERSION) \
-	    --tag $(NAME):$@-$(TAG) --file $^ .
+	    --tag $(NAME):$@-$(TAG) \
+	    --file $^ .
+
+.PHONY: buster-full
+buster-full: buster-full/Dockerfile
+	docker build \
+	    $(BUILD_OPT) \
+	    --tag $(NAME):$@-$(TAG) \
+	    --file $^ .
 
 .PHONY: test
 test:
 	$(BATS) $(BATS_FILTER) tests/docker.bats
+
+.PHONY: test-full
+test-full:
+	$(BATS) $(BATS_FILTER) tests/full.bats
 
 authors:
 	git shortlog -s -n

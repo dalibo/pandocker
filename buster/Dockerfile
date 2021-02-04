@@ -34,7 +34,6 @@ RUN set -x && \
         ghostscript \
         lmodern \
         texlive \
-        texlive-lang-arabic \
         texlive-lang-french \
         texlive-lang-german \
         texlive-lang-european \
@@ -42,19 +41,12 @@ RUN set -x && \
         texlive-pstricks \
         texlive-xetex \
         xzdec \
-        # hindi fonts
-        fonts-deva \
-        # persian fonts
-        fonts-farsiweb \
         # reveal (see issue #18)
         netbase \
-        # dia
-        dia \
         # fonts
         fonts-dejavu \
         fonts-lato \
         fonts-liberation \
-#        fonts-noto \    # /!\ noto = 63Mo
         # build tools
         make \
         git \
@@ -69,8 +61,6 @@ RUN set -x && \
         # required for PDF meta analysis
         poppler-utils \
         zlibc \
-        # for emojis
-        librsvg2-bin \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
@@ -193,31 +183,8 @@ RUN wget ${LEAFLET_REPO}/${LEAFLET_VERSION}/leaflet.latex -O ${TEMPLATES_DIR}/le
 
 
 ##
-## M I S C
+## E N D
 ##
-
-#
-# emojis support for latex
-# https://github.com/mreq/xelatex-emoji
-#
-ARG TEXMF=/usr/share/texmf/tex/latex/
-ARG EMOJI_DIR=/tmp/twemoji
-RUN git clone --single-branch --depth=1 --branch gh-pages https://github.com/twitter/twemoji.git $EMOJI_DIR && \
-    # fetch xelatex-emoji
-    mkdir -p ${TEXMF} && \
-    cd ${TEXMF} && \
-    git clone --single-branch --branch images https://github.com/daamien/xelatex-emoji.git && \
-    # convert twemoji SVG files into PDF files
-    cp -r $EMOJI_DIR/2/svg xelatex-emoji/images && \
-    cd xelatex-emoji/images && \
-    ../bin/convert_svgs_to_pdfs ./*.svg && \
-    # clean up
-    rm -f *.svg && \
-    rm -fr ${EMOJI_DIR} && \
-    # update texlive
-    cd ${TEXMF} && \
-    texhash
-
 VOLUME /pandoc
 WORKDIR /pandoc
 

@@ -4,5 +4,5 @@ cache/*
 *.swo
 tmp-*
 tests/output/
-tests/docker.bats.log
+tests/*.bats.log
 missfont.log

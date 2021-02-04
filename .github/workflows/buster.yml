@@ -4,10 +4,8 @@ on: [push, workflow_dispatch]
 
 jobs:
 
-  build:
-
+  extra:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
 
@@ -19,3 +17,17 @@ jobs:
 
     - name: Regression Tests
       run: TAG=xxxxx-test-githubci-buster VARIANT=buster ./tests/libs/bats-core/bin/bats tests/docker.bats --tap
+
+  full:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
+    - name: Build the Docker image
+      run: docker build . --file buster-full/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-buster-full
+
+    - name: Regression Tests
+      run: TAG=xxxxx-test-githubci-buster-full VARIANT=buster-full ./tests/libs/bats-core/bin/bats tests/full.bats --tap
