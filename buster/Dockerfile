@@ -37,6 +37,7 @@ RUN set -x && \
         texlive-lang-french \
         texlive-lang-german \
         texlive-lang-european \
+        texlive-lang-spanish \
         texlive-luatex \
         texlive-pstricks \
         texlive-xetex \
