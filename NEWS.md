@@ -1,3 +1,116 @@
+
+Pandocker 21.02: Major upgrade
+================================================================================
+
+Paris, March 1rst, 2021
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain
+based on `pandoc` with filters, templates, fonts, and the latex bazaar
+
+It allows you to generate slides and documents without installing the required
+depencies on your machine. It is also very usefull to integrate pandoc into
+a CI workflow such as Github Actions, Gitlab Pipelines, etc.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
+```
+
+This image is available under BSD Licence and it has 2 main tags:
+
+* `stable` should be used in production
+* `stable-full` for non-european languages
+* `latest` and `latest-full` are the development versions
+
+You can also retrieve older versions by their version number:
+`dalibo/pandocker:19.11`, `dalibo/pandocker:21.02-full`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+Major Upgrades
+--------------------------------------------------------------------------------
+
+This new version is now based on Debian 10 buster (instead of Stretch) with
+pandoc 2.11 and the version 2.0 of the eisvogel template. We have done careful
+regression tests but these changes may introduce minor changes in the rendered
+output of your documents. Please open a ticket if you notice a problematic
+behaviour.
+
+
+Support for Arabic, Persian, Hindi and CJK languages
+--------------------------------------------------------------------------------
+
+The docker image has now a new variant named `full` that will included
+non-european fonts, especially the complete [Noto font]. This font family is
+designed to support all languages.
+
+[Noto font]: https://www.google.com/get/noto/
+
+We also included latex font packages such as [devanagari] for Hindi and
+[farsiweb] for Persian. Right-to-Left typesetting is also supported.
+
+[devanagari]: https://www.ctan.org/pkg/devanagari
+[farsiweb]: https://packages.debian.org/sid/fonts-farsiweb
+
+To use these fonts, you can simply define the `mainfont` variable inside the
+markdown front-matter or via the pandoc command line with the `-v` (or
+`--variable` option) :
+
+```shell
+docker run [...] dalibo/pandocker [...] hindi.md -o hindi.pdf -v mainfont='Lohit Devanagari'
+```
+
+For Noto:
+
+```shell
+docker run [...] dalibo/pandocker [...] foo.md -o foo.pdf -v mainfont='Noto Sans'
+```
+
+**IMPORTANT:** The `full` docker image size is approx. 800MB whereas the regular
+is "only" 320 MB. We recommend that you use the `full` variant only when needed
+and prefer the regular variant for basic use cases.
+
+The support for Hindi and Persian was sponsored by the [OWASP Foundation]. Many
+thanks to them ! Many thanks also to @iapellaniz and @vvishnyakov who contributed
+to the release.
+
+[OWASP Foundation]: https://owasp.org/
+[Noto font]: https://www.google.com/get/noto/
+[devanagari]: https://www.ctan.org/pkg/devanagari
+[farsiweb]: https://packages.debian.org/sid/fonts-farsiweb
+
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Job>
+
+
+
+---
+
+
 Pandocker 20.02: the palindrome edition !
 ================================================================================
 

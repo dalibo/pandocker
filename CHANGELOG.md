@@ -24,6 +24,8 @@ __Changes__
 * [full] Add support for Persian ( Sponsored by OWASP Foundation )
 * [full] restore Noto Font
 * [filters] `pandoc-citeproc` is now obsolete, use `--citeproc` instead
+* [fonts] Add fontawesome5 to allow awesomebox to work (@vvishnyakov)
+* Add support for Spanish in latex (@iapellaniz)
 * Remove pandoc 1.x compatibility
 * Disable Circle CI
 
