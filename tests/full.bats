@@ -3,6 +3,8 @@
 ##
 ## Testing the full variant
 ##
+## Example: TAG=stable TEXT_ONLY=1411 bats full.bats
+##
 
 log() {
   local -r log="$BATS_TEST_DIRNAME/${BATS_TEST_FILENAME##*/}.log"
@@ -22,7 +24,6 @@ initial_setup(){
 }
 
 setup() {
-  # use `TAG=stable bats docker.bats` to test the stable version
   export TAG=${TAG:-latest}
   export VARIANT=${VARIANT:-}
   log "setup: TAG = $TAG & VARIANT=$VARIANT"
@@ -33,7 +34,8 @@ setup() {
   export EXP=tests/expected
   export OUT=tests/output
   if [ "${BATS_TEST_NUMBER}" = 1 ];then
-    initial_setup
+    $
+initial_setup
   fi
 }
 

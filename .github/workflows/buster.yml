@@ -16,7 +16,7 @@ jobs:
       run: docker build . --file buster/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-buster
 
     - name: Regression Tests
-      run: TAG=xxxxx-test-githubci-buster VARIANT=buster ./tests/libs/bats-core/bin/bats tests/docker.bats --tap
+      run: TAG=xxxxx-test-githubci-buster VARIANT=buster ./tests/libs/bats-core/bin/bats tests/extra.bats --tap
 
   full:
     runs-on: ubuntu-latest

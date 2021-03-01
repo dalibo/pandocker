@@ -1,5 +1,7 @@
 #!/usr/bin/env bats
 
+## Example: TAG=stable TEXT_ONLY=413 bats extra.bats
+
 ##
 ## Useful fonctions
 ##
@@ -22,7 +24,6 @@ initial_setup(){
 }
 
 setup() {
-  # use `TAG=stable bats docker.bats` to test the stable version
   export TAG=${TAG:-latest}
   export VARIANT=${VARIANT:-}
   log "setup: TAG = $TAG & VARIANT=$VARIANT"
@@ -152,10 +153,9 @@ teardown() {
           -o $OUT/$DIR/markdown_nl.pdf
 }
 
-@test "413: Generate a PDF file containing Spanish characters" {
+@test "413: a PDF file containing Spanish characters" {
   DIR=spanish
   $PANDOC --pdf-engine=xelatex \
-          --template=$IN/$DIR/template_es.tex \
           $IN/$DIR/markdown_es.md \
           -o $OUT/$DIR/markdown_es.pdf
 }

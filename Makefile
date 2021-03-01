@@ -79,7 +79,7 @@ buster-full: buster-full/Dockerfile
 
 .PHONY: test
 test:
-	$(BATS) $(BATS_FILTER) tests/docker.bats
+	$(BATS) $(BATS_FILTER) tests/extra.bats
 
 .PHONY: test-full
 test-full:

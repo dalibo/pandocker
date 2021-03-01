@@ -1,7 +1,7 @@
 name: Alpine Image (alt) Regression Tests
 
 # disable automatic testing for Alpine until we decide what goes in alpine vs. alpine-full
-# on: [push, workflow_dispatch] 
+# on: [push, workflow_dispatch]
 on: [workflow_dispatch]
 
 jobs:
@@ -20,4 +20,4 @@ jobs:
       run: docker build . --file alpine/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-xxxxx
 
     - name: Regression Tests
-      run: TAG=xxxxx-test-githubci-xxxxx VARIANT=alpine ./tests/libs/bats-core/bin/bats tests/docker.bats --tap
+      run: TAG=xxxxx-test-githubci-xxxxx VARIANT=alpine ./tests/libs/bats-core/bin/bats tests/extra.bats --tap

@@ -1,5 +1,9 @@
 # Upgrade the Pandocker toolchain
 
+> WARNING: This page is not maintained anymore and we are planning to remove
+> it in further versions. Please open an issue if this was useful to you.
+
+
 ## With docker
 
 ```

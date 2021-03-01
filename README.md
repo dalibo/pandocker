@@ -3,7 +3,7 @@
 [![github
 release](https://img.shields.io/github/release/dalibo/pandocker.svg?label=current+release)](https://github.com/dalibo/pandocker/releases)
 [![Docker Image](https://images.microbadger.com/badges/image/dalibo/pandocker.svg)](https://hub.docker.com/r/dalibo/pandocker)
-[![CI](https://circleci.com/gh/dalibo/pandocker.svg?style=shield)](https://circleci.com/gh/dalibo/pandocker)
+[![CI buster](https://github.com/dalibo/pandocker/actions/workflows/buster.yml/badge.svg?branch=latest)](https://github.com/dalibo/pandocker/actions/workflows/buster.yml)
 [![License](https://img.shields.io/github/license/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/blob/master/LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/branches)
 
@@ -122,14 +122,28 @@ The pandocker image includes the following open-source fonts:
 * Lato: https://fonts.google.com/specimen/Lato
 * Liberation: https://github.com/liberationfonts/liberation-fonts
 
+The full variant includes
 
-## Supported Tags
+* Noto: https://www.google.com/get/noto/
 
-You can use 3 different versions of this machine with the following tags:
+## Supported Tags : Branch + Variant + Parent
 
-* `latest`: this is the default
-* `latest-alpine` : the latest version, based on alpine
-* `stable` or `20.02`: for production
+The image is available in multiple versions named as follows:
+
+`branch[-parent[-variant]]`
+
+* The __branch__ can be `latest` (default) or `stable` (for production)
+  or the release name (`20.02`)
+* The __parent__ is the base image we are using. Either `buster` (default)
+  or `alpine`
+* The __variant__ is either `extra` (330MB) or `full` (810 MB)
+
+The supported tags are :
+
+* `latest`, `latest-buster`, `latest-buster-extra` (default)
+* `latest-buster-full`
+* `stable`, `stable-buster`, `stable-buster-extra`
+* `stable-buster-full`
 
 Other tags are not supported and should be used with care.
 
