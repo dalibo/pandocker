@@ -1,24 +1,31 @@
 Changelog
 ===============================================================================
 
-21.02 - WIP
+21.02
 -------------------------------------------------------------------------------
 
 __Stack__
 
-* Debian 10 buster ( or alpine ) 
+* Debian 10 buster
 * Pandoc 2.11
-* Eisvogel FIXME
+* Eisvogel 2.0
 
 __Changes__
 
 <https://github.com/dalibo/pandocker/milestone/11>
 
 * Upgrade to debian buster
+* Upgrade to pandoc 2.11
+* Upgrade to eisvogel 2.0
+* Add an experimental alpine variant based on `pandoc:latex`
+* Create a `latest-buster-full` tag for huge packages
 * Archive the debian stretch version
-* Upgrade to pandoc 2.11 
+* [full] Add support for Hindi ( Sponsored by OWASP Foundation )
+* [full] Add support for Persian ( Sponsored by OWASP Foundation )
+* [full] restore Noto Font
 * [filters] `pandoc-citeproc` is now obsolete, use `--citeproc` instead
 * Remove pandoc 1.x compatibility
+* Disable Circle CI
 
 20.02
 -------------------------------------------------------------------------------
