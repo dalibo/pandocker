@@ -1,5 +1,7 @@
 #!/usr/bin/env bats
 
+## Example: TAG=stable TEXT_ONLY=413 bats extra.bats
+
 ##
 ## Useful fonctions
 ##
@@ -22,7 +24,6 @@ initial_setup(){
 }
 
 setup() {
-  # use `TAG=stable bats docker.bats` to test the stable version
   export TAG=${TAG:-latest}
   export VARIANT=${VARIANT:-}
   log "setup: TAG = $TAG & VARIANT=$VARIANT"
