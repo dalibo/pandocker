@@ -4,6 +4,9 @@ author: Miguel de Cervantes
 date: 2021-02-22
 version: 20210222
 status: DRAFT
+
+header-includes: |
+    \usepackage[spanish]{babel}
 ---
 
 # Famoso comienzo
@@ -23,3 +26,4 @@ Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay a
 Pero esto importa poco a nuestro cuento: basta que en la narración dél no se salga un punto de la verdad.
 Es, pues, de saber que este sobredicho hidalgo, los ratos que estaba ocioso -que eran los más del año-, se daba a leer libros de caballerías, con tanta afición y gusto que olvidó casi de todo punto el ejercicio de la caza, y aun la administración de su hacienda; y llegó a tanto su curiosidad y desatino en esto, que vendió muchas hanegas de tierra de sembradura para comprar libros de caballerías en que leer, y así, llevó a su casa todos cuantos pudo haber dellos.
 Y, de todos, ningunos le parecían tan bien como los que compuso el famoso Feliciano de Silva, porque la claridad de su prosa y aquellas entricadas razones suyas le parecían de perlas; y más cuando llegaba a leer aquellos requiebros y cartas de desafíos, donde en muchas partes hallaba escrito: La razón de la sinrazón que a mi razón se hace, de tal manera mi razón enflaquece, que con razón me quejo de la vuestra fermosura. Y también cuando leía: los altos cielos que de vuestra divinidad divinamente con las estrellas os fortifican, y os hacen merecedora del merecimiento que merece la vuestra grandeza.
+
