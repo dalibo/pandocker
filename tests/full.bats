@@ -33,9 +33,9 @@ setup() {
   export IN=tests/input
   export EXP=tests/expected
   export OUT=tests/output
+  log "NUMBER = ${BATS_TEST_NUMBER}"
   if [ "${BATS_TEST_NUMBER}" = 1 ];then
-    $
-initial_setup
+    initial_setup
   fi
 }
 
