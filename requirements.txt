@@ -1,4 +1,4 @@
-panflute==1.11
+panflute==2.0.5
 pandocfilters==1.4
 pandoc-codeblock-include==0.1
 pandoc-include==0.4
