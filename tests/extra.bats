@@ -245,7 +245,7 @@ teardown() {
 # https://github.com/dalibo/pandocker/issues/207
 @test "533: pandoc-crossref version is correct" {
   DIR=pandoc-crossref
-  run $PANDOC $IN/$DIR/empty.md
+  run $PANDOC $IN/$DIR/empty.md \
               --filter pandoc-crossref \
               --to markdown \
               --output /dev/null
