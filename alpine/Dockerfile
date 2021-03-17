@@ -7,7 +7,8 @@ RUN apk --no-cache add \
         openssh-client \
         fontconfig \
         ttf-liberation \
-        dia
+        dia \
+        librsvg
 
 RUN tlmgr update --self && \
     tlmgr install \
@@ -31,7 +32,7 @@ RUN tlmgr update --self && \
         hyphen-dutch \
         #lang-german: https://packages.debian.org/sid/texlive-lang-german
         babel-german \
-        xpatch \ 
+        xpatch \
         #lang-spanish: https://packages.debian.org/unstable/texlive-lang-spanish
         babel-spanish \
         hyphen-spanish \

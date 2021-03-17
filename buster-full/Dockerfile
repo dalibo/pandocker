@@ -41,7 +41,7 @@ RUN set -x && \
         fonts-noto-core \
         fonts-noto-extra \
         fonts-noto-mono \
-        # for emojis
+        # for emojis and SVG conversion
         librsvg2-bin \
     # clean up
     && apt-get clean && \

@@ -62,6 +62,8 @@ RUN set -x && \
         # required for PDF meta analysis
         poppler-utils \
         zlibc \
+        # svg conversion
+        librsvg2-bin \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/01proxy
