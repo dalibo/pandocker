@@ -10,4 +10,4 @@ pandoc-minted==0.2
 pandoc-mustache==0.1
 pandoc-dalibo-guidelines==1.1.1
 PyPDF2==1.26
-Pygments==2.4
+Pygments==2.7.4
