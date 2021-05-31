@@ -235,7 +235,7 @@ teardown() {
 
 @test "532: A markdown file using the crossref filter" {
   DIR=pandoc-crossref
-  run $PANDOC --filter pandoc-crossref \
+  $PANDOC --filter pandoc-crossref \
           $IN/$DIR/crossref.md \
           -o $OUT/$DIR/crossref.md
   $DIFF $OUT/$DIR/crossref.md $EXP/$DIR/crossref.md
