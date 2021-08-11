@@ -215,7 +215,7 @@ browsers), too.
 
     {{ wiki:dokuwiki-128.png |This is the caption}}
 
-For linking an image to another page see [\#Image Links](#Image Links)
+For linking an image to another page see [#Image Links](#Image Links)
 above.
 
 ### Supported Media Formats
@@ -335,8 +335,8 @@ Typography: [DokuWiki](DokuWiki) can convert simple text characters to
 their typographically correct entities. Here is an example of recognized
 characters.
 
--\> \<- \<-\> =\> \<= \<=\> \>\> \<\< \-- \-\-- 640x480 (c) (tm) (r)
-\"He thought \'It\'s a man\'s world\'\...\"
+-\> \<- \<-\> => \<= \<=> \>\> \<\< \-- \-\-- 640x480 (c) (tm) (r) \"He
+thought \'It\'s a man\'s world\'\...\"
 
     -> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
     "He thought 'It's a man's world'..."
@@ -503,7 +503,7 @@ the previous section, but this time the name of the language syntax to
 be highlighted is included inside the tag, e.g. `<code java>` or
 `<file java>`.
 
-``` {.java}
+``` java
 /**
  * The HelloWorldApp class implements an application that
  * simply displays "Hello World!" to the standard output.
@@ -557,7 +557,7 @@ specifying a file name after language code like this:
     <?php echo "hello world!"; ?>
     </file>
 
-``` {.php}
+``` php
 <?php echo "hello world!"; ?>
 ```
 
@@ -605,7 +605,7 @@ echo phpversion();
 echo ' (inline HTML)';
 `{.php}
 
-``` {.php}
+``` php
 echo '<table class="inline"><tr><td>The same, but inside a block level element:</td>';
 echo '<td>'.phpversion().'</td>';
 echo '</tr></table>';
@@ -655,9 +655,9 @@ Some syntax influences how DokuWiki renders a page without creating any
 output it self. The following control macros are availble:
 
   Macro             Description
-  ----------------- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ----------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   \~\~NOTOC\~\~     If this macro is found on the page, no table of contents will be created
-  \~\~NOCACHE\~\~   DokuWiki caches all output by default. Sometimes this might not be wanted (eg. when the \<php\> syntax above is used), adding this macro will force DokuWiki to rerender a page on every call
+  \~\~NOCACHE\~\~   DokuWiki caches all output by default. Sometimes this might not be wanted (eg. when the \<php> syntax above is used), adding this macro will force DokuWiki to rerender a page on every call
 
 ## Syntax Plugins
 
