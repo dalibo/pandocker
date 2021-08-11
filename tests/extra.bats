@@ -73,16 +73,20 @@ teardown() {
   echo "status = $status"
 }
 
-@test "111: Generate a reveal presentation" {
-  $PANDOC -t revealjs $IN/sample-presentation.md -o $OUT/sample-presentation.reveal.html
+@test "111: A reveal presentation" {
+  $PANDOC -t revealjs $IN/sample-presentation.md \
+          --standalone \
+          -V revealjs-url:https://unpkg.com/reveal.js@4/ \
+          -o $OUT/sample-presentation.reveal.html
 }
 
 # Check bug #18 : https://github.com/dalibo/pandocker/issues/18
-@test "112: Generate a self-contained reveal presentation" {
+@test "112: A self-contained reveal presentation built offline" {
   $PANDOC -t revealjs $IN/sample-presentation.md \
-          --standalone --self-contained \
-          -V revealjs-url:https://revealjs.com/ \
-          -o $OUT/sample-presentation.reveal.standalone.html
+          --standalone \
+          --self-contained \
+          -V theme:beige \
+          -o $OUT/sample-presentation.reveal.selfcontained.html
 }
 
 @test "121: Generate a presentation handout" {

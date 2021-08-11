@@ -31,7 +31,7 @@ RUN tlmgr update --self && \
         hyphen-dutch \
         #lang-german: https://packages.debian.org/sid/texlive-lang-german
         babel-german \
-        xpatch \ 
+        xpatch \
         #lang-spanish: https://packages.debian.org/unstable/texlive-lang-spanish
         babel-spanish \
         hyphen-spanish \
@@ -80,6 +80,18 @@ RUN tlmgr update --self && \
         fontawesome5 \
         # misc.
         catchfile
+
+
+##
+## R E V E A L J S
+##
+
+# pandoc 2.10+ requires revealjs 4.x
+ARG REVEALJS_VERSION=4.1.2
+RUN wget https://github.com/hakimel/reveal.js/archive/${REVEALJS_VERSION}.tar.gz -O revealjs.tar.gz && \
+    tar -xzvf revealjs.tar.gz && \
+    cp -r reveal.js-${REVEALJS_VERSION}/dist / && \
+    cp -r reveal.js-${REVEALJS_VERSION}/plugin /
 
 ##
 ## F I L T E R S
