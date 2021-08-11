@@ -228,7 +228,7 @@ teardown() {
 
 ## 53x: pandoc-citeproc + pandoc-crossref
 ## pandoc-citeproc is deprecated, we test --citeproc instead
-@test "531: Generate a PDF file using the citeproc filter" {
+@test "531: A PDF file using the citeproc filter" {
   DIR=pandoc-citeproc
   $PANDOC $IN/$DIR/citeproc.md \
           --citeproc \
@@ -237,12 +237,23 @@ teardown() {
           -o $OUT/$DIR/citeproc.pdf
 }
 
-@test "532: Generate a markdown file using the crossref filter" {
+@test "532: A markdown file using the crossref filter" {
   DIR=pandoc-crossref
   $PANDOC --filter pandoc-crossref \
           $IN/$DIR/crossref.md \
           -o $OUT/$DIR/crossref.md
   $DIFF $OUT/$DIR/crossref.md $EXP/$DIR/crossref.md
+}
+
+# Check if there's a version mismatch between crossref and pandoc
+# https://github.com/dalibo/pandocker/issues/207
+@test "533: pandoc-crossref version is correct" {
+  DIR=pandoc-crossref
+  run $PANDOC $IN/$DIR/empty.md \
+              --filter pandoc-crossref \
+              --to markdown \
+              --output /dev/null
+  echo ${output} | grep -v 'WARNING:'
 }
 
 ## 54x: pandoc-mustache
