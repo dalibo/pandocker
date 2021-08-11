@@ -100,6 +100,27 @@ RUN fetch-pandoc.sh ${PANDOC_VERSION} ./cache/pandoc.deb && \
     rm -f ./cache/pandoc.deb
 
 ##
+## R E V E A L J S
+##
+
+#
+# The easiest to produce reveal slides is to point to a CDN like this:
+#
+#    -V revealjs-url=https://unpkg.com/reveal.js
+#
+# However it's useful to have revealjs inside pandocker when you want
+# to build offline
+#
+
+# pandoc 2.10+ requires revealjs 4.x
+ARG REVEALJS_VERSION=4.1.2
+RUN wget https://github.com/hakimel/reveal.js/archive/${REVEALJS_VERSION}.tar.gz -O revealjs.tar.gz && \
+    tar -xzvf revealjs.tar.gz && \
+    cp -r reveal.js-${REVEALJS_VERSION}/dist / && \
+    cp -r reveal.js-${REVEALJS_VERSION}/plugin /
+
+
+##
 ## F I L T E R S
 ##
 
