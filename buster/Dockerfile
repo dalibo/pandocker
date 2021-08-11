@@ -46,6 +46,7 @@ RUN set -x && \
         netbase \
         # fonts
         fonts-dejavu \
+        fonts-font-awesome \
         fonts-lato \
         fonts-liberation \
         # build tools
@@ -150,9 +151,6 @@ RUN wget ${CROSSREF_REPO}/v${CROSSREF_VERSION}/pandoc-crossref-Linux.tar.xz -O /
 ## T E M P L A T E S
 ##
 
-# kpsewhich -var-value=TEXMFLOCAL
-ARG TEXMFLOCAL=/usr/local/share/texmf
-
 # If docker is run with the `--user` option, the $HOME var
 # is empty when the user does not exist inside the container.
 # This causes several problems for pandoc and xelatex/pdftex.
@@ -188,10 +186,10 @@ RUN wget ${EISVOGEL_REPO}/v${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/
 RUN tlmgr init-usertree && \
     # Debian/buster comes with TL2018, and thus refuses to work with the 2020 repositories, even in self mode
     tlmgr option repository ftp://tug.org/historic/systems/texlive/2018/tlnet-final && \
-    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights || \
+    tlmgr install fontawesome5 awesomebox ly1 inconsolata sourcesanspro sourcecodepro mweights || \
     # This first call returns an error but the packages are installed,
     # we call it again to check that everything is fine
-    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights && \
+    tlmgr install fontawesome5 awesomebox ly1 inconsolata sourcesanspro sourcecodepro mweights && \
     # update the font map
     updmap-sys
 

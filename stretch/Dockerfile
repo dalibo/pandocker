@@ -46,6 +46,7 @@ RUN set -x && \
         # dia
         dia \
         # fonts
+        fonts-font-awesome \
         fonts-dejavu \
         fonts-lato \
         fonts-liberation \
@@ -167,7 +168,12 @@ ARG EISVOGEL_REPO=https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-te
 ARG EISVOGEL_VERSION=v1.4.0
 RUN wget ${EISVOGEL_REPO}/${EISVOGEL_VERSION}/eisvogel.tex -O ${TEMPLATES_DIR}/eisvogel.latex
 RUN tlmgr init-usertree && \
-    tlmgr install ly1 inconsolata sourcesanspro sourcecodepro mweights
+    tlmgr install awesomebox fontawesome ly1 inconsolata sourcesanspro sourcecodepro mweights && \
+    # fixup: download awesome-compat
+    # this may not be requitred with debian buster
+    # see: https://github.com/Wandmalfarbe/pandoc-latex-template/issues/154#issuecomment-586620431
+    wget https://raw.githubusercontent.com/milouse/latex-awesomebox/master/awesomebox-compat.sty \
+            -O ${TEXMFLOCAL}/tex/latex/awesomebox/awesomebox-compat.sty
 
 # letter template
 ARG LETTER_REPO=https://raw.githubusercontent.com/aaronwolen/pandoc-letter
