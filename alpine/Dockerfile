@@ -7,7 +7,8 @@ RUN apk --no-cache add \
         openssh-client \
         fontconfig \
         ttf-liberation \
-        dia
+        dia \
+        librsvg
 
 RUN tlmgr update --self && \
     tlmgr install \

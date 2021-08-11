@@ -64,7 +64,7 @@ RUN set -x && \
         # required for PDF meta analysis
         poppler-utils \
         zlibc \
-        # for emojis
+        # for emojis and SVG conversion
         librsvg2-bin \
     # clean up
     && apt-get clean && \
