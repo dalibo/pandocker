@@ -188,7 +188,7 @@ teardown() {
 
 
 ## 45x: FontAwesome
-@test "451: A PDF file containings awesomeboxes with fontawesome" {
+@test "451: A PDF file containing awesomeboxes with fontawesome" {
   DIR=fonts
   $PANDOC $IN/$DIR/boxes.md \
           --template=eisvogel \
@@ -198,11 +198,17 @@ teardown() {
           -o $OUT/$DIR/boxes.pdf
 }
 
-@test "452: A PDF file containings fontawesome macros" {
+@test "452: A PDF file containing fontawesome macros" {
   DIR=fonts
   $PANDOC $IN/$DIR/fontawesome.md \
           --pdf-engine=xelatex \
           -o $OUT/$DIR/fontawesome.pdf
+}
+
+## 46x: SVG
+@test "461: A PDF with an SVG image" {
+  DIR=svg
+  $PANDOC $IN/$DIR/svg.md --pdf-engine=xelatex -o $OUT/$DIR/svg.pdf
 }
 
 ##
