@@ -3,6 +3,7 @@
 name: Publish Docker image
 
 on:
+  workflow_dispatch: # manually triggered
   release:
     types: [published]
 
