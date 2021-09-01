@@ -1,7 +1,7 @@
 Changelog
 ===============================================================================
 
-21.05 - Work In Progress
+21.09
 -------------------------------------------------------------------------------
 
 __Stack__
@@ -14,6 +14,16 @@ __Changes__
 
 <https://github.com/dalibo/pandocker/milestone/12>
 
+* Upgrade to pandoc 2.114
+* Add revealjs 4
+* Push images to docker hub with Github Actions
+* Add a CI test for SVG images
+* Add Fontawesome
+* Add awesomebox LaTeX package
+* Adds librsvg to alpine and buster containers
+* FIX #207: pandoc-crossref complains about version mismatch
+* Upgrade pandoc-latex-admonition
+* Add support for Spanish in LaTeX (@iapellaniz)
 
 21.02
 -------------------------------------------------------------------------------

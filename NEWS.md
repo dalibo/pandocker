@@ -1,3 +1,98 @@
+Pandocker 21.09: Awesome boxes, Spanish characters and Pandoc 2.14
+================================================================================
+
+Paris, Septembre 2nd, 2021
+
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain
+based on `pandoc` with filters, templates, fonts, and the latex bazaar
+
+It allows you to generate slides and documents without installing the required
+depencies on your machine. It is also very usefull to integrate pandoc into
+a CI workflow such as Github Actions, Gitlab Pipelines, etc.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
+```
+
+This image is available under BSD Licence and it has 4 main tags:
+
+* `stable` should be used in production
+* `stable-full` for non-european languages
+* `latest` and `latest-full` are the development versions
+
+You can also retrieve older versions by their version number:
+`dalibo/pandocker:19.11`, `dalibo/pandocker:21.02-full`, etc.
+
+**IMPORTANT:** The `full` docker image size is approx. 800MB whereas the regular
+is "only" 320 MB. We recommend that you use the `full` variant only when needed
+and prefer the regular variant for basic use cases.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+Pandoc 2.14 and revealjs 4
+--------------------------------------------------------------------------------
+
+Pandocker is based on pandoc 2.14 !
+
+If you are using a custom revealjs template based on revealjs 3 or earlier, it
+will not work with pandoc 2.14, you will need to update your custom template
+and make it compatible with revealjs 4.
+
+Also since we're now embedding revealjs inside pandocker, you can build your
+slides offline by removing the parameter `-V revealjs-url:https://...` from the
+pandoc command line.
+
+
+Awesome Boxes and Fontawesome
+--------------------------------------------------------------------------------
+
+Pandocker now includes fontawesome icons and with the help the filter named
+`pandoc-latex-environment`, you can now create nice boxes in you PDF documents.
+
+See example below
+
+https://github.com/Wandmalfarbe/pandoc-latex-template/blob/master/examples/boxes-with-pandoc-latex-environment-and-awesomebox/document.md
+https://github.com/Wandmalfarbe/pandoc-latex-template/blob/master/examples/boxes-with-pandoc-latex-environment-and-awesomebox/document.pdf
+
+Support for Spanish
+--------------------------------------------------------------------------------
+
+Spanish LaTeX packages were added by user @iapellaniz
+
+Many thanks to him !
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Job>
+
+
+
+---
+
+
 
 Pandocker 21.02: Major upgrade
 ================================================================================
