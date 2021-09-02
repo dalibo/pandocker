@@ -3,9 +3,13 @@ pandocfilters==1.4
 pandoc-codeblock-include==0.1
 pandoc-include==0.4
 pandoc-latex-admonition==1.3.2
+pandoc-latex-color==0.2.1
 pandoc-latex-environment==1.1
+pandoc-latex-fontsize==1.1.3
 pandoc-latex-barcode==1.1.1
 pandoc-latex-levelup==1.1
+pandoc-latex-margin==0.1.1
+pandoc-latex-newpage==0.1.2
 pandoc-minted==0.2
 pandoc-mustache==0.1
 pandoc-dalibo-guidelines==1.1.1
