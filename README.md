@@ -91,8 +91,12 @@ filters below:
 * [pandoc-codeblock-include] : insert an external file into a codeblock
 * [pandoc-include] : insert external markdown files into the main document
 * [pandoc-latex-admonition] : adding admonitions on specific DIVs
-* [pandoc-latex-environment] : adding LaTeX environments on specific DIVs
 * [pandoc-latex-barcode] : insert barcodes and QRcodes in documents
+* [pandoc-latex-color] : Add colors to your PDF documents !
+* [pandoc-latex-environment] : adding LaTeX environments on specific DIVs
+* [pandoc-latex-fontsize] : Change size of a specific section of the document
+* [pandoc-latex-margin] : Resize the margins of your PDF documents
+* [pandoc-latex-newpage] : Convert horizontal rule to new page in LaTeX
 * [pandoc-mustache] : basic variables substitution
 * [pandoc-minted] : advanced syntax highlighting
 * [pandoc-crossref] : support for cross-referencing sections, figures, and more
@@ -108,8 +112,12 @@ and [pandoc-mustache] filters.
 [pandoc-codeblock-include]: https://github.com/chdemko/pandoc-codeblock-include
 [pandoc-include]: https://github.com/DCsunset/pandoc-include
 [pandoc-latex-admonition]: https://github.com/chdemko/pandoc-latex-admonition
-[pandoc-latex-environment]: https://github.com/chdemko/pandoc-latex-environment
 [pandoc-latex-barcode]: https://github.com/daamien/pandoc-latex-barcode
+[pandoc-latex-color]: https://github.com/chdemko/pandoc-latex-color
+[pandoc-latex-environment]: https://github.com/chdemko/pandoc-latex-environment
+[pandoc-latex-fontsize]: https://github.com/chdemko/pandoc-latex-fonsize
+[pandoc-latex-margin]: https://github.com/chdemko/pandoc-latex-margin
+[pandoc-latex-newpage]: https://github.com/chdemko/pandoc-latex-newpage
 [pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
 [pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
 [pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
@@ -121,6 +129,7 @@ The pandocker image includes the following open-source fonts:
 * Deja Vu: https://dejavu-fonts.github.io/
 * Lato: https://fonts.google.com/specimen/Lato
 * Liberation: https://github.com/liberationfonts/liberation-fonts
+* Fontawesome: https://fontawesome.com/
 
 The full variant includes
 

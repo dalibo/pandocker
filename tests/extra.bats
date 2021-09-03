@@ -297,6 +297,17 @@ teardown() {
           --output $OUT/$DIR/admonition.pdf
 }
 
+## 56x: pandoc-latex-color and pandoc-latex-fontsize
+@test "561: A PDF file with custom color and fontsize" {
+  DIR=pandoc-latex-color
+  $PANDOC $IN/$DIR/colors_and_fontsize.md \
+          --filter pandoc-latex-color \
+          --filter pandoc-latex-fontsize \
+          --filter pandoc-latex-newpage \
+          --output $OUT/$DIR/colors_and_fontsize.pdf
+}
+
+
 ##
 ## 9xx: Other entrypoints
 ##
