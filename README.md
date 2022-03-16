@@ -14,6 +14,15 @@ A simple docker image for pandoc with [filters], [templates], [fonts] and [addit
 [fonts]: #fonts
 [additional tools]: #additional_tools
 
+## Install / Upgrade
+
+Download the image with:
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+Whenever a new stable version is released, launch that command again to refresh your image.
 
 ## How To
 
@@ -43,7 +52,7 @@ $ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md
 > Add this to your `~/.bashrc` :
 
 ```console
-$ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
+$ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker:stable"
 $ pandoc README.md -o README.epub
 ```
 

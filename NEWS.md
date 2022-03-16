@@ -1,4 +1,97 @@
 
+Pandocker 22.03: awesomebox + fontawesome
+================================================================================
+
+Paris, March 16th, 2022
+
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain
+based on `pandoc` with filters, templates, fonts, and the latex bazaar
+
+It allows you to generate slides and documents without installing the required
+depencies on your machine. It is also very usefull to integrate pandoc into
+a CI workflow such as Github Actions, Gitlab Pipelines, etc.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
+```
+
+This image is available under BSD Licence and it has 4 main tags:
+
+* `stable` should be used in production
+* `stable-full` for non-european languages
+* `latest` and `latest-full` are the development versions
+
+You can also retrieve older versions by their version number:
+`dalibo/pandocker:19.11`, `dalibo/pandocker:21.02-full`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+awesomebox + fontawesome
+--------------------------------------------------------------------------------
+
+This new version brings a new package called `awesomebox`. Along with the
+`fontawesome` font and the `pandoc-latex-environment` filter, it allows users
+to add "boxes" in the pdf documents.
+
+Here's a basic example
+
+```markdown
+---
+header-includes:
+- |
+  ```{=latex}
+  \usepackage{awesomebox}
+  ```
+pandoc-latex-environment:
+  warningblock: [warning]
+...
+
+# Boxes with awesomebox
+
+This is a normal paragraph.
+
+::: warning
+ATTENTION: This is a warning box !
+:::
+
+```
+You can see the result below:
+
+https://github.com/Wandmalfarbe/pandoc-latex-template/blob/master/examples/boxes-with-pandoc-latex-environment-and-awesomebox/document.pdf
+
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Job>
+
+
+
+---
+
 Pandocker 21.02: Major upgrade
 ================================================================================
 
