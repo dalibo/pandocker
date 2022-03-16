@@ -1,4 +1,4 @@
-FROM pandoc/latex:2.14.1
+FROM pandoc/latex:2.17.0.1
 
 RUN apk --no-cache add \
         bash \
@@ -108,7 +108,7 @@ RUN pip3 --no-cache-dir install -r requirements.txt
 # See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
 # release corresponding to the desired pandoc version.
 ARG CROSSREF_REPO=https://github.com/lierdakil/pandoc-crossref/releases/download/
-ARG CROSSREF_VERSION=0.3.12.0b
+ARG CROSSREF_VERSION=0.3.12.2
 RUN wget ${CROSSREF_REPO}/v${CROSSREF_VERSION}/pandoc-crossref-Linux.tar.xz -O /tmp/pandoc-crossref.tar.xz && \
     tar xf /tmp/pandoc-crossref.tar.xz && \
     install pandoc-crossref /usr/local/bin/
