@@ -101,19 +101,6 @@ RUN wget https://github.com/hakimel/reveal.js/archive/${REVEALJS_VERSION}.tar.gz
 ADD requirements.txt ./
 RUN pip3 --no-cache-dir install -r requirements.txt
 
-#
-# pandoc-crossref
-#
-# This version must correspond to the correct PANDOC_VERSION.
-# See https://github.com/lierdakil/pandoc-crossref/releases to find the latest
-# release corresponding to the desired pandoc version.
-ARG CROSSREF_REPO=https://github.com/lierdakil/pandoc-crossref/releases/download/
-ARG CROSSREF_VERSION=0.3.12.2
-RUN wget ${CROSSREF_REPO}/v${CROSSREF_VERSION}/pandoc-crossref-Linux.tar.xz -O /tmp/pandoc-crossref.tar.xz && \
-    tar xf /tmp/pandoc-crossref.tar.xz && \
-    install pandoc-crossref /usr/local/bin/
-
-
 # Templates are installed in '/.pandoc'.
 ARG TEMPLATES_DIR=/.pandoc/templates
 
