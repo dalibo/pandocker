@@ -3,7 +3,6 @@
 * [ ] Close all open ticket on the current milestone
 * [ ] Create a `release` branch
 * [ ] Update the [CHANGELOG.md]()
-* [ ] Update the [UPGRADE.md]() procedure
 * [ ] Write a announcement in [NEWS.md]()
 * [ ] Merge the `release` branch into `latest`
 * [ ] Add a tag to `latest`

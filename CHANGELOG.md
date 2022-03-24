@@ -1,18 +1,30 @@
 Changelog
 ===============================================================================
 
-21.05 - Work In Progress
+22.06 - Work in Progress
+-------------------------------------------------------------------------------
+
+22.03
 -------------------------------------------------------------------------------
 
 __Stack__
 
 * Debian 10 buster
-* Pandoc 2.11
+* Pandoc 2.14
 * Eisvogel 2.0
 
 __Changes__
 
 <https://github.com/dalibo/pandocker/milestone/12>
+
+* [extra] Upgrade to pandoc 2.14
+* [filters] Upgrade pandoc-latex-admonition
+* [CI] check for pandoc-crossref version mismatch
+* [extra] embed revealjs 4.1.2 for offline builds
+* [extra] add awesomebox + fontawesome
+* [extra] Adds librsvg to alpine and buster containers (@colindean)
+* [filters] Bump pygments from 2.4 to 2.7.4
+* [extra] Add support for Spanish (@iapellaniz)
 
 
 21.02
