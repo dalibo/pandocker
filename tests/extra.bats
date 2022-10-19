@@ -28,7 +28,7 @@ setup() {
   export VARIANT=${VARIANT:-}
   log "setup: TAG = $TAG & VARIANT=$VARIANT"
   export DOCKER_OPT="--rm --volumes-from pandoc-volumes "
-  export PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
+  export PANDOC="${PANDOC:-docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose}"
   export DIFF="docker run $DOCKER_OPT --entrypoint=diff dalibo/pandocker:$TAG"
   export IN=tests/input
   export EXP=tests/expected
@@ -56,6 +56,7 @@ teardown() {
 ##
 
 @test "011: Binary docker is on the current PATH" {
+  [[ ! "$PANDOC" =~ "docker" ]] && skip
   command -v docker
 }
 
@@ -234,6 +235,7 @@ teardown() {
 
 ## 52x: pandoc-include + pandoc-codeblock-include
 @test "521: Generate a markdown file using the include filter" {
+  skip "filter disabled"
   DIR=pandoc-include
   $PANDOC --to markdown --filter pandoc-include \
           $IN/$DIR/include.md \
@@ -242,6 +244,7 @@ teardown() {
 }
 
 @test "522: Generate a markdown file using the codeblock-include filter" {
+  skip "filter disabled"
   DIR=pandoc-codeblock-include
   $PANDOC --to markdown \
           --filter pandoc-codeblock-include \
