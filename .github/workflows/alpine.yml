@@ -1,4 +1,4 @@
-name: Alpine Image (alt) Regression Tests
+name: Alpine Regression Tests
 
 # disable automatic testing for Alpine until we decide what goes in alpine vs. alpine-full
 # on: [push, workflow_dispatch]

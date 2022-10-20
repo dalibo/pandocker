@@ -4,8 +4,8 @@ name: Publish Docker images
 
 on:
   workflow_dispatch: # manually triggered
-  push:
-    branches: [ latest, stable ]
+#  push:
+#    branches: [ latest, stable ]
 
 jobs:
   push_to_registry:
