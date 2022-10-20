@@ -1,0 +1,8 @@
+##
+## Latex packages required by the templates and filters
+## These packages are available in TeXLive 2022
+##
+
+# emojis (NOT SUPPORTED AT THE MOMENT)
+emoji
+noto-emoji

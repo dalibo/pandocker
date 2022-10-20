@@ -19,8 +19,8 @@ initial_setup(){
   # allow all users to write artefacts
   chmod a+rwx $OUT
   # mount a dedicated volume and put the tests files in it
-  docker create --name pandoc-volumes dalibo/pandocker:$TAG
-  docker cp tests pandoc-volumes:/pandoc/
+  [[ "$PANDOC" =~ "docker" ]] && docker create --name pandoc-volumes dalibo/pandocker:$TAG
+  [[ "$PANDOC" =~ "docker" ]] && docker cp tests pandoc-volumes:/pandoc/
 }
 
 setup() {
@@ -28,8 +28,8 @@ setup() {
   export VARIANT=${VARIANT:-}
   log "setup: TAG = $TAG & VARIANT=$VARIANT"
   export DOCKER_OPT="--rm --volumes-from pandoc-volumes "
-  export PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
-  export DIFF="docker run $DOCKER_OPT --entrypoint=diff dalibo/pandocker:$TAG"
+  export PANDOC="${PANDOC:-docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose}"
+  export DIFF="${DIFF:-docker run $DOCKER_OPT --entrypoint=diff dalibo/pandocker:$TAG}"
   export IN=tests/input
   export EXP=tests/expected
   export OUT=tests/output
@@ -41,9 +41,9 @@ setup() {
 
 final_teardown() {
   # fetch artefacts
-  docker cp pandoc-volumes:/pandoc/$OUT tests
+  [[ "$PANDOC" =~ "docker" ]] && docker cp pandoc-volumes:/pandoc/$OUT tests
   # destroy the volume
-  docker rm --force --volumes pandoc-volumes
+  [[ "$PANDOC" =~ "docker" ]] && docker rm --force --volumes pandoc-volumes
 }
 
 teardown() {
@@ -59,7 +59,7 @@ teardown() {
 
 ## 141x: Languages
 
-@test "1411: Generate a PDF file containing Persian characters" {
+@test "1411: A PDF file containing Persian characters" {
   DIR=persian
   $PANDOC --pdf-engine=xelatex \
           --template eisvogel \
@@ -68,7 +68,7 @@ teardown() {
           -o $OUT/$DIR/markdown_fa.pdf
 }
 
-@test "1412: Generate a PDF file containing Hindi characters" {
+@test "1412: A PDF file containing Hindi characters" {
   DIR=persian
   $PANDOC --pdf-engine=xelatex \
           --template eisvogel \
@@ -79,7 +79,7 @@ teardown() {
 
 ## 142x : Fonts
 
-@test "1421: Generate a PDF file with the Noto font" {
+@test "1421: A PDF file with the Noto font" {
   DIR=fonts
   $PANDOC --pdf-engine=xelatex $IN/$DIR/fonts.md \
           -o $OUT/$DIR/fonts_noto.pdf \
@@ -87,10 +87,8 @@ teardown() {
 }
 
 ## 144x: Emojis
-@test "1441: Generate a PDF file containing emojis" {
-  #if [ $VARIANT = 'buster' ]; then
-    skip "Emojis support is not fully functionnal with buster (see issue #176)"
-  #fi
+@test "1441: A PDF file containing emojis" {
+  skip "Emojis are not supported at the moment"
   DIR=emojis
   $PANDOC $IN/$DIR/emojis.md \
           --pdf-engine=xelatex \
@@ -98,7 +96,7 @@ teardown() {
 }
 
 # Bug #75 : https://github.com/dalibo/pandocker/issues/75
-@test "1442: Generate an HTML file containing weird emojis" {
+@test "1442: An HTML file containing weird emojis" {
   DIR=emojis
   $PANDOC $IN/$DIR/magicienletter.md -o $OUT/$DIR/magicienletter.html
   $DIFF $OUT/$DIR/magicienletter.html $EXP/$DIR/magicienletter.html
@@ -110,7 +108,7 @@ teardown() {
 ## 19xx: Other entrypoints
 ##
 
-@test "1911: Generate a SVG image with dia" {
+@test "1911: An SVG image with dia" {
     DIR=dia
     DIA="docker run $DOCKER_OPT --entrypoint dia dalibo/pandocker:$TAG --verbose"
     $DIA $IN/$DIR/db.dia --export $OUT/$DIR/db.svg

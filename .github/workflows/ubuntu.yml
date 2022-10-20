@@ -1,0 +1,33 @@
+name: Ubuntu Image Regression Tests
+
+on: [push, workflow_dispatch]
+
+jobs:
+
+  extra:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
+    - name: Build the Docker image
+      run: docker build . --file ubuntu/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-ubuntu
+
+    - name: Regression Tests
+      run: TAG=xxxxx-test-githubci-ubuntu VARIANT=ubuntu ./tests/libs/bats-core/bin/bats tests/extra.bats --tap
+
+  full:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
+    - name: Build the Docker image
+      run: docker build . --file ubuntu-full/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-ubuntu-full
+
+    - name: Regression Tests
+      run: TAG=xxxxx-test-githubci-ubuntu-full VARIANT=ubuntu-full ./tests/libs/bats-core/bin/bats tests/full.bats --tap

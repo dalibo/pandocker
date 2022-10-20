@@ -1,9 +1,10 @@
 ---
 title: Hello, 🌍
-author: Chuck Norris 💪 
+author: Chuck Norris 💪
 header-includes: |
-    \usepackage{xltxtra}
-    \usepackage{xelatexemoji}
+     \usepackage{noto-emojis}
+#    \usepackage{xltxtra}
+#    \usepackage{xelatexemoji}
 abstract: Test Emojis Support, This should work with the default template
 ---
 
@@ -65,6 +66,6 @@ In a list :
 
 * construction  🏗
 * Mage : 🧙
-* Female Mage : 🧙‍♀️ 
+* Female Mage : 🧙‍♀️
 * Fortune cookie : 🥠
 * Thermometer : 🌡️

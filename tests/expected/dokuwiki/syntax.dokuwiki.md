@@ -10,8 +10,9 @@ accessible via [quickbuttons](https://www.dokuwiki.org/toolbar), too.
 
 ## Basic Text Formatting
 
-DokuWiki supports **bold**, *italic*, [underlined]{.ul} and `monospaced`
-texts. Of course you can **[*`combine`*]{.ul}** all these.
+DokuWiki supports **bold**, *italic*, [underlined]{.underline} and
+`monospaced` texts. Of course you can **[*`combine`*]{.underline}** all
+these.
 
     DokuWiki supports **bold**, //italic//, __underlined__ and ''monospaced'' texts.
     Of course you can **__//''combine''//__** all these.
@@ -335,8 +336,8 @@ Typography: [DokuWiki](DokuWiki) can convert simple text characters to
 their typographically correct entities. Here is an example of recognized
 characters.
 
--\> \<- \<-\> => \<= \<=> \>\> \<\< \-- \-\-- 640x480 (c) (tm) (r) \"He
-thought \'It\'s a man\'s world\'\...\"
+-\> \<- \<-\> =\> \<= \<=\> \>\> \<\< \-- \-\-- 640x480 (c) (tm) (r)
+\"He thought \'It\'s a man\'s world\'\...\"
 
     -> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
     "He thought 'It's a man's world'..."
@@ -404,9 +405,9 @@ Vertical tableheaders are possible, too.
 
   ----------- ---------------------- -------------
               Heading 1              Heading 2
-  Heading 3   Row 1 Col 2            Row 1 Col 3
-  Heading 4   no colspan this time   
-  Heading 5   Row 2 Col 2            Row 2 Col 3
+   Heading 3  Row 1 Col 2            Row 1 Col 3
+   Heading 4  no colspan this time   
+   Heading 5  Row 2 Col 2            Row 2 Col 3
   ----------- ---------------------- -------------
 
 As you can see, it\'s the cell separator before a cell which decides
@@ -439,11 +440,11 @@ at the opposite end of your text: Add two spaces on the left to align
 right, two spaces on the right to align left and two spaces at least at
 both ends for centered text.
 
-  Table with alignment                  
+   Table with alignment                 
   ---------------------- -------------- --------------
-  right                  center         left
-  left                   right          center
-  xxxxxxxxxxxx           xxxxxxxxxxxx   xxxxxxxxxxxx
+          right          center         left
+           left          right          center
+       xxxxxxxxxxxx      xxxxxxxxxxxx   xxxxxxxxxxxx
 
 This is how it looks in the source:
 
@@ -599,18 +600,18 @@ PHP example:
     echo '</tr></table>';
     </PHP>
 
-`
+`<?php 
 echo 'The PHP version: ';
 echo phpversion();
 echo ' (inline HTML)';
-`{.php}
+ ?>`{=html}
 
-``` php
-echo '<table class="inline"><tr><td>The same, but inside a block level element:</td>';
+```{=html}
+<?php echo '<table class="inline"><tr><td>The same, but inside a block level element:</td>';
 echo '<td>'.phpversion().'</td>';
 echo '</tr></table>';
+ ?>
 ```
-
 **Please Note**: HTML and PHP embedding is disabled by default in the
 configuration. If disabled, the code is displayed instead of executed.
 
@@ -655,9 +656,9 @@ Some syntax influences how DokuWiki renders a page without creating any
 output it self. The following control macros are availble:
 
   Macro             Description
-  ----------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ----------------- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   \~\~NOTOC\~\~     If this macro is found on the page, no table of contents will be created
-  \~\~NOCACHE\~\~   DokuWiki caches all output by default. Sometimes this might not be wanted (eg. when the \<php> syntax above is used), adding this macro will force DokuWiki to rerender a page on every call
+  \~\~NOCACHE\~\~   DokuWiki caches all output by default. Sometimes this might not be wanted (eg. when the \<php\> syntax above is used), adding this macro will force DokuWiki to rerender a page on every call
 
 ## Syntax Plugins
 

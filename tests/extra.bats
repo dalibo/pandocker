@@ -19,8 +19,8 @@ initial_setup(){
   # allow all users to write artefacts
   chmod a+rwx $OUT
   # mount a dedicated volume and put the tests files in it
-  docker create --name pandoc-volumes dalibo/pandocker:$TAG
-  docker cp tests pandoc-volumes:/pandoc/
+  [[ "$PANDOC" =~ "docker" ]] && docker create --name pandoc-volumes dalibo/pandocker:$TAG
+  [[ "$PANDOC" =~ "docker" ]] && docker cp tests pandoc-volumes:/pandoc/
 }
 
 setup() {
@@ -28,8 +28,8 @@ setup() {
   export VARIANT=${VARIANT:-}
   log "setup: TAG = $TAG & VARIANT=$VARIANT"
   export DOCKER_OPT="--rm --volumes-from pandoc-volumes "
-  export PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
-  export DIFF="docker run $DOCKER_OPT --entrypoint=diff dalibo/pandocker:$TAG"
+  export PANDOC="${PANDOC:-docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose}"
+  export DIFF="${DIFF:-docker run $DOCKER_OPT --entrypoint=diff dalibo/pandocker:$TAG}"
   export IN=tests/input
   export EXP=tests/expected
   export OUT=tests/output
@@ -40,9 +40,9 @@ setup() {
 
 final_teardown() {
   # fetch artefacts
-  docker cp pandoc-volumes:/pandoc/$OUT tests
+  [[ "$PANDOC" =~ "docker" ]] && docker cp pandoc-volumes:/pandoc/$OUT tests
   # destroy the volume
-  docker rm --force --volumes pandoc-volumes
+  [[ "$PANDOC" =~ "docker" ]] && docker rm --force --volumes pandoc-volumes
 }
 
 teardown() {
@@ -56,21 +56,21 @@ teardown() {
 ##
 
 @test "011: Binary docker is on the current PATH" {
-  command -v docker
+  [[ "$PANDOC" =~ "docker" ]] && command -v docker
 }
 
-@test "031: Generate a PDF file using the inline mode" {
-    PANDOC_PDF_BOX=docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex
-    cat $IN/markdown_de.md | $PANDOC_PDF_BOX > $OUT/markdown_de.inline.pdf
+@test "031: a PDF file using the inline mode" {
+  [[ "$PANDOC" == "pandoc" ]] && skip
+  PANDOC_PDF_BOX=docker run --rm -i dalibo/pandocker:$TAG --to=pdf --pdf-engine=xelatex
+  cat $IN/markdown_de.md | $PANDOC_PDF_BOX > $OUT/markdown_de.inline.pdf
 }
 
 ##
 ## 1xx: Output formats
 ##
 
-@test "101: Generate a beamer presentation" {
+@test "101: A beamer presentation" {
   $PANDOC -t beamer $IN/sample-presentation.md -o $OUT/sample-presentation.beamer.pdf
-  echo "status = $status"
 }
 
 @test "111: A reveal presentation" {
@@ -89,7 +89,7 @@ teardown() {
           -o $OUT/sample-presentation.reveal.selfcontained.html
 }
 
-@test "121: Generate a presentation handout" {
+@test "121: A presentation handout" {
   $PANDOC --pdf-engine=xelatex $IN/sample-presentation.md -o $OUT/sample-presentation.handout.pdf
 }
 
@@ -111,11 +111,11 @@ teardown() {
 ##
 
 ## 31x: Eisvogel
-@test "311: Generate a PDF file using the eisvogel template with pdftex" {
+@test "311: A PDF file using the eisvogel template with pdftex" {
   $PANDOC --template=eisvogel $IN/sample-presentation.md  -o $OUT/sample-presentation.eisvogel.pdftex.pdf
 }
 
-@test "312: Generate a PDF file using the eisvogel template with xelatex" {
+@test "312: A PDF file using the eisvogel template with xelatex" {
   DOCKER_OPT="--rm --volumes-from pandoc-volumes -u 1000:1000"
   PANDOC="docker run $DOCKER_OPT dalibo/pandocker:$TAG --verbose"
   $PANDOC --pdf-engine=xelatex --template=eisvogel \
@@ -124,14 +124,16 @@ teardown() {
 }
 
 ## 32x: Letter
-## Disable until we fix #178
 ## https://github.com/dalibo/pandocker/issues/178
-#@test "321: Generate a PDF file using the letter template" {
-#  $PANDOC --pdf-engine=xelatex  --template=letter $IN/letter/letter.md -o $OUT/letter.pdf
-#}
+@test "321: Generate a PDF file using the letter template" {
+  skip "letter template is deprecated"
+  $PANDOC --pdf-engine=xelatex  --template=letter $IN/letter/letter.md -o $OUT/letter.pdf
+}
+
 
 ## 33x: Leaflet
 @test "331: Generate a PDF brochure using the leaflet template" {
+  skip "leaflet template is deprecated"
   $PANDOC --pdf-engine=xelatex  --template=leaflet $IN/leaflet/leaflet.md -o $OUT/leaflet.pdf
 }
 

@@ -12,7 +12,7 @@
 
 ## Equation test {#sec:equation}
 
-[$$ a^2 + b^2 = c^2 \qquad(1)$$]{#eq:pythagorean}
+[$$ a^2 + b^2 = c^2 \qquad{(1)}$$]{#eq:pythagorean}
 
 ## Results {#sec:results}
 
