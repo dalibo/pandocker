@@ -40,7 +40,23 @@ endif
 ##
 ## T A R G E T S
 ##
+
 all: build
+
+
+##
+##               H E L P
+##
+
+default:: help
+
+help::  #: Display this message
+	@echo
+	@echo "Pandocker Makefile targets"
+	@echo
+	@gawk 'match($$0, /([^:]*):.+#'': (.*)/, m) { printf "    %-16s%s\n", m[1], m[2]}' $(MAKEFILE_LIST) | sort
+	@echo
+
 
 .PHONY: build
 build:  buster
@@ -52,6 +68,18 @@ stretch: stretch/Dockerfile
 	    --build-arg PANDOC_VERSION=$(PANDOC_VERSION) \
 	    --build-arg PANDOC_CROSSREF_VERSION=$(CROSSREF_VERSION) \
 	    --tag $(NAME):$@-$(TAG) --file $^ .
+
+.PHONY: ubuntu
+ubuntu: ubuntu/dockerfile #: Extra variant based on Ubuntu
+ubuntu-extra: ubuntu/dockerfile #: Extra variant based on Ubuntu
+
+.PHONY: ubuntu-full
+ubuntu-full: ubuntu-full/Dockerfile #: Full variant
+
+
+ubuntu ubuntu-extra ubuntu-full:
+	docker build --tag $(NAME):$@-$(TAG) --file $^ .
+
 
 .PHONY: alpine
 alpine: alpine/Dockerfile
@@ -103,4 +131,6 @@ alpine_sh alpine-full_sh: #: enter a docker image (useful for testing)
 buster_bash buster-full_bash: #: enter a docker image (useful for testing)
 	docker run --rm -it --volume $(PWD):/pandoc --entrypoint=bash $(NAME):$(@:_bash=)-$(TAG)
 
+ubuntu_bash ubuntu-full_bash: #: enter a docker image (useful for testing)
+	docker run --rm -it --volume $(PWD):/pandoc --entrypoint=bash $(NAME):$(@:_bash=)-$(TAG)
 

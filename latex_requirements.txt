@@ -1,0 +1,43 @@
+##
+## Latex packages required by the templates and filters
+## These packages are available in TeXLive 2022
+##
+
+# Lifesaver packages
+collection-latexrecommended
+# More fonts
+fontawesome5
+ly1
+inconsolata
+sourcesanspro
+sourcecodepro
+mweights
+# for adminition filter
+environ
+mdframed
+soul
+soulutf8
+tcolorbox
+# For awesomebox
+awesomebox
+# for eisvogel template
+koma-script
+footnotebackref
+fvextra
+lineno
+listingsutf8
+needspace
+titlesec
+titling
+transparent
+zref
+# for leaflet template
+leaflet
+# For letter template
+wallpaper
+# for dutch
+charter
+cm-super
+xpatch
+# for minted
+minted

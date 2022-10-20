@@ -1,8 +1,29 @@
 Changelog
 ===============================================================================
 
-22.06 - Work in Progress
+22.19 - Work in Progress
 -------------------------------------------------------------------------------
+
+__Stack__
+
+* Ubuntu Jammy
+* Pandoc 2.19
+* Eisvogel f5c1f20c94fa7fef4750ce46589416520bd76768
+
+__Changes__
+
+<https://github.com/dalibo/pandocker/milestone/13>
+
+* [extra] Switch from Debian 10 buster to Ubuntu 22.04 Jammy
+* [extra] Upgrade to pandoc 2.19
+* [extra] Upgrade from TexLive 2016 to TexLive 2022
+* [filters] #231 ModuleNotFoundError: No module named 'pystache' bug
+* [filters] upgrade python filters
+* [templates] leaflet template is now deprecated
+* [templates] letter template is now deprecated
+* [tags] alpine tag is now deprecated
+* [tags] bullseye tag is now deprecated
+
 
 22.03
 -------------------------------------------------------------------------------
