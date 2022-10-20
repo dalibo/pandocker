@@ -49,8 +49,8 @@ RUN set -x && \
 ## L A T E X
 ##
 ADD latex_requirements.full.txt ./
-RUN tlmgr init-usertree && \
-    tlmgr install `echo $(grep -v '^#' latex_requirements.full.txt )` && \
+# The TexLive user mode database already set up; no need to run `tlmgr init-tree`
+RUN tlmgr install `echo $(grep -v '^#' latex_requirements.full.txt )` && \
     # update the font map
     updmap-sys
 
