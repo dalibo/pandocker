@@ -244,6 +244,7 @@ teardown() {
 }
 
 @test "522: Generate a markdown file using the codeblock-include filter" {
+  skip "codeblock-include filter is disabled"
   DIR=pandoc-codeblock-include
   $PANDOC --to markdown \
           --filter pandoc-codeblock-include \
