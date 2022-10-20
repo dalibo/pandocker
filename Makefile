@@ -70,14 +70,11 @@ stretch: stretch/Dockerfile
 	    --tag $(NAME):$@-$(TAG) --file $^ .
 
 .PHONY: ubuntu
-ubuntu: ubuntu/dockerfile #: Extra variant based on Ubuntu
-ubuntu-extra: ubuntu/dockerfile #: Extra variant based on Ubuntu
+ubuntu: ubuntu/Dockerfile #: Extra variant based on Ubuntu
+	docker build --tag $(NAME):$@-$(TAG) --file $^ .
 
 .PHONY: ubuntu-full
 ubuntu-full: ubuntu-full/Dockerfile #: Full variant
-
-
-ubuntu ubuntu-extra ubuntu-full:
 	docker build --tag $(NAME):$@-$(TAG) --file $^ .
 
 
