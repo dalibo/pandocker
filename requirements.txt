@@ -30,5 +30,5 @@ pandoc-mustache==0.1
 PyPDF2==2.11
 # https://pygments.org/docs/changelog/
 Pygments==2.13
-# https://github.com/defunkt/pystache/tags
-pystache==0.5
+#https://github.com/sarnold/pystache/releases
+pystache==0.6
