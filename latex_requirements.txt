@@ -24,9 +24,11 @@ awesomebox
 koma-script
 footnotebackref
 fvextra
+incgraph
 lineno
 listingsutf8
 needspace
+sectsty
 titlesec
 titling
 transparent
@@ -41,3 +43,10 @@ cm-super
 xpatch
 # for minted
 minted
+
+##
+## Misc.
+##
+
+# https://github.com/dalibo/pandocker/issues/238#issuecomment-1287170507
+enumitem
