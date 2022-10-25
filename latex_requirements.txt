@@ -22,6 +22,9 @@ tcolorbox
 awesomebox
 # for DALIBO templates
 bclogo
+lato
+tocloft
+wrapfig
 # for eisvogel template
 koma-script
 footnotebackref
