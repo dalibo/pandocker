@@ -20,6 +20,8 @@ soulutf8
 tcolorbox
 # For awesomebox
 awesomebox
+# for DALIBO templates
+bclogo
 # for eisvogel template
 koma-script
 footnotebackref
