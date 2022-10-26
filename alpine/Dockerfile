@@ -33,6 +33,9 @@ RUN tlmgr update --self && \
         #lang-german: https://packages.debian.org/sid/texlive-lang-german
         babel-german \
         xpatch \
+        #lang-italian: https://packages.debian.org/sid/texlive-lang-italian
+        babel-italian \
+        hyphen-italian \
         #lang-spanish: https://packages.debian.org/unstable/texlive-lang-spanish
         babel-spanish \
         hyphen-spanish \
