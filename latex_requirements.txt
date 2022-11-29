@@ -33,6 +33,7 @@ incgraph
 lineno
 listingsutf8
 needspace
+pagecolor
 sectsty
 titlesec
 titling
