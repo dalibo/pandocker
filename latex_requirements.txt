@@ -42,6 +42,7 @@ wrapfig
 
 # for eisvogel template
 # https://github.com/Wandmalfarbe/pandoc-latex-template/blob/c255d9d4c556647c0dfe0d7806016eaced67a147/.github/workflows/build-examples.yml
+abstract
 adjustbox
 babel-german
 background
