@@ -3,6 +3,9 @@
 ## These packages are available in TeXLive 2022
 ##
 
+# For OWASP
+bidi
+
 # emojis (NOT SUPPORTED AT THE MOMENT)
 emoji
 noto-emoji
