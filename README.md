@@ -2,9 +2,8 @@
 
 [![github
 release](https://img.shields.io/github/release/dalibo/pandocker.svg?label=current+release)](https://github.com/dalibo/pandocker/releases)
-[![Docker Image](https://images.microbadger.com/badges/image/dalibo/pandocker.svg)](https://hub.docker.com/r/dalibo/pandocker)
-[![CI buster](https://github.com/dalibo/pandocker/actions/workflows/buster.yml/badge.svg?branch=latest)](https://github.com/dalibo/pandocker/actions/workflows/buster.yml)
-[![License](https://img.shields.io/github/license/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/blob/master/LICENSE)
+[![Docker Image](https://img.shields.io/docker/automated/dalibo/pandocker.svg)](https://hub.docker.com/r/dalibo/pandocker)
+[![CI](https://github.com/dalibo/pandocker/actions/workflows/ubuntu.yml/badge.svg?branch=latest)](https://github.com/dalibo/pandocker/actions/workflows/ubuuntuOA.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/branches)
 
 A simple docker image for pandoc with [filters], [templates], [fonts] and [additional tools].
@@ -152,16 +151,16 @@ The image is available in multiple versions named as follows:
 
 * The __branch__ can be `latest` (default) or `stable` (for production)
   or the release name (`20.02`)
-* The __parent__ is the base image we are using. Either `buster` (default)
-  or `alpine`
+* The __parent__ is the base image we are using. Currently only `ubuntu`
+  is supported
 * The __variant__ is either `extra` (330MB) or `full` (810 MB)
 
 The supported tags are :
 
-* `latest`, `latest-buster`, `latest-buster-extra` (default)
-* `latest-buster-full`
-* `stable`, `stable-buster`, `stable-buster-extra`
-* `stable-buster-full`
+* `latest`, `latest-ubuntu`, `latest-ubuntu-extra` (default)
+* `latest-ubuntu-full`
+* `stable`, `stable-ubuntu`, `stable-ubuntu-extra`
+* `stable-ubuntu-full`
 
 Other tags are not supported and should be used with care.
 

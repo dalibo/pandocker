@@ -59,7 +59,7 @@ help::  #: Display this message
 
 
 .PHONY: build
-build:  buster
+build:  ubuntu
 
 .PHONY: stretch
 stretch: stretch/Dockerfile
