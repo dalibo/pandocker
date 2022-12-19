@@ -1,4 +1,79 @@
 
+Pandocker 22.12: Major upgrade
+================================================================================
+
+Paris, Decembrer 19, 2022
+
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image containing a complete document production toolchain
+based on `pandoc` with filters, templates, fonts, and the latex bazaar
+
+It allows you to generate slides and documents without installing the required
+depencies on your machine. It is also very usefull to integrate pandoc into
+a CI workflow such as Github Actions, Gitlab Pipelines, etc.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
+```
+
+This image is available under BSD Licence and it has 4 main tags:
+
+* `stable` should be used in production
+* `stable-full` for non-european languages
+* `latest` and `latest-full` are the development versions
+
+You can also retrieve older versions by their version number:
+`dalibo/pandocker:19.11`, `dalibo/pandocker:21.02-full`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+
+Major version upgrades
+--------------------------------------------------------------------------------
+
+This new version brings major updates for all its basic components:
+
+* Switch from Debian 10 buster to Ubuntu 22.04 Jammy
+* Upgrade to pandoc 2.19
+* Upgrade from TexLive 2016 to TexLive 2022
+* Upgrade for many python filters
+
+The `alpine`, `buster` and `bullseye` tags are now obsolete.
+
+With so many new versions on each key part of the image, this new release
+may introduce regressions on your own document toolchain, please be careful
+when upgrading and open an issue to let us know if you encouter any problem.
+
+
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Job>
+
+
+
 Pandocker 22.03: awesomebox + fontawesome
 ================================================================================
 

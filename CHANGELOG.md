@@ -1,7 +1,7 @@
 Changelog
 ===============================================================================
 
-22.19 - Work in Progress
+22.12 -
 -------------------------------------------------------------------------------
 
 __Stack__
@@ -23,6 +23,8 @@ __Changes__
 * [templates] letter template is now deprecated
 * [tags] alpine tag is now deprecated
 * [tags] bullseye tag is now deprecated
+* [templates] Add easy-pandoc-templates
+* [filters] Add pandoc-run-postgres
 
 
 22.03
