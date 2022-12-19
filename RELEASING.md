@@ -7,7 +7,7 @@
 * [ ] Merge the `release` branch into `latest`
 * [ ] Add a tag to `latest`
 * [ ] Create a new [release]
-* [ ] Rebase the `stable` and `weasy` branches from `latest`
+* [ ] Rebase the `stable` branche from `latest`
 * [ ] Wait for docker hub to rebuild the images
 * [ ] Create the next milestone
 * [ ] Bump the new version on `latest`
