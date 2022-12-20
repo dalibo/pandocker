@@ -1,7 +1,7 @@
 # https://github.com/sergiocorreia/panflute/releases/latest
 panflute==2.2.3
 # https://github.com/daamien/pandoc-cover/releases
-pandoc-cover=0.0.1
+pandoc-cover==0.0.3
 # https://github.com/jgm/pandocfilters/releases/latest
 pandocfilters==1.5
 # https://github.com/chdemko/pandoc-codeblock-include/releases
