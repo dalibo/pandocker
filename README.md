@@ -97,6 +97,7 @@ filters below:
 
 * [pandoc-citeproc] : manage bibliographies and citations
 * [pandoc-codeblock-include] : insert an external file into a codeblock
+* [pandoc-cover] : Add a PDF cover based on an SVG template
 * [pandoc-include] : insert external markdown files into the main document
 * [pandoc-latex-admonition] : adding admonitions on specific DIVs
 * [pandoc-latex-barcode] : insert barcodes and QRcodes in documents
@@ -108,6 +109,9 @@ filters below:
 * [pandoc-mustache] : basic variables substitution
 * [pandoc-minted] : advanced syntax highlighting
 * [pandoc-crossref] : support for cross-referencing sections, figures, and more
+* [pandoc-run-postgres] : Execute SQL queries inside a markdown document
+
+
 
 NOTE: By default when using the [pandoc-include] filter, the path to target
 files is relative to the `/pandoc` mountpoint. For instance,
@@ -116,6 +120,7 @@ You can use the docker arg `--workdir="some/place/elsewhere"` to specify
 another location. The same principle applies to the [pandoc-codeblock-include]
 and [pandoc-mustache] filters.
 
+[pandoc-cover]: https://github.com/daamien/pandoc-cover
 [pandoc-citeproc]: https://pandoc.org/demo/example19/Extension-citations.html
 [pandoc-codeblock-include]: https://github.com/chdemko/pandoc-codeblock-include
 [pandoc-include]: https://github.com/DCsunset/pandoc-include
@@ -129,6 +134,7 @@ and [pandoc-mustache] filters.
 [pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
 [pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
 [pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
+[pandoc-run-postgres]: https://github.com/daamien/pandoc-run-postgres
 
 ## Fonts
 
