@@ -56,6 +56,7 @@ RUN set -x && \
         wget \
         unzip \
         # panflute requirements
+        python-is-python3 \
         python3-pip \
         python3-setuptools \
         python3-wheel \
