@@ -103,7 +103,7 @@ buster-full: buster-full/Dockerfile
 	    --file $^ .
 
 .PHONY: test
-test:
+test: #: use `TEST_ONLY=571 make test` to trigger a single test !
 	$(BATS) $(BATS_FILTER) tests/extra.bats
 
 .PHONY: test-full
