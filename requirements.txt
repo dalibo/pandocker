@@ -1,7 +1,7 @@
 # https://github.com/sergiocorreia/panflute/releases/latest
 panflute==2.2.3
 # https://github.com/daamien/pandoc-cover/releases
-pandoc-cover==0.0.3
+pandoc-cover==0.1.1
 # https://github.com/jgm/pandocfilters/releases/latest
 pandocfilters==1.5
 # https://github.com/chdemko/pandoc-codeblock-include/releases
@@ -29,7 +29,7 @@ pandoc-minted==0.2
 # https://github.com/michaelstepner/pandoc-mustache/releases/tag/0.1.0
 pandoc-mustache==0.1
 # https://github.com/daamien/pandoc-run-postgres/releases
-pandoc-run-postgres==0.0.2
+pandoc-run-postgres==0.0.3
 # https://pypdf2.readthedocs.io/en/latest/meta/CHANGELOG.html
 PyPDF2==2.11
 # https://pygments.org/docs/changelog/
