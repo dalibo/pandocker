@@ -311,6 +311,15 @@ teardown() {
 }
 
 
+## 57x: pandoc-cover
+@test "571: A PDF file with a custom SVG cover" {
+  DIR=pandoc-cover
+  $PANDOC $IN/$DIR/sample.md \
+          --template=eisvogel \
+          --filter pandoc-cover \
+          --output $OUT/$DIR/sample.pdf
+}
+
 ##
 ## 9xx: Other entrypoints
 ##
