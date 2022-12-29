@@ -101,3 +101,6 @@ minted
 
 # https://github.com/dalibo/pandocker/issues/238#issuecomment-1287170507
 enumitem
+
+draftwatermark
+glossaries
