@@ -9,12 +9,7 @@
 collection-latexrecommended
 
 # More fonts
-fontawesome5
-ly1
 inconsolata
-sourcesanspro
-sourcecodepro
-mweights
 
 # For pandoc-latex-adminition filter
 environ
