@@ -109,11 +109,19 @@ RUN wget https://github.com/hakimel/reveal.js/archive/${REVEALJS_VERSION}.tar.gz
 ## F I L T E R S
 ##
 
-#
 # Python filters
-#
 ADD requirements.txt ./
-RUN pip3 --no-cache-dir install --find-links file://${PWD}/cache -r requirements.txt
+RUN pip3 --no-cache-dir install -r requirements.txt
+
+# Lua filters
+ARG PANDA_REPO=https://github.com/CDSoft/panda.git
+ARG PANDA_VERSION=8dcbe68
+RUN git clone ${PANDA_REPO} /tmp/panda && \
+    cd /tmp/panda && \
+    git checkout ${PANDA_VERSION} && \
+    make install && \
+    rm -fr /tmp/panda
+
 
 ##
 ## L A T E X
