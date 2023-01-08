@@ -119,7 +119,7 @@ ARG PANDA_VERSION=8dcbe68
 RUN git clone ${PANDA_REPO} /tmp/panda && \
     cd /tmp/panda && \
     git checkout ${PANDA_VERSION} && \
-    make install && \
+    install panda panda.lua /usr/local/bin && \
     rm -fr /tmp/panda
 
 
