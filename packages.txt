@@ -1,0 +1,46 @@
+##
+## Latex packages required by the templates and filters
+## These packages are available in TeXLive 2022
+##
+## The list may contain duplicates, this is normal
+##
+
+# Lifesaver packages
+collection-latexrecommended
+
+# More fonts
+inconsolata
+
+# For pandoc-latex-adminition filter
+environ
+mdframed
+soul
+soulutf8
+tcolorbox
+
+# For DALIBO templates
+bclogo
+lato
+tocloft
+wrapfig
+
+# For letter template
+wallpaper
+
+# for dutch
+charter
+cm-super
+xpatch
+
+# for minted
+#minted
+
+##
+## Misc.
+##
+
+# https://github.com/dalibo/pandocker/issues/238#issuecomment-1287170507
+enumitem
+
+draftwatermark
+glossaries
