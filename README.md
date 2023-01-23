@@ -72,7 +72,7 @@ So far, we provide the 3 templates below:
 
 * [eisvogel] is designed for lecture notes and exercises with a focus on computer
   science. It works with `pdflatex` and `xelatex`.
-* [leaflet] creates simple 3-fold brochures. Works only with `xelatex`
+* [easy templates] is a collection of HTML templates
 * [letter] is for writing letters in markdown. Works only with `xelatex`
 
 You can use them simply by adding `--template=xxx` to your compilation
@@ -88,6 +88,7 @@ Please go the project page of each template for more details.
 [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
 [leaflet]: https://gitlab.com/daamien/pandoc-leaflet-template
 [letter]: https://github.com/aaronwolen/pandoc-letter
+[easy templates]: https://github.com/ryangrose/easy-pandoc-templates
 
 ## Filters
 
@@ -95,6 +96,7 @@ This docker image embeds a number of usefull pandoc filters. You can simply enab
 by adding the option `--filter xxx` where `xxx` is the name of one of the following
 filters below:
 
+* [panda] : Multi-purpose Lua filter
 * [pandoc-citeproc] : manage bibliographies and citations
 * [pandoc-codeblock-include] : insert an external file into a codeblock
 * [pandoc-cover] : Add a PDF cover based on an SVG template
@@ -110,6 +112,7 @@ filters below:
 * [pandoc-minted] : advanced syntax highlighting
 * [pandoc-crossref] : support for cross-referencing sections, figures, and more
 * [pandoc-run-postgres] : Execute SQL queries inside a markdown document
+* [pandoc-jinja] : Render pandoc metadata inside the document itself
 
 
 
@@ -120,6 +123,7 @@ You can use the docker arg `--workdir="some/place/elsewhere"` to specify
 another location. The same principle applies to the [pandoc-codeblock-include]
 and [pandoc-mustache] filters.
 
+[pando]: https://github.com/CDSoft/panda
 [pandoc-cover]: https://github.com/daamien/pandoc-cover
 [pandoc-citeproc]: https://pandoc.org/demo/example19/Extension-citations.html
 [pandoc-codeblock-include]: https://github.com/chdemko/pandoc-codeblock-include
@@ -135,6 +139,7 @@ and [pandoc-mustache] filters.
 [pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
 [pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
 [pandoc-run-postgres]: https://github.com/daamien/pandoc-run-postgres
+[pandoc-jinja]: https://github.com/daamien/pandoc-jinja
 
 ## Fonts
 

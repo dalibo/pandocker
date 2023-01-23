@@ -14,6 +14,29 @@ __Changes__
 
 <https://github.com/dalibo/pandocker/milestone/14>
 
+23.01 - Maintenance Release
+-------------------------------------------------------------------------------
+
+__Stack__
+
+* Ubuntu Jammy
+* Pandoc 2.19
+* Eisvogel f5c1f20c94fa7fef4750ce46589416520bd76768
+
+__Changes__
+
+<https://github.com/dalibo/pandocker/milestone/14>
+
+* Add pandoc-jinja and panda for variable substitution
+* Remove duplicate latex packages
+* Adds draftwatermark and glossaries latex packages (colindean)
+* Update filters
+* Add test for pandoc-cover
+* python is python3
+* Add pandoc-cover filter
+* Add pandoc-run-postgres
+
+
 22.12
 -------------------------------------------------------------------------------
 
