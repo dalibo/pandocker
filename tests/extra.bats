@@ -322,6 +322,15 @@ teardown() {
           --output $OUT/$DIR/sample.pdf
 }
 
+## 58x: panda
+@test "581: A PDF file with graphviz images" {
+  DIR=panda
+  $PANDOC $IN/$DIR/graphviz.md \
+          --template=eisvogel \
+          --lua-filter=/panda.lua \
+          --output $OUT/$DIR/graphviz.pdf
+}
+
 ##
 ## 9xx: Other entrypoints
 ##
