@@ -89,7 +89,7 @@ RUN mkdir -p ~/.ssh && \
 ##
 
 #
-# The easiest to produce reveal slides is to point to a CDN like this:
+# The easiest way to produce reveal slides is to point to a CDN like this:
 #
 #    -V revealjs-url=https://unpkg.com/reveal.js
 #
