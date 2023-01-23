@@ -219,6 +219,7 @@ teardown() {
 
 ## 51x: pandoc-minted
 @test "511: Generate a TEX file using the minted filter" {
+  skip "minted is deprecated"
   DIR=pandoc-minted
   $PANDOC $IN/$DIR/minted.md  \
           --filter pandoc-minted \
@@ -226,12 +227,13 @@ teardown() {
 }
 
 @test "512: Generate a PDF file using the minted filter" {
-    DIR=pandoc-minted
-    $PANDOC $IN/$DIR/minted.md  \
-            --filter pandoc-minted \
-            --pdf-engine=xelatex \
-            --pdf-engine-opt=-shell-escape \
-            -o $OUT/$DIR/minted.pdf
+  skip "minted is deprecated"
+  DIR=pandoc-minted
+  $PANDOC $IN/$DIR/minted.md  \
+          --filter pandoc-minted \
+          --pdf-engine=xelatex \
+          --pdf-engine-opt=-shell-escape \
+          -o $OUT/$DIR/minted.pdf
 }
 
 ## 52x: pandoc-include + pandoc-codeblock-include
