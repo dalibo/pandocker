@@ -1,8 +1,7 @@
 
 
-```{.dot render="{{dot}} out='.' "
-         img="img/panda_diagram_example"
-         out="output_path/img" }
+```{.dot render="{{dot}} "
+         img="panda_diagram_example"}
 digraph {
     rankdir=LR;
     input -> pandoc -> output
@@ -13,6 +12,6 @@ digraph {
 ```
 
 
-```{ render="{{dot}}" out='/tmp'
+```{ render="{{dot}}"
      include="tests/input/panda/hello.dot" }
 ```
