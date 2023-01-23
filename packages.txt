@@ -14,6 +14,7 @@ inconsolata
 # For pandoc-latex-adminition filter
 environ
 mdframed
+pdfcol
 soul
 soulutf8
 tcolorbox
