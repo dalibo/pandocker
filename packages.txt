@@ -16,7 +16,8 @@ environ
 mdframed
 pdfcol
 soul
-soulutf8
+# FIX https://github.com/dalibo/pandocker/issues/263
+#soulutf8
 tcolorbox
 
 # For DALIBO templates
