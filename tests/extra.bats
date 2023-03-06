@@ -296,6 +296,7 @@ teardown() {
 
 ## 55x: pandoc-latex-admonition
 @test "551: A PDF file using the admonition filter" {
+  skip "pandoc-latex-admonition is deprecated"
   DIR=pandoc-latex-admonition
   $PANDOC $IN/$DIR/admonition.md \
           --filter pandoc-latex-admonition \
