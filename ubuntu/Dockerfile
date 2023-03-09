@@ -20,6 +20,8 @@ ENV DEBCONF_NOWARNINGS yes
 RUN set -x && \
     apt-get -qq update && \
     apt-get -qy install --no-install-recommends \
+        # for pandoc filters
+        python-is-python3 \
         # for deployment
         openssh-client \
         rsync \
