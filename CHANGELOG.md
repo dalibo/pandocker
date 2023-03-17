@@ -14,6 +14,15 @@ __Changes__
 
 <https://github.com/dalibo/pandocker/milestone/14>
 
+* python-is-python3
+* pandoc-latex-admonition is deprecated
+* FIX #263 remove soulutf8
+* update pandoc-cover
+* update pandoc-jinja
+* update pandoc-run-postgres
+* [latex] Add pdfcol package
+
+
 23.01 - Maintenance Release
 -------------------------------------------------------------------------------
 

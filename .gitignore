@@ -6,3 +6,4 @@ tmp-*
 tests/output/
 tests/*.bats.log
 missfont.log
+.panda
