@@ -17,6 +17,7 @@ ENV DEBCONF_NOWARNINGS yes
 #
 # Debian
 #
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -x && \
     # Setup a cacher to speed up build
     if [ -n "${APT_CACHER}" ] ; then \
