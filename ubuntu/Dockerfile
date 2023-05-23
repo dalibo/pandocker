@@ -54,6 +54,8 @@ RUN set -x && \
         unzip \
         # required for PDF meta analysis
         poppler-utils \
+        # for panda
+        graphviz \
     # clean up
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
