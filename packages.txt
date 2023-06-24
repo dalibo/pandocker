@@ -46,3 +46,4 @@ enumitem
 
 draftwatermark
 glossaries
+glossaries-extra
