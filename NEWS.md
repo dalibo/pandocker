@@ -1,4 +1,90 @@
 
+Pandocker 24.05: Simplification and transfer toward upstream pandoc/extra
+================================================================================
+
+Eymoutiers, May 30, 2024
+
+What is this ?
+--------------------------------------------------------------------------------
+
+Pandocker is a docker image that extends the official [pandoc/extra image] with
+with more filters, templates, fonts, and the latex bazaar
+
+[pandoc/extra image]: https://hub.docker.com/r/pandoc/extra
+
+It allows you to generate slides and documents without installing the required
+depencies on your machine. It is also very usefull to integrate pandoc into
+a CI workflow such as Github Actions, Gitlab Pipelines, etc.
+
+For instance to generate an EPUB file from a markdown source, you can simply
+type:
+
+```
+docker run --rm -v `pwd`:/pandoc dalibo/pandocker test.md -o test.epub
+```
+
+This image is available under BSD Licence and it has 4 main tags:
+
+* `stable` should be used in production
+* `stable-full` for non-european languages
+* `latest` and `latest-full` are the development versions
+
+You can also retrieve older versions by their version number:
+`dalibo/pandocker:24.05`, `dalibo/pandocker:23.03-full`, etc.
+
+For more details :
+
+* Github : <https://github.com/dalibo/pandocker>
+* Docker Hub : <https://hub.docker.com/r/dalibo/pandocker/>
+
+Simplification
+--------------------------------------------------------------------------------
+
+When we started this project 8 years ago, there was no official docker image for
+pandoc. Thus we made our own. 
+
+Over the last year, we worked hand in hand with the [pandoc/dockerfiles] to 
+create a new [pandoc/extra image] that includes key parts of the former 
+pandocker versions. And therefore the `dalibo/pandocker` image is now based on 
+the [pandoc/extra image].
+
+[pandoc/dockerfiles]: https://github.com/pandoc/dockerfiles/
+
+By moving those key parts upstream, we can now greatly simplify this project and
+improve its maintainability.
+
+The `dalibo/pandocker` image will remain because it contains some elements that
+cannot be pushed upstream.
+
+How to upgrade
+--------------------------------------------------------------------------------
+
+```console
+docker pull dalibo/pandocker:stable
+```
+
+Credits
+--------------------------------------------------------------------------------
+
+The release contains contributions from Peter Dave Hello and Giovanni Rosa.
+
+It is also heavily based on the great work by Albert Krewinkel and 
+Caleb Maclennan on the [pandoc/dockerfiles] project.
+
+Many thanks to them !
+
+
+How to contribute
+--------------------------------------------------------------------------------
+
+Pandocker is an open project, contributions are welcome.
+
+If you want to help, you can find a list of "Junior Jobs" here:
+
+<https://github.com/dalibo/pandocker/labels/Junior%20Job>
+
+
+
 Pandocker 23.03: Maintenance Version
 ================================================================================
 
