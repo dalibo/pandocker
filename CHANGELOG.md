@@ -1,12 +1,20 @@
 Changelog
 ===============================================================================
 
+24.10 - Work in Progress
+-------------------------------------------------------------------------------
+
+__Stack__
+
+__Changes__
+
+
 24.05 - Simplification and transfer toward upstream pandoc/extra
 -------------------------------------------------------------------------------
 
 __Stack__
 
-* Ubuntu Jammy
+* Ubuntu Noble
 * pandoc/extra:3.2
 * Pandoc 3.2
 * Eisvogel 2.4.0
