@@ -3,7 +3,7 @@
 [![github
 release](https://img.shields.io/github/release/dalibo/pandocker.svg?label=current+release)](https://github.com/dalibo/pandocker/releases)
 [![Docker Image](https://img.shields.io/docker/automated/dalibo/pandocker.svg)](https://hub.docker.com/r/dalibo/pandocker)
-[![CI](https://github.com/dalibo/pandocker/actions/workflows/ubuntu.yml/badge.svg?branch=latest)](https://github.com/dalibo/pandocker/actions/workflows/ubuuntuOA.yml)
+[![CI](https://github.com/dalibo/pandocker/actions/workflows/build.yml/badge.svg?branch=latest)](https://github.com/dalibo/pandocker/actions/workflows/build.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/branches)
 
 A simple docker image for pandoc with [filters], [templates], [fonts] and
