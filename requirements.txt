@@ -1,34 +1,34 @@
-# https://github.com/daamien/pandoc-cover/releases
+# https://github.com/daamien/pandoc-cover/releases/latest
 pandoc-cover==0.2.1
 # https://github.com/chdemko/pandoc-codeblock-include/releases
 pandoc-codeblock-include==1.0.1.3
 # https://github.com/DCsunset/pandoc-include/releases/latest
-pandoc-include==1.2
+pandoc-include==1.3.2
 # https://github.com/daamien/pandoc-jinja/releases
-pandoc-jinja==0.2.2
+pandoc-jinja==0.2.4
 # https://github.com/chdemko/pandoc-latex-admonition/releases/latest
-pandoc-latex-admonition==1.3.2
+pandoc-latex-admonition==1.3.3.2
 # https://github.com/chdemko/pandoc-latex-color/releases/latest
-pandoc-latex-color==0.2.1
+pandoc-latex-color==1.0.0.3
 # https://github.com/chdemko/pandoc-latex-fontsize/releases/latest
-pandoc-latex-fontsize==1.1.3
+pandoc-latex-fontsize==1.1.3.3
 # https://github.com/daamien/pandoc-latex-barcode/tags/
 pandoc-latex-barcode==1.1.1
 # https://github.com/daamien/pandoc-latex-levelup/tags
 pandoc-latex-levelup==1.1
 # https://github.com/chdemko/pandoc-latex-margin/tags
-pandoc-latex-margin==0.1.1
+pandoc-latex-margin==1.0.0.3
 # https://github.com/chdemko/pandoc-latex-newpage/tags
-pandoc-latex-newpage==0.2
-# https://github.com/nick-ulle/pandoc-minted
-#pandoc-minted==0.2
-# https://github.com/michaelstepner/pandoc-mustache/releases/tag/0.1.0
+pandoc-latex-newpage==1.0.0.3
+# https://github.com/michaelstepner/pandoc-mustache/releases/latest
 pandoc-mustache==0.1
-# https://github.com/daamien/pandoc-run-postgres/releases
+# https://github.com/daamien/pandoc-run-postgres/releases/latest
 pandoc-run-postgres==0.0.4
 # https://pypdf2.readthedocs.io/en/latest/meta/CHANGELOG.html
 PyPDF2==2.11
 # https://pygments.org/docs/changelog/
 Pygments==2.15.0
-# https://github.com/sarnold/pystache/releases
+# https://github.com/sarnold/pystache/releases/latest
 pystache==0.6
+# https://github.com/daamien/pandoc-recap/releases/latest
+pandoc-recap==0.0.2

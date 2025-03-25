@@ -4,8 +4,8 @@ name: Publish Docker images
 
 on:
   workflow_dispatch: # manually triggered
-#  push:
-#    branches: [ latest, stable ]
+  push:
+    branches: [ latest, stable, 24.05 ]
 
 jobs:
   push_to_registry:
@@ -35,21 +35,16 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: buster/Dockerfile
+          file: Dockerfile
           push: true
-          tags: |
-            dalibo/pandocker:${{ steps.branch.outputs.branch_name }}
-            dalibo/pandocker:${{ steps.branch.outputs.branch_name }}-buster
-            dalibo/pandocker:${{ steps.branch.outputs.branch_name }}-buster-extra
+          target: extra
+          tags: dalibo/pandocker:${{ steps.branch.outputs.branch_name }}
 
       - name: Build and push the `full` image
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: buster-full/Dockerfile
+          file: Dockerfile
           push: true
-          # The tag `xxx-full` is not officially supported, only kept for backward compat
-          tags: |
-            dalibo/pandocker:${{ steps.branch.outputs.branch_name }}-buster-full
-            dalibo/pandocker:${{ steps.branch.outputs.branch_name }}-full
-
+          target: full
+          tags: dalibo/pandocker:${{ steps.branch.outputs.branch_name }}-full

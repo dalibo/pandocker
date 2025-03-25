@@ -43,3 +43,26 @@ project and the interests of all those who contribute or benefit from it.
 As an open source project, we consider that we must maintain this information
 in the repository for archiving purposes in the public interest.
 
+How To Release a new version
+-------------------------------------------------------------------------------
+
+Let's say you want to release version `23.07`
+
+* [ ] Close all open ticket on the current milestone
+* [ ] Create a `release` branch
+* [ ] Update the [CHANGELOG.md]()
+* [ ] Add `23.07` in `on.push.branches` in [.github/workflows/docker_hub.yml]()
+* [ ] Write a announcement in [NEWS.md]()
+* [ ] Merge the `release` branch into `latest`
+* [ ] Add a tag `23.07` to `latest`
+* [ ] Create a new [release]
+* [ ] Rebase the `stable` branch from `latest`
+* [ ] Create a `23.07` branch from `latest`
+* [ ] Check that github Actions is correctly publishing the images
+* [ ] Create the next milestone
+* [ ] Bump the new version on `latest`
+* [ ] Publish the announcement
+* [ ] Bump to the new version in [CHANGELOG.md]()
+* [ ] Close the current milestone
+
+[release]: https://github.com/dalibo/pandocker/releases

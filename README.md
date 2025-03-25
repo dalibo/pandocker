@@ -3,10 +3,11 @@
 [![github
 release](https://img.shields.io/github/release/dalibo/pandocker.svg?label=current+release)](https://github.com/dalibo/pandocker/releases)
 [![Docker Image](https://img.shields.io/docker/automated/dalibo/pandocker.svg)](https://hub.docker.com/r/dalibo/pandocker)
-[![CI](https://github.com/dalibo/pandocker/actions/workflows/ubuntu.yml/badge.svg?branch=latest)](https://github.com/dalibo/pandocker/actions/workflows/ubuuntuOA.yml)
+[![CI](https://github.com/dalibo/pandocker/actions/workflows/build.yml/badge.svg?branch=latest)](https://github.com/dalibo/pandocker/actions/workflows/build.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/dalibo/pandocker.svg)](https://github.com/dalibo/pandocker/branches)
 
-A simple docker image for pandoc with [filters], [templates], [fonts] and [additional tools].
+A simple docker image for pandoc with [filters], [templates], [fonts] and
+[additional tools].
 
 [filters]: #filters
 [templates]: #templates
@@ -21,14 +22,15 @@ Download the image with:
 docker pull dalibo/pandocker:stable
 ```
 
-Whenever a new stable version is released, launch that command again to refresh your image.
+Whenever a new stable version is released, launch that command again to refresh
+your image.
 
 ## How To
 
 Run `dalibo/pandocker`  with regular `pandoc` args. Mount your files at `/pandoc`.
 
 ```console
-$ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md -o README.pdf
+docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md -o README.pdf
 ```
 
 **Notes about the docker options:**
@@ -40,7 +42,6 @@ $ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md
 
 [docker runtime privileges]: https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
 
-
 * The `--rm` option destroys the container once the document is produced.
   This is not mandatory but it's a good practice.
 
@@ -51,14 +52,14 @@ $ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker README.md
 > Add this to your `~/.bashrc` :
 
 ```console
-$ alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker:stable"
-$ pandoc README.md -o README.epub
+alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker:stable"
+pandoc README.md -o README.epub
 ```
 
 Alternatively, you can use a pipe like this:
 
 ```console
-$ cat foo.md | docker run --rm -i dalibo/pandocker -t pdf > foo.pdf
+cat foo.md | docker run --rm -i dalibo/pandocker -t pdf > foo.pdf
 ```
 
 This method will not work if the source document contains images or includes...
@@ -73,28 +74,26 @@ So far, we provide the 3 templates below:
 * [eisvogel] is designed for lecture notes and exercises with a focus on computer
   science. It works with `pdflatex` and `xelatex`.
 * [easy templates] is a collection of HTML templates
-* [letter] is for writing letters in markdown. Works only with `xelatex`
+
 
 You can use them simply by adding `--template=xxx` to your compilation
 lines:
 
 ``` console
-$ docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
+docker run [...] --pdf-engine=xelatex --template=eisvogel foo.md -o foo.pdf
 ```
 
 Each template has specific variables that you can use to adapt the document.
 Please go the project page of each template for more details.
 
 [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
-[leaflet]: https://gitlab.com/daamien/pandoc-leaflet-template
-[letter]: https://github.com/aaronwolen/pandoc-letter
 [easy templates]: https://github.com/ryangrose/easy-pandoc-templates
 
 ## Filters
 
-This docker image embeds a number of usefull pandoc filters. You can simply enable them
-by adding the option `--filter xxx` where `xxx` is the name of one of the following
-filters below:
+This docker image embeds a number of usefull pandoc filters. You can simply
+enable them by adding the option `--filter xxx` where `xxx` is the name of
+one of the following filters below:
 
 * [panda] : Multi-purpose Lua filter
 * [pandoc-citeproc] : manage bibliographies and citations
@@ -109,12 +108,9 @@ filters below:
 * [pandoc-latex-margin] : Resize the margins of your PDF documents
 * [pandoc-latex-newpage] : Convert horizontal rule to new page in LaTeX
 * [pandoc-mustache] : basic variables substitution
-* [pandoc-minted] : advanced syntax highlighting
 * [pandoc-crossref] : support for cross-referencing sections, figures, and more
 * [pandoc-run-postgres] : Execute SQL queries inside a markdown document
 * [pandoc-jinja] : Render pandoc metadata inside the document itself
-
-
 
 NOTE: By default when using the [pandoc-include] filter, the path to target
 files is relative to the `/pandoc` mountpoint. For instance,
@@ -136,7 +132,7 @@ and [pandoc-mustache] filters.
 [pandoc-latex-margin]: https://github.com/chdemko/pandoc-latex-margin
 [pandoc-latex-newpage]: https://github.com/chdemko/pandoc-latex-newpage
 [pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
-[pandoc-minted]: https://github.com/nick-ulle/pandoc-minted
+
 [pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
 [pandoc-run-postgres]: https://github.com/daamien/pandoc-run-postgres
 [pandoc-jinja]: https://github.com/daamien/pandoc-jinja
@@ -145,41 +141,34 @@ and [pandoc-mustache] filters.
 
 The pandocker image includes the following open-source fonts:
 
-* Deja Vu: https://dejavu-fonts.github.io/
-* Lato: https://fonts.google.com/specimen/Lato
-* Liberation: https://github.com/liberationfonts/liberation-fonts
-* Fontawesome: https://fontawesome.com/
+* Deja Vu: <https://dejavu-fonts.github.io/>
+* Lato: <https://fonts.google.com/specimen/Lato>
+* Liberation: <https://github.com/liberationfonts/liberation-fonts>
+* Fontawesome: <https://fontawesome.com/>
 
 The full variant includes
 
-* Noto: https://www.google.com/get/noto/
+* Noto: <https://www.google.com/get/noto/>
 
 ## Supported Tags : Branch + Variant + Parent
 
-The image is available in multiple versions named as follows:
+The image is available in 4 versions named as follows:
 
-`branch[-parent[-variant]]`
+* `latest` (default): minimal image containing the most recent changes
+* `stable` : minimal image based on the latest stable release
+* `latest-full` (default): complete image containing the most recent changes
+* `stable-full` : complete image based on the latest stable release
 
-* The __branch__ can be `latest` (default) or `stable` (for production)
-  or the release name (`20.02`)
-* The __parent__ is the base image we are using. Currently only `ubuntu`
-  is supported
-* The __variant__ is either `extra` (330MB) or `full` (810 MB)
+You can also the release names for instance
 
-The supported tags are :
+`docker pull dalibo/pandocker:24.05`
 
-* `latest`, `latest-ubuntu`, `latest-ubuntu-extra` (default)
-* `latest-ubuntu-full`
-* `stable`, `stable-ubuntu`, `stable-ubuntu-extra`
-* `stable-ubuntu-full`
-
-Other tags are not supported and should be used with care.
-
+the previous versions add more complex tags such as `latest-ubuntu-extra` 
+or `stable-buster`. They are not supported anymore.
 
 ## Build it
 
 Use `make` or `docker build .`
-
 
 ## Additional tools
 
@@ -197,7 +186,37 @@ These tools can be called by modifying the entrypoint of the image. For instance
 you can convert a `dia` source file into an SVG image like this:
 
 ``` console
-$ docker run [..] --entrypoint dia dalibo/pandocker foo.dia -e foo.svg
+docker run [..] --entrypoint dia dalibo/pandocker foo.dia -e foo.svg
 ```
 
+### Frequently Asked Question
 
+### ERROR: "filename": openBinaryFile: does not exist (No such file or directory)
+
+When using pandocker, you may encounter the following error message:
+
+```
+$ docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker foo.md
+pandoc: "filename": openBinaryFile: does not exist (No such file or directory)
+```
+
+This means that docker could not mount the local directory as a volume and
+therefore pandoc cannot see the file `foo.md` inside the container. There might
+be several reasons for that, here a few ideas to try:
+
+1. Add `--privileged` option to the pandocker command line. Read more about
+   this [docker privileged mode] here :
+   <https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities>
+
+2. Check if you have [SELinux] enforced on you system, with the command below:
+
+```console
+sestatus
+```
+
+If the [SELinux] mode is `enforced`, you can try to lower it to `permissive`.
+
+More info about [SELinux] here: <https://fedoraproject.org/wiki/SELinux_FAQ>
+
+[SELinux]: https://fedoraproject.org/wiki/SELinux_FAQ
+[docker privileged mode]: https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities

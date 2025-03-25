@@ -123,20 +123,6 @@ teardown() {
           -o $OUT/sample-presentation.eisvogel.xelatex.pdf
 }
 
-## 32x: Letter
-## https://github.com/dalibo/pandocker/issues/178
-@test "321: Generate a PDF file using the letter template" {
-  skip "letter template is deprecated"
-  $PANDOC --pdf-engine=xelatex  --template=letter $IN/letter/letter.md -o $OUT/letter.pdf
-}
-
-
-## 33x: Leaflet
-@test "331: Generate a PDF brochure using the leaflet template" {
-  skip "leaflet template is deprecated"
-  $PANDOC --pdf-engine=xelatex  --template=leaflet $IN/leaflet/leaflet.md -o $OUT/leaflet.pdf
-}
-
 ##
 ## 4xx: Fonts, Langages and Special Characters
 ##
@@ -216,25 +202,6 @@ teardown() {
 ##
 ## 5xx: Filters
 ##
-
-## 51x: pandoc-minted
-@test "511: Generate a TEX file using the minted filter" {
-  skip "minted is deprecated"
-  DIR=pandoc-minted
-  $PANDOC $IN/$DIR/minted.md  \
-          --filter pandoc-minted \
-          -o $OUT/$DIR/minted.tex
-}
-
-@test "512: Generate a PDF file using the minted filter" {
-  skip "minted is deprecated"
-  DIR=pandoc-minted
-  $PANDOC $IN/$DIR/minted.md  \
-          --filter pandoc-minted \
-          --pdf-engine=xelatex \
-          --pdf-engine-opt=-shell-escape \
-          -o $OUT/$DIR/minted.pdf
-}
 
 ## 52x: pandoc-include + pandoc-codeblock-include
 @test "521: Generate a markdown file using the include filter" {

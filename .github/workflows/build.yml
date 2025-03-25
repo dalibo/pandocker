@@ -13,7 +13,7 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Build the Docker image
-      run: docker build . --file ubuntu/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-ubuntu
+      run: docker build . --target extra --tag dalibo/pandocker:xxxxx-test-githubci-ubuntu
 
     - name: Regression Tests
       run: TAG=xxxxx-test-githubci-ubuntu VARIANT=ubuntu ./tests/libs/bats-core/bin/bats tests/extra.bats --tap
@@ -27,7 +27,7 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Build the Docker image
-      run: docker build . --file ubuntu-full/Dockerfile --tag dalibo/pandocker:xxxxx-test-githubci-ubuntu-full
+      run: docker build . --target full --tag dalibo/pandocker:xxxxx-test-githubci-ubuntu-full
 
     - name: Regression Tests
       run: TAG=xxxxx-test-githubci-ubuntu-full VARIANT=ubuntu-full ./tests/libs/bats-core/bin/bats tests/full.bats --tap

@@ -1,7 +1,40 @@
 Changelog
 ===============================================================================
 
-23.03 - WORK IN PROGRESS
+24.10 - Work in Progress
+-------------------------------------------------------------------------------
+
+__Stack__
+
+__Changes__
+
+
+24.05 - Simplification and transfer toward upstream pandoc/extra
+-------------------------------------------------------------------------------
+
+__Stack__
+
+* Ubuntu Noble
+* pandoc/extra:3.2
+* Pandoc 3.2
+* Eisvogel 2.4.0
+
+__Changes__
+
+* Fix CI status badge in README.md (PeterDaveHello)
+* Use Github Action to publish the images
+* Update python filters
+* Remove obsolete variants
+* use multi-stage build
+* Add the pandoc templates in the ubuntu $HOME
+* remove deprecated tests
+* use pip with --break-system-packages
+* Update to pandoc 3.2
+* Bump pygments from 2.13 to 2.15.0
+* Fix for Dockerfile smell DL4006 (grosa1)
+
+
+23.03 - Maintenance Version
 -------------------------------------------------------------------------------
 
 __Stack__

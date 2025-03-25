@@ -123,13 +123,12 @@ Notes:
     open a Windows Share. To remove this warning (for all users), put
     the following line in `conf/lang/en/lang.php` (more details at
     [localization](https://www.dokuwiki.org/localization#changing_some_localized_texts_and_strings_in_your_installation)):
-    `<?php
-    /**
-     * Customization of the english language file
-     * Copy only the strings that needs to be modified
-     */
-    $lang['js']['nosmblinks'] = '';
-    `
+        <?php
+        /**
+         * Customization of the english language file
+         * Copy only the strings that needs to be modified
+         */
+        $lang['js']['nosmblinks'] = '';
 
 ### Image Links
 
@@ -139,7 +138,7 @@ by combining the syntax for links and [images](#images_and_other_files)
 
     [[http://php.net|{{wiki:dokuwiki-128.png}}]]
 
-[![dokuwiki-128.png](/wiki/dokuwiki-128.png)](http://php.net)
+[{{wiki:dokuwiki-128.png}}](http://php.net)
 
 Please note: The image formatting is the only formatting syntax accepted
 in link names.
@@ -184,13 +183,15 @@ you can specify the size of them.
 Real size: ![dokuwiki-128.png](/wiki/dokuwiki-128.png)
 
 Resize to given width:
-![dokuwiki-128.png](/wiki/dokuwiki-128.png){width="50"}
+![dokuwiki-128.png](/wiki/dokuwiki-128.png){width="50" query="?50"}
 
 Resize to given width and height[^2]:
-![dokuwiki-128.png](/wiki/dokuwiki-128.png){width="200" height="50"}
+![dokuwiki-128.png](/wiki/dokuwiki-128.png){width="200" height="50"
+query="?200x50"}
 
 Resized external image:          
-![](https://secure.php.net/images/php.gif){width="200" height="50"}
+![](https://secure.php.net/images/php.gif){width="200" height="50"
+query="?200x50"}
 
     Real size:                        {{wiki:dokuwiki-128.png}}
     Resize to given width:            {{wiki:dokuwiki-128.png?50}}
@@ -276,9 +277,8 @@ indent your text by two spaces and use a `*` for unordered lists or a
     1.  Just use indention for deeper levels
 3.  That\'s it
 
-```{=html}
 <!-- -->
-```
+
       * This is a list
       * The second item
         * You may have different levels
@@ -584,9 +584,8 @@ HTML example:
 This is some <span style="color:red;font-size:150%;">inline HTML</span>
 `{=html}
 
-```{=html}
 <p style="border:2px dashed red;">And this is some block HTML</p>
-```
+
 PHP example:
 
     <php>
@@ -606,12 +605,11 @@ echo phpversion();
 echo ' (inline HTML)';
  ?>`{=html}
 
-```{=html}
 <?php echo '<table class="inline"><tr><td>The same, but inside a block level element:</td>';
 echo '<td>'.phpversion().'</td>';
 echo '</tr></table>';
  ?>
-```
+
 **Please Note**: HTML and PHP embedding is disabled by default in the
 configuration. If disabled, the code is displayed instead of executed.
 
