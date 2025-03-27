@@ -1,13 +1,20 @@
 Changelog
 ===============================================================================
 
-24.10 - Work in Progress
+25.03 - Work in Progress
 -------------------------------------------------------------------------------
 
 __Stack__
 
+* Ubuntu Noble
+* pandoc/extra:3.6
+* Pandoc 3.6
+* Eisvogel 2.5.0
+
 __Changes__
 
+* Add silence package (#286)
+* Update to pandoc 3.6
 
 24.05 - Simplification and transfer toward upstream pandoc/extra
 -------------------------------------------------------------------------------

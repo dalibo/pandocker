@@ -1,7 +1,7 @@
 #
 # STAGE 1: extra variant
 #
-FROM pandoc/extra:3.2-ubuntu as extra
+FROM pandoc/extra:3.6-ubuntu AS extra
 
 # Set the env variables to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
@@ -113,7 +113,8 @@ RUN git clone ${PANDA_REPO} /tmp/panda && \
 ## L A T E X
 ##
 ADD packages.txt ./
-RUN tlmgr init-usertree && \
+RUN tlmgr update --self && \
+    tlmgr init-usertree && \
     tlmgr install `echo $(grep -v '^#' packages.txt )` && \
     # update the font map
     updmap-sys
@@ -125,6 +126,8 @@ RUN tlmgr init-usertree && \
 
 # Templates are installed in '/.pandoc'.
 ARG TEMPLATES_DIR=/.pandoc/templates
+
+RUN mkdir -p ${TEMPLATES_DIR}
 
 # Starting with 24.04, there's a user named `ubuntu` with id=1000
 # If docker is run with the `--user 1000` option and $HOME for pandoc
@@ -153,7 +156,7 @@ ENTRYPOINT ["pandoc"]
 #
 # STAGE 2: full variant
 #
-FROM extra as full
+FROM extra AS full
 
 # Set the env variables to non-interactive
 ENV DEBIAN_FRONTEND noninteractive

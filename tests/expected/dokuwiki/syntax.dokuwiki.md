@@ -4,7 +4,7 @@
 markup language, which tries to make the datafiles to be as readable as
 possible. This page contains all possible syntax you may use when
 editing the pages. Simply have a look at the source of this page by
-pressing \"Edit this page\". If you want to try something, just use the
+pressing "Edit this page". If you want to try something, just use the
 [playground](/playground/playground) page. The simpler markup is easily
 accessible via [quickbuttons](https://www.dokuwiki.org/toolbar), too.
 
@@ -83,21 +83,21 @@ Section](syntax#internal).
 
 Notes:
 
--   Links to [existing pages](syntax) are shown in a different style
-    from [nonexisting](nonexisting) ones.
--   DokuWiki does not use
-    [CamelCase](https://en.wikipedia.org/wiki/CamelCase) to
-    automatically create links by default, but this behavior can be
-    enabled in the [config](https://www.dokuwiki.org/config) file. Hint:
-    If DokuWiki is a link, then it\'s enabled.
--   When a section\'s heading is changed, its bookmark changes, too. So
-    don\'t rely on section linking too much.
+- Links to [existing pages](syntax) are shown in a different style from
+  [nonexisting](nonexisting) ones.
+- DokuWiki does not use
+  [CamelCase](https://en.wikipedia.org/wiki/CamelCase) to automatically
+  create links by default, but this behavior can be enabled in the
+  [config](https://www.dokuwiki.org/config) file. Hint: If DokuWiki is a
+  link, then it's enabled.
+- When a section's heading is changed, its bookmark changes, too. So
+  don't rely on section linking too much.
 
 ### Interwiki
 
 DokuWiki supports [Interwiki](https://www.dokuwiki.org/Interwiki) links.
 These are quick links to other Wikis. For example this is a link to
-Wikipedia\'s page about Wikis:
+Wikipedia's page about Wikis:
 [Wiki](https://en.wikipedia.org/wiki/Wiki).
 
     DokuWiki supports [[doku>Interwiki]] links. These are quick links to other Wikis.
@@ -113,22 +113,22 @@ corporate [Intranet](https://en.wikipedia.org/wiki/Intranet).
 
 Notes:
 
--   For security reasons direct browsing of windows shares only works in
-    Microsoft Internet Explorer per default (and only in the \"local
-    zone\").
--   For Mozilla and Firefox it can be enabled through different
-    workaround mentioned in the [Mozilla Knowledge
-    Base](http://kb.mozillazine.org/Links_to_local_pages_do_not_work).
-    However, there will still be a JavaScript warning about trying to
-    open a Windows Share. To remove this warning (for all users), put
-    the following line in `conf/lang/en/lang.php` (more details at
-    [localization](https://www.dokuwiki.org/localization#changing_some_localized_texts_and_strings_in_your_installation)):
-        <?php
-        /**
-         * Customization of the english language file
-         * Copy only the strings that needs to be modified
-         */
-        $lang['js']['nosmblinks'] = '';
+- For security reasons direct browsing of windows shares only works in
+  Microsoft Internet Explorer per default (and only in the "local
+  zone").
+- For Mozilla and Firefox it can be enabled through different workaround
+  mentioned in the [Mozilla Knowledge
+  Base](http://kb.mozillazine.org/Links_to_local_pages_do_not_work).
+  However, there will still be a JavaScript warning about trying to open
+  a Windows Share. To remove this warning (for all users), put the
+  following line in `conf/lang/en/lang.php` (more details at
+  [localization](https://www.dokuwiki.org/localization#changing_some_localized_texts_and_strings_in_your_installation)):
+      <?php
+      /**
+       * Customization of the english language file
+       * Copy only the strings that needs to be modified
+       */
+      $lang['js']['nosmblinks'] = '';
 
 ### Image Links
 
@@ -157,7 +157,7 @@ You can add footnotes [^1] by using double parentheses.
 
 You can use up to five different levels of headlines to structure your
 content. If you have more than three headlines, a table of contents is
-generated automatically \-- this can be disabled by including the string
+generated automatically -- this can be disabled by including the string
 `~~NOTOC~~` in the document.
 
 ### Headline Level 3
@@ -256,7 +256,7 @@ When you upload a `video.webm` and `video.ogv` next to the referenced
 `video.mp4`, DokuWiki will automatically add them as alternatives so
 that one of the three files is understood by your browser.
 
-Additionally DokuWiki supports a \"poster\" image which will be shown
+Additionally DokuWiki supports a "poster" image which will be shown
 before the video has started. That image needs to have the same filename
 as the video and be either a jpg or png file. In the example above a
 `video.jpg` file would work.
@@ -267,15 +267,15 @@ Dokuwiki supports ordered and unordered lists. To create a list item,
 indent your text by two spaces and use a `*` for unordered lists or a
 `-` for ordered ones.
 
--   This is a list
--   The second item
-    -   You may have different levels
--   Another item
+- This is a list
+- The second item
+  - You may have different levels
+- Another item
 
 1.  The same list but ordered
 2.  Another item
     1.  Just use indention for deeper levels
-3.  That\'s it
+3.  That's it
 
 <!-- -->
 
@@ -309,26 +309,26 @@ equivalents. Those [Smileys](https://www.dokuwiki.org/Smileys) and other
 images can be configured and extended. Here is an overview of Smileys
 included in DokuWiki:
 
--   8-) %% 8-) %%
--   8-O %% 8-O %%
--   :-( %% :-( %%
--   :-) %% :-) %%
--   =) %% =) %%
--   :-/ %% :-/ %%
--   :-\\ %% :-\\ %%
--   :-? %% :-? %%
--   :-D %% :-D %%
--   :-P %% :-P %%
--   :-O %% :-O %%
--   :-X %% :-X %%
--   :-\| %% :-\| %%
--   ;-) %% ;-) %%
--   \^\_\^ %% \^\_\^ %%
--   :?: %% :?: %%
--   :!: %% :!: %%
--   LOL %% LOL %%
--   FIXME %% FIXME %%
--   DELETEME %% DELETEME %%
+- 8-) %% 8-) %%
+- 8-O %% 8-O %%
+- :-( %% :-( %%
+- :-) %% :-) %%
+- =) %% =) %%
+- :-/ %% :-/ %%
+- :-\\ %% :-\\ %%
+- :-? %% :-? %%
+- :-D %% :-D %%
+- :-P %% :-P %%
+- :-O %% :-O %%
+- :-X %% :-X %%
+- :-\| %% :-\| %%
+- ;-) %% ;-) %%
+- \^\_\^ %% \^\_\^ %%
+- :?: %% :?: %%
+- :!: %% :!: %%
+- LOL %% LOL %%
+- FIXME %% FIXME %%
+- DELETEME %% DELETEME %%
 
 ### Text to HTML Conversions
 
@@ -336,8 +336,8 @@ Typography: [DokuWiki](DokuWiki) can convert simple text characters to
 their typographically correct entities. Here is an example of recognized
 characters.
 
--\> \<- \<-\> =\> \<= \<=\> \>\> \<\< \-- \-\-- 640x480 (c) (tm) (r)
-\"He thought \'It\'s a man\'s world\'\...\"
+-\> \<- \<-\> =\> \<= \<=\> \>\> \<\< -- --- 640x480 (c) (tm) (r) "He
+thought 'It's a man's world'..."
 
     -> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
     "He thought 'It's a man's world'..."
@@ -346,13 +346,13 @@ The same can be done to produce any kind of HTML, it just needs to be
 added to the [pattern file](https://www.dokuwiki.org/entities).
 
 There are three exceptions which do not come from that pattern file:
-multiplication entity (640x480), \'single\' and \"double quotes\". They
-can be turned off through a [config
+multiplication entity (640x480), 'single' and "double quotes". They can
+be turned off through a [config
 option](https://www.dokuwiki.org/config:typography).
 
 ## Quoting
 
-Some times you want to mark some text to show it\'s a reply or comment.
+Some times you want to mark some text to show it's a reply or comment.
 You can use the following syntax:
 
     I think we should do it
@@ -369,7 +369,7 @@ You can use the following syntax:
 
 I think we should do it
 
-> No we shouldn\'t
+> No we shouldn't
 
 > > Well, I say we should
 
@@ -410,7 +410,7 @@ Vertical tableheaders are possible, too.
    Heading 5  Row 2 Col 2            Row 2 Col 3
   ----------- ---------------------- -------------
 
-As you can see, it\'s the cell separator before a cell which decides
+As you can see, it's the cell separator before a cell which decides
 about the formatting:
 
     |              ^ Heading 1            ^ Heading 2          ^
@@ -498,7 +498,7 @@ Those blocks were created by this source:
 
 [DokuWiki](/wiki/DokuWiki) can highlight sourcecode, which makes it
 easier to read. It uses the [GeSHi](http://qbnz.com/highlighter/)
-Generic Syntax Highlighter \-- so any language supported by GeSHi is
+Generic Syntax Highlighter -- so any language supported by GeSHi is
 supported. The syntax uses the same code and file blocks described in
 the previous section, but this time the name of the language syntax to
 be highlighted is included inside the tag, e.g. `<code java>` or
@@ -562,8 +562,8 @@ specifying a file name after language code like this:
 <?php echo "hello world!"; ?>
 ```
 
-If you don\'t want any highlighting but want a downloadable file,
-specify a dash (`-`) as the language code: `<code - myfile.foo>`.
+If you don't want any highlighting but want a downloadable file, specify
+a dash (''-'') as the language code: ''\<code - myfile.foo\>''.
 
 ## Embedding HTML and PHP
 
@@ -660,7 +660,7 @@ output it self. The following control macros are availble:
 
 ## Syntax Plugins
 
-DokuWiki\'s syntax can be extended by
+DokuWiki's syntax can be extended by
 [Plugins](https://www.dokuwiki.org/plugins). How the installed plugins
 are used is described on their appropriate description pages. The
 following syntax plugins are available in this particular DokuWiki
@@ -670,6 +670,6 @@ installation:
 
 [^1]: This is a footnote
 
-[^2]: when the aspect ratio of the given width and height doesn\'t match
+[^2]: when the aspect ratio of the given width and height doesn't match
     that of the image, it will be cropped to the new ratio before
     resizing
