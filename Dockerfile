@@ -124,25 +124,25 @@ RUN tlmgr update --self && \
 ## T E M P L A T E S
 ##
 
-# Templates are installed in '/.pandoc'.
-ARG TEMPLATES_DIR=/.pandoc/templates
-
-RUN mkdir -p ${TEMPLATES_DIR}
+# TODO remove this when issue `pandoc/dockerfiles:274` is fixed
+# https://github.com/pandoc/dockerfiles/issues/274
+ENV PANDOC_DATA_DIR=$XDG_DATA_HOME/pandoc
+ENV PANDOC_TEMPLATES_DIR=$PANDOC_DATA_DIR/templates
 
 # Starting with 24.04, there's a user named `ubuntu` with id=1000
 # If docker is run with the `--user 1000` option and $HOME for pandoc
 # will be `/home/ubuntu`
-RUN ln -s /.pandoc /home/ubuntu/.pandoc
+RUN ln -s ${PANDOC_DATA_DIR} /home/ubuntu/.pandoc
 
 # Easy templates
 ARG EASY_REPO=https://raw.githubusercontent.com/ryangrose/easy-pandoc-templates/
 ARG EASY_VERSION=9a884190fe19782f4434851053947173f8cec3d2
 
-RUN wget ${EASY_REPO}/${EASY_VERSION}/html/uikit.html -O ${TEMPLATES_DIR}/uikit.html && \
-    wget ${EASY_REPO}/${EASY_VERSION}/html/bootstrap_menu.html -O ${TEMPLATES_DIR}/bootstrap_menu.html && \
-    wget ${EASY_REPO}/${EASY_VERSION}/html/clean_menu.html -O ${TEMPLATES_DIR}/clean_menu.html && \
-    wget ${EASY_REPO}/${EASY_VERSION}/html/easy_template.html -O ${TEMPLATES_DIR}/easy_template.html && \
-    wget ${EASY_REPO}/${EASY_VERSION}/html/elegant_bootstrap_menu.html -O ${TEMPLATES_DIR}/elegant_bootstrap_menu.html
+RUN wget ${EASY_REPO}/${EASY_VERSION}/html/uikit.html -O ${PANDOC_TEMPLATES_DIR}/uikit.html && \
+    wget ${EASY_REPO}/${EASY_VERSION}/html/bootstrap_menu.html -O ${PANDOC_TEMPLATES_DIR}/bootstrap_menu.html && \
+    wget ${EASY_REPO}/${EASY_VERSION}/html/clean_menu.html -O ${PANDOC_TEMPLATES_DIR}/clean_menu.html && \
+    wget ${EASY_REPO}/${EASY_VERSION}/html/easy_template.html -O ${PANDOC_TEMPLATES_DIR}/easy_template.html && \
+    wget ${EASY_REPO}/${EASY_VERSION}/html/elegant_bootstrap_menu.html -O ${PANDOC_TEMPLATES_DIR}/elegant_bootstrap_menu.html
 
 
 ##
