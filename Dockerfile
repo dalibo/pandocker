@@ -1,7 +1,7 @@
 #
 # STAGE 1: extra variant
 #
-FROM pandoc/extra:3.6-ubuntu AS extra
+FROM pandoc/extra:3.7-ubuntu AS extra
 
 # Set the env variables to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
@@ -81,7 +81,7 @@ RUN mkdir -p ~/.ssh && \
 #
 
 # pandoc 2.10+ requires revealjs 4.x
-ARG REVEALJS_VERSION=4.1.2
+ARG REVEALJS_VERSION=5.2.1
 RUN wget https://github.com/hakimel/reveal.js/archive/${REVEALJS_VERSION}.tar.gz -O revealjs.tar.gz && \
     tar -xzvf revealjs.tar.gz && \
     cp -r reveal.js-${REVEALJS_VERSION}/dist / && \
