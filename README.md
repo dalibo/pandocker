@@ -91,7 +91,7 @@ Please go the project page of each template for more details.
 
 ## Filters
 
-This docker image embeds a number of usefull pandoc filters. You can simply
+This docker image embeds a number of useful pandoc filters. You can simply
 enable them by adding the option `--filter xxx` where `xxx` is the name of
 one of the following filters below:
 
@@ -132,7 +132,6 @@ and [pandoc-mustache] filters.
 [pandoc-latex-margin]: https://github.com/chdemko/pandoc-latex-margin
 [pandoc-latex-newpage]: https://github.com/chdemko/pandoc-latex-newpage
 [pandoc-mustache]: https://github.com/michaelstepner/pandoc-mustache
-
 [pandoc-crossref]: https://github.com/lierdakil/pandoc-crossref
 [pandoc-run-postgres]: https://github.com/daamien/pandoc-run-postgres
 [pandoc-jinja]: https://github.com/daamien/pandoc-jinja
@@ -146,25 +145,25 @@ The pandocker image includes the following open-source fonts:
 * Liberation: <https://github.com/liberationfonts/liberation-fonts>
 * Fontawesome: <https://fontawesome.com/>
 
-The full variant includes
+## Supported Tags
 
-* Noto: <https://www.google.com/get/noto/>
+The image is available in 2 versions named as follows:
 
-## Supported Tags : Branch + Variant + Parent
-
-The image is available in 4 versions named as follows:
-
-* `latest` (default): minimal image containing the most recent changes
-* `stable` : minimal image based on the latest stable release
-* `latest-full` (default): complete image containing the most recent changes
-* `stable-full` : complete image based on the latest stable release
+* `latest` (default): image containing the most recent changes
+* `stable`: image based on the latest stable release
 
 You can also the release names for instance
 
 `docker pull dalibo/pandocker:24.05`
 
-the previous versions add more complex tags such as `latest-ubuntu-extra` 
-or `stable-buster`. They are not supported anymore.
+## DEPRECATION NOTICE
+
+The previous versions add more complex tags such as `latest-ubuntu-extra`
+or `stable-buster`.
+
+We also provided alternative image named `latest-full and `stable-full`.
+
+They are not supported anymore.
 
 ## Build it
 
