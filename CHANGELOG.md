@@ -1,20 +1,23 @@
 Changelog
 ===============================================================================
 
-25.03 - Work in Progress
+25.05 - Maintenance Version
 -------------------------------------------------------------------------------
 
 __Stack__
 
 * Ubuntu Noble
-* pandoc/extra:3.6
-* Pandoc 3.6
-* Eisvogel 2.5.0
+* pandoc/extra:3.7
+* Pandoc 3.7
+* Eisvogel 3.2.0
 
 __Changes__
 
 * Add silence package (#286)
-* Update to pandoc 3.6
+* Update to pandoc 3.7
+* FIX #289: Use standard PANDOC_DATA_DIR for templates
+* Deprecate the full variant
+
 
 24.05 - Simplification and transfer toward upstream pandoc/extra
 -------------------------------------------------------------------------------
