@@ -1,11 +1,11 @@
 # https://docs.github.com/en/actions/guides/publishing-docker-images
-
+---
 name: Publish Docker images
 
 on:
-  workflow_dispatch: # manually triggered
+  workflow_dispatch:    # manually triggered
   push:
-    branches: [ latest, stable, 25.05 ]
+    branches: [latest, stable, 25.05]
 
 jobs:
   push_to_registry:
@@ -40,11 +40,11 @@ jobs:
           target: extra
           tags: dalibo/pandocker:${{ steps.branch.outputs.branch_name }}
 
-      - name: Build and push the `full` image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: Dockerfile
-          push: true
-          target: full
-          tags: dalibo/pandocker:${{ steps.branch.outputs.branch_name }}-full
+#      - name: Build and push the `full` image
+#        uses: docker/build-push-action@v2
+#        with:
+#          context: .
+#          file: Dockerfile
+#          push: true
+#          target: full
+#          tags: dalibo/pandocker:${{ steps.branch.outputs.branch_name }}-full
