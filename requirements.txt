@@ -19,7 +19,7 @@ pandoc-latex-newpage==1.0.0.3
 # https://github.com/michaelstepner/pandoc-mustache/releases/latest
 pandoc-mustache==0.1
 # https://github.com/daamien/pandoc-run-postgres/releases/latest
-pandoc-run-postgres==0.0.4
+pandoc-run-postgres==0.1.0
 # https://pypdf2.readthedocs.io/en/latest/meta/CHANGELOG.html
 PyPDF2==2.11
 # https://pygments.org/docs/changelog/
