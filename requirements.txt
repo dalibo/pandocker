@@ -23,7 +23,7 @@ pandoc-run-postgres==0.1.0
 # https://pypdf2.readthedocs.io/en/latest/meta/CHANGELOG.html
 PyPDF2==2.11
 # https://pygments.org/docs/changelog/
-Pygments==2.15.0
+Pygments==2.20.0
 # https://github.com/sarnold/pystache/releases/latest
 pystache==0.6
 # https://github.com/daamien/pandoc-recap/releases/latest
