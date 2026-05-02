@@ -136,7 +136,7 @@ RUN ln -s ${PANDOC_DATA_DIR} /home/ubuntu/.pandoc
 
 # Easy templates
 ARG EASY_REPO=https://raw.githubusercontent.com/ryangrose/easy-pandoc-templates/
-ARG EASY_VERSION=9a884190fe19782f4434851053947173f8cec3d2
+ARG EASY_VERSION=80d5aa611ceaee12cd55ac344a1e19cfb7781d14
 
 RUN wget ${EASY_REPO}/${EASY_VERSION}/html/uikit.html -O ${PANDOC_TEMPLATES_DIR}/uikit.html && \
     wget ${EASY_REPO}/${EASY_VERSION}/html/bootstrap_menu.html -O ${PANDOC_TEMPLATES_DIR}/bootstrap_menu.html && \
