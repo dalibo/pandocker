@@ -2,13 +2,11 @@
 
 ## Table test {#sec:table}
 
-::: {#tbl:tabletable}
-  Table   Table
-  ------- -------
-  Table   Table
+Table   Table
+------- -------
+Table   Table
 
-  : Table 1: A table of tables
-:::
+: Table 1: A table of tables {#tbl:tabletable}
 
 ## Equation test {#sec:equation}
 

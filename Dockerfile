@@ -1,7 +1,7 @@
 #
 # STAGE 1: extra variant
 #
-FROM pandoc/extra:3.7-ubuntu AS extra
+FROM pandoc/extra:3.9-ubuntu AS extra
 
 # Set the env variables to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
