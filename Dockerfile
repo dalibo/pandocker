@@ -100,8 +100,8 @@ ADD requirements.txt ./
 RUN pip3 --no-cache-dir install -r requirements.txt --break-system-packages
 
 # Lua filters
-ARG PANDA_REPO=https://github.com/CDSoft/panda.git
-ARG PANDA_VERSION=8dcbe68
+ARG PANDA_REPO=https://codeberg.org/cdsoft/panda.git
+ARG PANDA_VERSION=0.9.1
 RUN git clone ${PANDA_REPO} /tmp/panda && \
     cd /tmp/panda && \
     git checkout ${PANDA_VERSION} && \
