@@ -112,8 +112,15 @@ RUN git clone ${PANDA_REPO} /tmp/panda && \
 ##
 ## L A T E X
 ##
+# The base image ships a given TeX Live release, but tlmgr uses the default
+# repository, which moves to the next release every year. Use the final
+# archive of the same release instead, and update all packages so that the
+# LaTeX kernel matches the packages installed below.
+ARG TEXLIVE_REPOSITORY=https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2025/tlnet-final
 ADD packages.txt ./
-RUN tlmgr update --self && \
+RUN tlmgr option repository ${TEXLIVE_REPOSITORY} && \
+    tlmgr update --self && \
+    tlmgr update --all && \
     tlmgr init-usertree && \
     tlmgr install `echo $(grep -v '^#' packages.txt )` && \
     # update the font map
